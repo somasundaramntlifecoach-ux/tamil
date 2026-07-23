@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>கோபத்தை வெல்லலாம் — Anger Management Mastery | N T Somasundaram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a2540; --navy-dark:#061a2e; --gold:#c9a227; --gold-light:#e8c874;
+    --bg:#f7f5f0; --text:#1c2b3a; --muted:#5a6b7a; --card:#ffffff; --success:#1f8a53;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Noto Sans Tamil','Poppins',sans-serif; line-height:1.75; font-size:17px;
+  }
+  a{color:inherit;}
+
+  header.hero{
+    background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+    color:#fff; text-align:center; padding:66px 20px 90px;
+    border-bottom:5px solid var(--gold);
+  }
+  header.hero .eyebrow{
+    display:inline-block; background:rgba(255,255,255,.12); color:var(--gold-light);
+    padding:6px 18px; border-radius:20px; font-size:.85rem; font-weight:600; margin-bottom:18px;
+  }
+  header.hero h1{font-size:2.1rem; margin:0 0 16px; font-weight:700; line-height:1.4;}
+  header.hero p.sub{color:#dce6f0; max-width:640px; margin:0 auto 26px; font-size:1.05rem;}
+  .stat-row{display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin:22px 0 30px; color:var(--gold-light); font-weight:600; font-size:.95rem;}
+  .hero-ctas{display:flex; justify-content:center; gap:16px; flex-wrap:wrap;}
+
+  .btn{
+    display:inline-block; padding:14px 30px; border-radius:30px; font-weight:700;
+    text-decoration:none; font-size:1rem; transition:transform .15s; border:none; cursor:pointer;
+    font-family:inherit;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-gold{background:var(--gold); color:var(--navy-dark);}
+  .btn-whatsapp{background:#25D366; color:#fff;}
+  .btn-outline{background:transparent; color:#fff; border:2px solid rgba(255,255,255,.6);}
+
+  .wrap{max-width:900px; margin:-50px auto 0; padding:0 20px 70px; position:relative; z-index:2;}
+
+  .card{
+    background:var(--card); border-radius:16px; padding:34px 36px; margin-bottom:26px;
+    box-shadow:0 4px 22px rgba(10,37,64,.09); border-top:5px solid var(--gold-light);
+  }
+  .card h2{color:var(--navy); font-size:1.3rem; margin-top:0;}
+  .card p{color:var(--text);}
+
+  /* Price card */
+  .price-card{text-align:center; border-top-color:var(--gold);}
+  .price-tag{font-size:2.6rem; font-weight:800; color:var(--navy); margin:8px 0;}
+  .price-tag span{font-size:1.05rem; color:var(--muted); font-weight:500; text-decoration:line-through; margin-left:10px;}
+  .price-includes{
+    list-style:none; padding:0; margin:20px auto; max-width:420px; text-align:left;
+  }
+  .price-includes li{padding:7px 0 7px 30px; position:relative; color:var(--text);}
+  .price-includes li::before{content:"✅"; position:absolute; left:0;}
+  .razorpay-wrap{margin:22px 0 10px;}
+
+  /* Problem/pain points */
+  .pain-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:18px;}
+  .pain{
+    background:#fcebe9; border-left:4px solid #c0392b; border-radius:10px; padding:16px 18px;
+  }
+  .pain p{margin:0; font-size:.94rem; color:var(--text);}
+
+  /* Curriculum */
+  .module-row{
+    display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-bottom:1px solid #eee;
+  }
+  .module-row:last-child{border-bottom:none;}
+  .module-num{
+    background:var(--navy); color:var(--gold-light); font-weight:800; font-size:1.1rem;
+    width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .module-row h3{margin:0 0 4px; color:var(--navy); font-size:1.02rem;}
+  .module-row p{margin:0; color:var(--muted); font-size:.9rem;}
+
+  /* Features grid */
+  .feature-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:18px;}
+  .feature{
+    background:#f4f7fb; border-radius:12px; padding:18px 20px; border-left:4px solid var(--gold);
+  }
+  .feature h3{margin:0 0 6px; color:var(--navy); font-size:1rem;}
+  .feature p{margin:0; color:var(--muted); font-size:.92rem;}
+
+  .who-list{list-style:none; padding:0; margin:16px 0 0;}
+  .who-list li{padding:10px 0 10px 30px; position:relative; border-bottom:1px solid #eee;}
+  .who-list li:last-child{border-bottom:none;}
+  .who-list li::before{content:"✔"; position:absolute; left:0; color:var(--success); font-weight:700;}
+
+  .trainer-card{display:flex; gap:22px; align-items:flex-start; flex-wrap:wrap;}
+  .trainer-avatar{
+    width:84px; height:84px; border-radius:50%; background:var(--navy); color:var(--gold-light);
+    display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:700;
+    flex-shrink:0;
+  }
+  .trainer-info h2{margin:0 0 4px;}
+  .trainer-info .role{color:var(--muted); font-size:.92rem; margin-bottom:10px;}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid #eee; padding:14px 0;}
+  .faq-item:last-child{border-bottom:none;}
+  .faq-item h3{margin:0 0 6px; color:var(--navy); font-size:.98rem;}
+  .faq-item p{margin:0; color:var(--muted); font-size:.92rem;}
+
+  /* Parenting cross-promo */
+  .promo-banner{
+    background:linear-gradient(135deg,#fff8e6,#fdeec2);
+    border:2px solid var(--gold); border-radius:14px; padding:28px 30px; margin-bottom:26px;
+    text-align:center;
+  }
+  .promo-banner h3{color:var(--navy); margin:0 0 8px; font-size:1.15rem;}
+  .promo-banner p{margin:0 0 16px; color:var(--text);}
+
+  .final-cta{
+    text-align:center; background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+    color:#fff; border-radius:16px; padding:44px 30px;
+  }
+  .final-cta h2{color:#fff; margin-top:0;}
+  .final-cta p{color:#dce6f0;}
+
+  footer.site{
+    text-align:center; padding:30px 20px; color:var(--muted); font-size:.88rem;
+    border-top:1px solid #e5e0d5;
+  }
+  footer.site .motto{color:var(--navy); font-weight:600; margin-top:6px;}
+
+  @media (max-width:640px){
+    header.hero h1{font-size:1.5rem;}
+    .card{padding:24px 20px;}
+    .pain-grid, .feature-grid{grid-template-columns:1fr;}
+    .stat-row{gap:16px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="eyebrow">🔥 N T Somasundaram — Certified Master Trainer</span>
+  <h1>கோபத்தை வெல்லலாம்<br>Anger Management Mastery</h1>
+  <p class="sub">உங்கள் கோபத்தைப் புரிந்து, அமைதியாக வாழக் கற்றுக்கொள்ளுங்கள் — தமிழில் முழுமையான, நடைமுறைக்கு உகந்த ஆன்லைன் பாடநெறி.</p>
+  <div class="stat-row">
+    <span>📚 5 Modules</span>
+    <span>📖 13+ பாடங்கள்</span>
+    <span>🎯 Live Quizzes</span>
+    <span>✍ Interactive Worksheets</span>
+  </div>
+  <div class="hero-ctas">
+    <a class="btn btn-gold" href="#pricing">₹499-க்கு இப்போதே சேருங்கள்</a>
+    <a class="btn btn-whatsapp" href="https://wa.me/919843702244?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D%2C%20%E0%AE%A8%E0%AE%BE%E0%AE%A9%E0%AF%8D%20%27%E0%AE%95%E0%AF%8B%E0%AE%AA%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AF%88%20%E0%AE%B5%E0%AF%86%E0%AE%B2%E0%AF%8D%E0%AE%B2%E0%AE%B2%E0%AE%BE%E0%AE%AE%E0%AF%8D%27%20%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AE%A8%E0%AF%86%E0%AE%B1%E0%AE%BF%E0%AE%AF%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%9A%E0%AF%87%E0%AE%B0%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">💬 WhatsApp-ல் விவரம் பெறுங்கள்</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="card">
+    <h2>உங்களுக்கும் இது நடக்கிறதா?</h2>
+    <div class="pain-grid">
+      <div class="pain"><p>😤 சிறிய விஷயங்களுக்கும் அதிகமாக கோபம் வருகிறதா?</p></div>
+      <div class="pain"><p>💔 கோபத்தில் சொன்ன வார்த்தைகளால் பிறகு வருந்துகிறீர்களா?</p></div>
+      <div class="pain"><p>👨‍👩‍👧 குழந்தைகள் / துணைவருடன் உறவு பாதிக்கப்படுகிறதா?</p></div>
+      <div class="pain"><p>😔 கோபத்தை கட்டுப்படுத்த முடியாமல் குற்ற உணர்வு ஏற்படுகிறதா?</p></div>
+    </div>
+    <p style="margin-top:18px;">நீங்கள் தனியாக இல்லை — இந்த பாடநெறி, உங்கள் கோபத்தை அறிவியல் ரீதியாகப் புரிந்து, நடைமுறையில் நிர்வகிக்க உதவும்.</p>
+  </div>
+
+  <div class="card">
+    <h2>📚 பாடநெறியில் என்ன கற்பீர்கள்?</h2>
+    <div class="module-row">
+      <div class="module-num">1</div>
+      <div><h3>கோபத்தைப் புரிந்துகொள்வோம்</h3><p>கோபம் என்றால் என்ன, ஏன் வருகிறது என்பதை அறிவியல் ரீதியாக அறிதல்</p></div>
+    </div>
+    <div class="module-row">
+      <div class="module-num">2</div>
+      <div><h3>உங்கள் கோபத்தை அறிந்துகொள்வோம்</h3><p>உங்கள் கோபப் பாணி, ஆரம்ப எச்சரிக்கை அறிகுறிகள், Trigger-கள்</p></div>
+    </div>
+    <div class="module-row">
+      <div class="module-num">3</div>
+      <div><h3>உடனடி கட்டுப்பாட்டு நுட்பங்கள்</h3><p>ஆழ்ந்த மூச்சு, Time-Out, எண்ண மாற்றம் — உடனடியாகப் பயன்படுத்தும் நுட்பங்கள்</p></div>
+    </div>
+    <div class="module-row">
+      <div class="module-num">4</div>
+      <div><h3>ஆரோக்கியமான தொடர்புத் திறன்கள்</h3><p>I-Statements, Active Listening, Assertive Communication</p></div>
+    </div>
+    <div class="module-row">
+      <div class="module-num">5</div>
+      <div><h3>நீண்டகால கோப மேலாண்மை</h3><p>மன்னிப்பு, ஆரோக்கியமான வாழ்க்கை முறை, தனிப்பட்ட செயல் திட்டம்</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>✨ ஏன் இந்த பாடநெறி வித்தியாசமானது?</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>🎯 Live Quizzes</h3>
+        <p>ஒவ்வொரு பாடத்திலும் உடனடி பதில் சரிபார்ப்புடன் கூடிய MCQ &amp; True/False வினாடி வினா.</p>
+      </div>
+      <div class="feature">
+        <h3>✍ Interactive Worksheets</h3>
+        <p>உங்கள் பதில்களை நேரடியாக பக்கத்திலேயே எழுதி சேமிக்கலாம்.</p>
+      </div>
+      <div class="feature">
+        <h3>📌 நடைமுறை வழிகாட்டுதல்</h3>
+        <p>Checklist &amp; Tracker-கள் மூலம் அன்றாட வாழ்க்கையில் உடனடியாகப் பயன்படுத்தலாம்.</p>
+      </div>
+      <div class="feature">
+        <h3>🧠 Module Self-Assessment</h3>
+        <p>ஒவ்வொரு Module முடிவிலும் உங்கள் முன்னேற்றத்தை மதிப்பிடும் Live Quiz &amp; Review.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>இது யாருக்கானது?</h2>
+    <ul class="who-list">
+      <li>அடிக்கடி கோபப்படுவதாக உணரும் எவரும்</li>
+      <li>பெற்றோர்கள் — குழந்தைகளிடம் அமைதியாக பேச விரும்புவோர்</li>
+      <li>பணியிடத்தில் அழுத்தத்தை சமாளிக்க விரும்பும் ஊழியர்கள் / மேலாளர்கள்</li>
+      <li>ஆசிரியர்கள் மற்றும் Counsellors</li>
+      <li>தன்னை மேம்படுத்திக் கொள்ள விரும்பும் எவரும்</li>
+    </ul>
+  </div>
+
+  <!-- PRICING -->
+  <div class="card price-card" id="pricing">
+    <h2>இன்றே சேருங்கள்</h2>
+    <div class="price-tag">₹499<span>₹1499</span></div>
+    <p style="font-size:.9rem; color:var(--muted);">ஒரே முறை கட்டணம் &middot; வாழ்நாள் அணுகல்</p>
+    <ul class="price-includes">
+      <li>5 Modules &middot; 13+ பாடங்கள்</li>
+      <li>ஒவ்வொரு Module-க்கும் Review + Live Quiz</li>
+      <li>Interactive Worksheets &amp; Self-Assessment</li>
+      <li>வாழ்நாள் அணுகல் (Lifetime Access)</li>
+      <li>WhatsApp வழியாக ஆதரவு</li>
+    </ul>
+    <div class="razorpay-wrap">
+      <form>
+        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TEmd6Afyg8S01B" async> </script>
+      </form>
+    </div>
+    <p style="font-size:.82rem; color:var(--muted); margin:14px 0;">பணம் செலுத்திய பிறகு, WhatsApp வழியாக உங்கள் அணுகல் விவரங்கள் அனுப்பப்படும்.</p>
+    <a class="btn btn-whatsapp" href="https://wa.me/919843702244?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D%2C%20%E0%AE%A8%E0%AE%BE%E0%AE%A9%E0%AF%8D%20%27%E0%AE%95%E0%AF%8B%E0%AE%AA%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AF%88%20%E0%AE%B5%E0%AF%86%E0%AE%B2%E0%AF%8D%E0%AE%B2%E0%AE%B2%E0%AE%BE%E0%AE%AE%E0%AF%8D%27%20%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AE%A8%E0%AF%86%E0%AE%B1%E0%AE%BF%E0%AE%AF%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%9A%E0%AF%87%E0%AE%B0%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">💬 WhatsApp-ல் கேள்வி கேட்க</a>
+  </div>
+
+  <div class="card trainer-card">
+    <div class="trainer-avatar">NT</div>
+    <div class="trainer-info">
+      <h2>N T Somasundaram</h2>
+      <p class="role">Certified Master Trainer &middot; Career Consultant &middot; Life Skills Educator &middot; Parenting Coach</p>
+      <p>ஒரு தசாப்தத்திற்கும் மேலான Corporate Banking அனுபவத்திலிருந்து, பயிற்சி மற்றும் பயிற்றுவித்தல் துறைக்கு மாறி, ஆயிரக்கணக்கான மாணவர்கள், ஆசிரியர்கள் மற்றும் பெற்றோர்களுக்கு தமிழ் &amp; ஆங்கிலத்தில் பயிற்சி அளித்து வருகிறார். SKV International School-ன் Director &amp; Treasurer.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>❓ அடிக்கடி கேட்கப்படும் கேள்விகள்</h2>
+    <div class="faq-item">
+      <h3>இந்த பாடநெறி முழுவதும் தமிழிலா?</h3>
+      <p>ஆம், இந்தப் பாடநெறி முழுவதும் தமிழில் உள்ளது.</p>
+    </div>
+    <div class="faq-item">
+      <h3>எவ்வளவு காலத்திற்கு அணுகல் கிடைக்கும்?</h3>
+      <p>ஒரே முறை கட்டணத்துடன் வாழ்நாள் முழுவதும் அணுகல் கிடைக்கும்.</p>
+    </div>
+    <div class="faq-item">
+      <h3>எவ்வளவு நேரத்தில் முடிக்கலாம்?</h3>
+      <p>உங்கள் வேகத்திற்கு ஏற்ப, சராசரியாக 2-3 வாரங்களில் முடிக்கலாம்.</p>
+    </div>
+    <div class="faq-item">
+      <h3>பணம் திரும்பப் பெறலாமா?</h3>
+      <p>கேள்விகள் / பிரச்சனைகள் இருந்தால் WhatsApp வழியாக நேரடியாக தொடர்பு கொள்ளுங்கள்.</p>
+    </div>
+  </div>
+
+  <div class="promo-banner">
+    <h3>👨‍👩‍👧 உங்கள் பெற்றோர் பயணத்தையும் தொடருங்கள்</h3>
+    <p>கோபத்தை வெல்வது போலவே, குழந்தை வளர்ப்பும் ஒரு கற்றுத் தேறும் திறன்தான்.<br>
+    N T Somasundaram அவர்களின் <strong>Loving &amp; Responsible Parenting Programme</strong> —
+    பொறுமை, புரிதல், ஆரோக்கியமான உறவுகளுடன் கூடிய பெற்றோர் பயிற்சி (தமிழ் &amp; ஆங்கிலம்).</p>
+    <a class="btn btn-whatsapp" href="https://wa.me/919843702244?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D%2C%20%E0%AE%A8%E0%AE%BE%E0%AE%A9%E0%AF%8D%20Loving%20%26%20Responsible%20Parenting%20Programme%20%E0%AE%AA%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AE%BF%20%E0%AE%85%E0%AE%B1%E0%AE%BF%E0%AE%AF%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">💬 WhatsApp வழியாக விவரம் பெறுங்கள்</a>
+  </div>
+
+  <div class="final-cta">
+    <h2>உங்கள் அமைதியான வாழ்க்கை இன்றே தொடங்கட்டும்</h2>
+    <p>₹499 மட்டுமே — வாழ்நாள் அணுகலுடன். இப்போதே சேருங்கள்.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-gold" href="#pricing">₹499-க்கு சேருங்கள்</a>
+      <a class="btn btn-outline" href="https://wa.me/919843702244" target="_blank" rel="noopener">💬 WhatsApp: +91 98437 02244</a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site">
+  N T Somasundaram &middot; Certified Master Trainer &amp; Life Skills Educator<br>
+  📞 +91 98437 02244 &nbsp;|&nbsp; ✉️ somasundaramnt.lifecoach@gmail.com<br>
+  YouTube: @Godisalwayswithu &nbsp;|&nbsp; sites.google.com/view/somasundaramnt
+  <div class="motto">"God is always with u."</div>
+</footer>
+
+</body>
+</html>
