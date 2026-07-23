@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>பாடம் 1.1: கோபம் என்றால் உண்மையில் என்ன? | கோபத்தை வெல்லலாம்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root{
+      --navy:#0a2540; --navy-dark:#061a2e; --gold:#c9a227; --gold-light:#e8c874;
+      --bg:#f7f5f0; --text:#1c2b3a; --muted:#5a6b7a; --card:#ffffff;
+      --success:#1f8a53; --danger:#c0392b;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:'Noto Sans Tamil','Poppins',sans-serif;
+      line-height:1.75; font-size:17px;
+    }
+    header.top{
+      background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+      color:#fff; padding:22px 20px; text-align:center;
+      border-bottom:4px solid var(--gold);
+    }
+    header.top h1{margin:0 0 4px; font-size:1.25rem; font-weight:700;}
+    header.top p{margin:0; color:var(--gold-light); font-size:.9rem;}
+    nav.crumbs{
+      max-width:820px; margin:0 auto; padding:14px 20px; font-size:.88rem; color:var(--muted);
+    }
+    nav.crumbs a{color:var(--navy); text-decoration:none; font-weight:600;}
+    .wrap{max-width:820px; margin:0 auto; padding:0 20px 60px;}
+    .lesson-title-block{text-align:center; margin-bottom:26px;}
+    .lesson-title-block .tag{
+      display:inline-block; background:var(--navy); color:var(--gold-light);
+      padding:4px 14px; border-radius:20px; font-size:.8rem; font-weight:600; margin-bottom:10px;
+    }
+    .lesson-title-block h1{color:var(--navy); font-size:1.5rem; margin:6px 0;}
+
+    .plain-section{
+      background:var(--card); border-radius:14px; padding:24px 30px; margin-bottom:22px;
+      box-shadow:0 2px 12px rgba(10,37,64,.07); border-top:4px solid var(--gold-light);
+    }
+    .plain-section h2{font-size:1.08rem; color:var(--navy); margin-top:0;}
+    .plain-section blockquote{
+      border-left:4px solid var(--gold); margin:14px 0; padding:6px 16px;
+      background:#fbf7ea; color:var(--navy); font-style:normal;
+    }
+    .plain-section hr{display:none;}
+    .plain-section table{border-collapse:collapse; width:100%; margin:14px 0;}
+    .plain-section table td, .plain-section table th{border:1px solid #ddd; padding:8px 10px;}
+    .plain-section strong{color:var(--navy);}
+
+    /* Guidance checklist */
+    .guidance-box{
+      background:#f0f7f2; border:2px solid #bfe3cc; border-radius:14px; padding:24px 30px; margin-bottom:22px;
+    }
+    .guidance-box h2{color:var(--success); margin-top:0; font-size:1.08rem;}
+    ul.checklist{list-style:none; padding:0; margin:16px 0;}
+    ul.checklist li{margin-bottom:10px;}
+    .check-row{display:flex; align-items:flex-start; gap:10px; cursor:pointer; padding:8px 10px; border-radius:8px; transition:background .15s;}
+    .check-row:hover{background:#e3f3e8;}
+    .check-row input[type=checkbox]{width:20px; height:20px; margin-top:2px; accent-color:var(--success); cursor:pointer;}
+    .check-row span{flex:1;}
+    .check-row input:checked + span{text-decoration:line-through; color:var(--muted);}
+    .guide-progress{display:flex; align-items:center; gap:12px; margin-top:14px;}
+    .guide-progress-bar{flex:1; height:10px; background:#dcefe1; border-radius:6px; overflow:hidden;}
+    .guide-progress-fill{height:100%; width:0%; background:var(--success); transition:width .3s;}
+    .guide-progress-label{font-size:.85rem; color:var(--success); font-weight:600; white-space:nowrap;}
+
+    /* Worksheet */
+    .worksheet-box{
+      background:#fff8ec; border:2px solid var(--gold); border-radius:14px; padding:24px 30px; margin-bottom:22px;
+    }
+    .worksheet-box h2{color:var(--navy); margin-top:0; font-size:1.08rem;}
+    .ws-item{margin-bottom:16px;}
+    .ws-item label{display:block; font-weight:600; color:var(--navy); margin-bottom:6px;}
+    .ws-item textarea, .worksheet-box > textarea{
+      width:100%; border:1.5px solid #e0d3ab; border-radius:8px; padding:10px 12px;
+      font-family:inherit; font-size:.95rem; resize:vertical; background:#fff;
+    }
+    .ws-item textarea:focus, .worksheet-box textarea:focus{outline:none; border-color:var(--gold);}
+    .btn-save-ws{
+      background:var(--navy); color:#fff; border:none; padding:10px 22px; border-radius:8px;
+      font-weight:600; cursor:pointer; font-size:.9rem; margin-top:6px;
+    }
+    .btn-save-ws:hover{background:var(--navy-dark);}
+    .ws-saved-note{margin-left:12px; color:var(--success); font-weight:600; font-size:.85rem;}
+
+    /* Quiz */
+    .quiz-box{
+      background:#eef4fb; border:2px solid #b9d3ec; border-radius:14px; padding:24px 30px; margin-bottom:22px;
+    }
+    .quiz-box h2{color:var(--navy); margin-top:0; font-size:1.08rem;}
+    .quiz-q{background:#fff; border-radius:10px; padding:16px 18px; margin-bottom:16px; box-shadow:0 1px 6px rgba(10,37,64,.06);}
+    .quiz-qtext{font-weight:600; color:var(--navy); margin:0 0 12px;}
+    .mcq-options, .tf-options{display:flex; flex-direction:column; gap:8px;}
+    .tf-options{flex-direction:row;}
+    .mcq-opt, .tf-opt{
+      text-align:left; background:#f4f7fb; border:1.5px solid #d7e2ee; border-radius:8px;
+      padding:10px 14px; cursor:pointer; font-family:inherit; font-size:.92rem; color:var(--text);
+      transition:all .15s;
+    }
+    .tf-opt{flex:1; text-align:center; font-weight:600;}
+    .mcq-opt:hover, .tf-opt:hover{border-color:var(--gold); background:#fbf7ea;}
+    .mcq-opt.correct, .tf-opt.correct{background:#e4f7ea; border-color:var(--success); color:var(--success); font-weight:700;}
+    .mcq-opt.incorrect, .tf-opt.incorrect{background:#fcebe9; border-color:var(--danger); color:var(--danger); font-weight:700;}
+    .mcq-opt[disabled], .tf-opt[disabled]{cursor:default; opacity:.85;}
+    .quiz-feedback{margin:10px 0 0; font-weight:600; font-size:.9rem; min-height:1.2em;}
+    .quiz-feedback.ok{color:var(--success);}
+    .quiz-feedback.no{color:var(--danger);}
+
+    /* Nav buttons */
+    .lesson-nav{
+      display:flex; justify-content:space-between; gap:14px; margin:34px 0; flex-wrap:wrap;
+    }
+    .lesson-nav a{
+      flex:1; min-width:150px; text-align:center; padding:14px 18px; border-radius:10px;
+      background:var(--navy); color:#fff; text-decoration:none; font-weight:600;
+    }
+    .lesson-nav a:hover{background:var(--navy-dark);}
+    .lesson-nav a.secondary{background:#fff; color:var(--navy); border:2px solid var(--navy);}
+
+    /* Promo banner */
+    .promo-banner{
+      background:linear-gradient(135deg,#fff8e6,#fdeec2);
+      border:2px solid var(--gold); border-radius:14px; padding:26px 28px; margin:34px 0;
+      text-align:center;
+    }
+    .promo-banner h3{color:var(--navy); margin:0 0 8px; font-size:1.1rem;}
+    .promo-banner p{margin:0 0 16px; color:var(--text);}
+    .btn-whatsapp{
+      display:inline-block; background:#25D366; color:#fff; padding:13px 28px;
+      border-radius:30px; text-decoration:none; font-weight:700; font-size:1rem;
+    }
+    .btn-whatsapp:hover{background:#1ebe57;}
+
+    /* Index page pricing/module list */
+    .price-card{
+      background:var(--card); border-radius:16px; padding:30px; text-align:center; margin-bottom:26px;
+      box-shadow:0 4px 20px rgba(10,37,64,.1); border-top:5px solid var(--gold);
+    }
+    .price-tag{font-size:2.4rem; font-weight:800; color:var(--navy); margin:8px 0;}
+    .price-tag span{font-size:1rem; color:var(--muted); font-weight:500; text-decoration:line-through; margin-left:10px;}
+    .razorpay-wrap{margin:20px 0;}
+    .index-grid{display:grid; gap:16px; margin-top:20px;}
+    .module-tile{
+      background:var(--card); border-radius:14px; padding:18px 22px;
+      box-shadow:0 2px 10px rgba(10,37,64,.07); border-left:6px solid var(--gold);
+    }
+    .module-tile h2{margin:0 0 10px; color:var(--navy); font-size:1.1rem;}
+    .lesson-list{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px;}
+    .lesson-list a{
+      display:flex; justify-content:space-between; align-items:center;
+      background:#f4f7fb; padding:10px 14px; border-radius:8px; text-decoration:none;
+      color:var(--navy); font-weight:600; font-size:.92rem;
+    }
+    .lesson-list a:hover{background:#e9eff8;}
+    .lesson-list a .arrow{color:var(--gold);}
+
+    /* Guidance interactive tables */
+    .guide-table{width:100%; border-collapse:collapse; margin:16px 0;}
+    .guide-table th, .guide-table td{border:1px solid #bfe3cc; padding:10px 12px; text-align:left; font-size:.92rem;}
+    .guide-table th{background:#e3f3e8; color:var(--navy);}
+    .tbl-fill{
+      width:100%; border:1.5px solid #bfe3cc; border-radius:6px; padding:7px 10px;
+      font-family:inherit; font-size:.9rem;
+    }
+    .tbl-fill:focus{outline:none; border-color:var(--success);}
+    .tbl-toggle{display:flex; gap:6px; flex-wrap:wrap;}
+    .tbl-toggle-btn{
+      border:1.5px solid #bfe3cc; background:#fff; border-radius:6px; padding:6px 10px;
+      cursor:pointer; font-family:inherit; font-size:.85rem;
+    }
+    .tbl-toggle-btn.selected[data-choice="yes"]{background:var(--success); color:#fff; border-color:var(--success);}
+    .tbl-toggle-btn.selected[data-choice="no"]{background:var(--danger); color:#fff; border-color:var(--danger);}
+
+    .sa-list{list-style:none; padding:0; margin:10px 0 0;}
+    .sa-item{
+      display:flex; justify-content:space-between; align-items:center; gap:14px;
+      padding:10px 4px; border-bottom:1px solid #dcefe1; flex-wrap:wrap;
+    }
+    .sa-text{flex:1; min-width:200px;}
+    .sa-scale{display:flex; gap:6px;}
+    .sa-scale-btn{
+      width:34px; height:34px; border-radius:50%; border:1.5px solid #bfe3cc; background:#fff;
+      cursor:pointer; font-weight:700; color:var(--success); font-family:inherit;
+    }
+    .sa-scale-btn:hover{background:#e3f3e8;}
+    .sa-scale-btn.selected{background:var(--success); color:#fff; border-color:var(--success);}
+    .sa-result{
+      margin-top:22px; padding:16px 20px; background:#fff; border-radius:10px;
+      border:1.5px solid var(--success);
+    }
+    .sa-result-row{display:flex; justify-content:space-between; margin-bottom:6px; font-weight:600; color:var(--navy);}
+    .sa-total-score{color:var(--success); font-size:1.2rem;}
+    .sa-verdict{margin:10px 0 0; font-weight:700; color:var(--navy);}
+    @media (max-width:600px){
+      .sa-scale-btn{width:30px; height:30px; font-size:.85rem;}
+    }
+
+    footer.site{
+      text-align:center; padding:28px 20px; color:var(--muted); font-size:.85rem;
+      border-top:1px solid #e5e0d5;
+    }
+    footer.site .motto{color:var(--navy); font-weight:600; margin-top:6px;}
+    @media (max-width:600px){
+      .plain-section, .guidance-box, .worksheet-box, .quiz-box{padding:18px 18px;}
+      .lesson-nav a{min-width:100%;}
+      .tf-options{flex-direction:column;}
+    }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>கோபத்தை வெல்லலாம் (Anger Management Mastery)</h1>
+  <p>Module 1: கோபத்தைப் புரிந்துகொள்வோம்</p>
+</header>
+<nav class="crumbs"><a href="index.html">🏠 பாடநெறி முகப்பு</a> &nbsp;›&nbsp; Module 1 &nbsp;›&nbsp; பாடம் 1.1</nav>
+<div class="wrap">
+  <div class="lesson-title-block">
+    <span class="tag">Module 1 · பாடம் 1.1</span>
+    <h1>கோபம் என்றால் உண்மையில் என்ன?</h1>
+  </div>
+
+  <div class="plain-section"><h2><strong>🎯 கற்றல் நோக்கம்</strong></h2>
+<p>இந்தப் பாடத்தை முடிக்கும் போது நீங்கள்,</p>
+<ul>
+<li>கோபம் என்றால் என்ன என்பதைப் புரிந்துகொள்வீர்கள்.  </li>
+<li>கோபம் ஒரு இயற்கையான உணர்வு என்பதை அறிந்துகொள்வீர்கள்.  </li>
+<li>கோபம் வரும்போது உடலிலும் மூளையிலும் என்ன மாற்றங்கள் ஏற்படுகின்றன என்பதைப் புரிந்துகொள்வீர்கள்.  </li>
+<li>கோபத்தின் போது ஏன் தெளிவாக சிந்திக்க முடியவில்லை என்பதை அறிந்துகொள்வீர்கள்.</li>
+</ul>
+<hr /></div>
+<div class="plain-section"><h2><strong>📖 அறிமுகம்</strong></h2>
+<p>"எனக்கு கோபம் அதிகம் வருகிறது."</p>
+<p>"கோபத்தை என்னால் கட்டுப்படுத்த முடியவில்லை."</p>
+<p>"கோபப்பட்ட பிறகுதான் நான் தவறு செய்ததை உணர்கிறேன்."</p>
+<p>இந்த வார்த்தைகளை நாம் அடிக்கடி கேட்கிறோம். சில நேரங்களில் நாமே கூட இவ்வாறு கூறியிருக்கலாம்.</p>
+<p>ஆனால் ஒரு முக்கியமான கேள்வி:</p>
+<p><strong>கோபம் வருவது தவறா?</strong></p>
+<p>பெரும்பாலானோர் "ஆம்" என்று நினைக்கிறார்கள்.</p>
+<p>உண்மையில் அது தவறல்ல.</p>
+<p>கோபம் என்பது மனிதனுக்கு இயற்கையாக வழங்கப்பட்ட ஒரு உணர்வு.</p>
+<p>பசி வருவது போல...</p>
+<p>தாகம் எடுப்பது போல...</p>
+<p>பயம் ஏற்படுவது போல...</p>
+<p>கோபமும் ஒரு உணர்வுதான்.</p>
+<p>இந்தப் பாடத்தில், கோபத்தை எதிரியாக பார்க்காமல், அதை சரியாகப் புரிந்துகொள்ள கற்றுக்கொள்வோம்.</p>
+<hr /></div>
+<div class="plain-section"><h2><strong>📚 விரிவான விளக்கம்</strong></h2>
+<p>கோபம் என்பது ஒரு கெட்ட குணம் அல்ல.</p>
+<p>அது ஒரு <strong>எச்சரிக்கை உணர்வு</strong>.</p>
+<p>நமக்கு ஏதோ ஒன்று சரியாக இல்லை என்று உடலும் மனமும் சொல்லும் ஒரு சிக்னல்.</p>
+<p>உதாரணமாக,</p>
+<ul>
+<li>யாராவது நம்மை அவமதித்தால்,  </li>
+<li>அநியாயமாக நடந்துகொண்டால்,  </li>
+<li>நம்முடைய எல்லைகளை மீறினால்,  </li>
+<li>நம்முடைய பாதுகாப்பு ஆபத்தில் இருப்பதாக உணர்ந்தால்,</li>
+</ul>
+<p>கோபம் தோன்றுகிறது.</p>
+<p>இதன் நோக்கம் சண்டை போடச் செய்வது அல்ல.</p>
+<p>நமக்கு முக்கியமான ஏதோ ஒன்று பாதிக்கப்பட்டிருக்கலாம் என்பதை கவனிக்கச் செய்வதே அதன் நோக்கம்.</p>
+<hr /></div>
+<div class="plain-section"><h2><strong>🧠 கருத்தை ஆழமாகப் புரிந்துகொள்வோம்</strong></h2>
+<p>கோபம் வந்தவுடன் உடலில் சில விநாடிகளுக்குள் மாற்றங்கள் ஆரம்பமாகின்றன.</p>
+<p>உடல் Stress Hormones-ஐ வேகமாக வெளியிடுகிறது.</p>
+<p>அதன் விளைவாக,</p>
+<ul>
+<li>இதயம் வேகமாகத் துடிக்கிறது.  </li>
+<li>மூச்சு வேகமாகிறது.  </li>
+<li>தசைகள் இறுக்கமடைகின்றன.  </li>
+<li>முகம் சூடாகலாம்.  </li>
+<li>கை நடுக்கம் ஏற்படலாம்.  </li>
+<li>குரலின் சத்தம் அதிகரிக்கலாம்.</li>
+</ul>
+<p>இவை அனைத்தும் உடலை உடனடி செயல்பாட்டிற்கு தயார்படுத்தும் இயற்கையான மாற்றங்கள்.</p>
+<p>அதே நேரத்தில், அமைதியாக யோசித்து முடிவு எடுக்கும் மூளையின் பகுதி தற்காலிகமாக மெதுவாக செயல்படுகிறது.</p>
+<p>அதனால்தான் கோபமாக இருக்கும் நேரத்தில்,</p>
+<blockquote>
+<p>"நான் இப்படிப் பேசக்கூடாது."</p>
+<p>"இதைச் செய்யக்கூடாது."</p>
+</blockquote>
+<p>என்பது தெரிந்திருந்தாலும், அதன்படி நடந்து கொள்வது சிரமமாகிறது.</p>
+<hr /></div>
+<div class="plain-section"><h2><strong>🌍 வாழ்க்கை உதாரணம்</strong></h2>
+<p>நீங்கள் காரில் சென்று கொண்டிருக்கிறீர்கள்.</p>
+<p>திடீரென்று மற்றொரு வாகனம் உங்கள் முன் வந்து வழியை மறைக்கிறது.</p>
+<p>அடுத்த சில விநாடிகளில்,</p>
+<ul>
+<li>இதயம் வேகமாகத் துடிக்கிறது.  </li>
+<li>கை ஸ்டியரிங்கை இறுக்கமாகப் பிடிக்கிறது.  </li>
+<li>"என்ன இது?" என்று கோபம் வருகிறது.</li>
+</ul>
+<p>இந்த மாற்றங்கள் நீங்கள் திட்டமிட்டு செய்வது அல்ல.</p>
+<p>உங்கள் உடலின் பாதுகாப்பு அமைப்பு தானாகவே செயல்படுகிறது.</p>
+<p>இந்த உடல் எதிர்வினையைப் புரிந்துகொண்டால், கோபத்தை நிர்வகிப்பது எளிதாகும்.</p>
+<hr /></div>
+<div class="plain-section"><h2><strong>💡 ஏன் இது முக்கியம்?</strong></h2>
+<p>பலர் கோபத்தை கட்டுப்படுத்த முயற்சிக்கிறார்கள்.</p>
+<p>ஆனால் கோபத்தை கட்டுப்படுத்துவதற்கு முன், அதை புரிந்துகொள்ள வேண்டும்.</p>
+<p>கோபம் எப்படி உருவாகிறது என்பதை அறிந்தால்,</p>
+<ul>
+<li>நம்முடைய உடல் தரும் ஆரம்ப எச்சரிக்கைகளை கவனிக்க முடியும்.  </li>
+<li>கோபத்தின் உச்சநிலைக்கு செல்வதற்கு முன்பே நம்மை அமைதிப்படுத்த முடியும்.  </li>
+<li>தவறான முடிவுகளைத் தவிர்க்க முடியும்.  </li>
+<li>உறவுகளை பாதுகாக்க முடியும்.</li>
+</ul>
+<hr /></div>
+<div class="plain-section"><h2><strong>✅ முக்கியக் கருத்துகள்</strong></h2>
+<ul>
+<li>கோபம் ஒரு இயற்கையான உணர்வு.  </li>
+<li>கோபம் கெட்டது அல்ல.  </li>
+<li>உடல் முதலில் எதிர்வினை செய்கிறது.  </li>
+<li>பின்னர் சிந்தனை பாதிக்கப்படுகிறது.  </li>
+<li>கோபத்தைப் புரிந்துகொள்வதே அதை நிர்வகிக்கும் முதல் படி.</li>
+</ul>
+<hr /></div>
+
+    <div class="guidance-box" data-guide-group="m1l1">
+      <h2>📌 நடைமுறை வழிகாட்டுதல்</h2>
+      
+      
+      <ul class="checklist">
+        <li>
+          <label class="check-row">
+            <input type="checkbox" data-guide-id="m1l1-guide-0">
+            <span>கோபம் வரும்போது உடலில் என்ன மாற்றம் ஏற்படுகிறது என்பதை கவனியுங்கள்.</span>
+          </label>
+        </li>
+        <li>
+          <label class="check-row">
+            <input type="checkbox" data-guide-id="m1l1-guide-1">
+            <span>உடனே பெரிய முடிவுகளை எடுக்காதீர்கள்.</span>
+          </label>
+        </li>
+        <li>
+          <label class="check-row">
+            <input type="checkbox" data-guide-id="m1l1-guide-2">
+            <span>&quot;இப்போது எனக்கு கோபம் வருகிறது&quot; என்று மனதில் சொல்லுங்கள்.</span>
+          </label>
+        </li>
+        <li>
+          <label class="check-row">
+            <input type="checkbox" data-guide-id="m1l1-guide-3">
+            <span>கோபம் வந்ததற்காக உங்களை குற்றம் சொல்ல வேண்டாம்.</span>
+          </label>
+        </li>
+      </ul>
+      <div class="guide-progress">
+        <div class="guide-progress-bar"><div class="guide-progress-fill"></div></div>
+        <span class="guide-progress-label">0 / 4 முடிந்தது</span>
+      </div>
+      
+      <p>இந்த வழிமுறைகள், கோபத்தை ஒடுக்குவதற்காக அல்ல; அதை விழிப்புணர்வுடன் கவனிக்க உதவுவதற்காக.</p>
+    </div>
+    
+<div class="plain-section"><h2><strong>📈 முன்னேற்ற ஆலோசனை</strong></h2>
+<p>பலர் கோபம் வந்த உடனே பிரச்சினையைத் தீர்க்க முயற்சிக்கிறார்கள்.</p>
+<p>ஆனால் அந்த நேரத்தில் உடல் இன்னும் எச்சரிக்கை நிலையில் இருக்கும்.</p>
+<p>எனவே,</p>
+<p><strong>முதலில் உடலை அமைதிப்படுத்துங்கள்.</strong></p>
+<p>பிறகு பிரச்சினையைப் பற்றி சிந்தியுங்கள்.</p>
+<p>இது மிகவும் பயனுள்ள அணுகுமுறை.</p>
+<hr /></div>
+<div class="plain-section"><h2><strong>📝 செயல்திட்டம்</strong></h2>
+<p>அடுத்த <strong>3 நாட்களுக்கு</strong> இந்தப் பயிற்சியைச் செய்யுங்கள்.</p></div>
+<div class="plain-section"><h2><strong>படி 1</strong></h2>
+<p>உங்களுக்கு கோபம் வரும் ஒவ்வொரு முறையும்,</p>
+<blockquote>
+<p>"இப்போது எனக்கு கோபம் வருகிறது."</p>
+</blockquote>
+<p>என்று மனதில் சொல்லுங்கள்.</p></div>
+<div class="plain-section"><h2><strong>படி 2</strong></h2>
+<p>கோபத்தின் அளவை</p>
+<p><strong>1 முதல் 10 வரை</strong></p>
+<p>மதிப்பிடுங்கள்.</p></div>
+<div class="plain-section"><h2><strong>படி 3</strong></h2>
+<p>இந்த கட்டத்தில் கோபத்தை மாற்ற முயற்சிக்க வேண்டாம்.</p>
+<p>கவனிப்பது மட்டுமே இந்தப் பயிற்சியின் நோக்கம்.</p>
+<hr /></div>
+
+    <div class="worksheet-box" data-ws-group="m1l1">
+      <h2>✍ சுய சிந்தனை Worksheet</h2>
+      <p>இந்த வாரத்தில் உங்களுக்கு கோபம் வந்த ஒரு சம்பவத்தை நினைவில் கொள்ளுங்கள்.
+
+பின்வரும் கேள்விகளுக்கு பதிலளியுங்கள்.</p>
+      
+        <div class="ws-item">
+          <label for="m1l1-ws-0">1. என்ன நடந்தது?</label>
+          <textarea id="m1l1-ws-0" data-ws-id="m1l1-ws-0" rows="3" placeholder="உங்கள் பதிலை இங்கே எழுதுங்கள்..."></textarea>
+        </div>
+        <div class="ws-item">
+          <label for="m1l1-ws-1">2. முதலில் என்ன உணர்ந்தீர்கள்?</label>
+          <textarea id="m1l1-ws-1" data-ws-id="m1l1-ws-1" rows="3" placeholder="உங்கள் பதிலை இங்கே எழுதுங்கள்..."></textarea>
+        </div>
+        <div class="ws-item">
+          <label for="m1l1-ws-2">3. உடலில் ஏற்பட்ட முதல் மாற்றம் என்ன?</label>
+          <textarea id="m1l1-ws-2" data-ws-id="m1l1-ws-2" rows="3" placeholder="உங்கள் பதிலை இங்கே எழுதுங்கள்..."></textarea>
+        </div>
+        <div class="ws-item">
+          <label for="m1l1-ws-3">4. கோபத்தின் அளவு (1–10)?</label>
+          <textarea id="m1l1-ws-3" data-ws-id="m1l1-ws-3" rows="3" placeholder="உங்கள் பதிலை இங்கே எழுதுங்கள்..."></textarea>
+        </div>
+        <div class="ws-item">
+          <label for="m1l1-ws-4">5. அந்த நேரத்தில் உங்கள் மனதில் என்ன எண்ணம் தோன்றியது?</label>
+          <textarea id="m1l1-ws-4" data-ws-id="m1l1-ws-4" rows="3" placeholder="உங்கள் பதிலை இங்கே எழுதுங்கள்..."></textarea>
+        </div>
+      <button class="btn-save-ws" data-ws-save="m1l1">💾 என் பதில்களை சேமி</button>
+      <span class="ws-saved-note" data-ws-note="m1l1"></span>
+    </div>
+    
+<div class="plain-section"><h2><strong>🔍 Did You Know?</strong></h2>
+<ul>
+<li>மனித உடலின் "Fight or Flight" எதிர்வினை சில விநாடிகளுக்குள் செயல்பட ஆரம்பிக்கலாம்.  </li>
+<li>பல நேரங்களில் உடலின் மாற்றங்கள், நம்முடைய விழிப்புணர்வான சிந்தனைக்கு முன்பே தொடங்கிவிடுகின்றன.  </li>
+<li>கோபத்தை அடையாளம் காண்பது, அதை ஆரோக்கியமாக நிர்வகிக்கும் முதல் படியாகக் கருதப்படுகிறது.</li>
+</ul>
+<hr /></div>
+<div class="plain-section"><h2><strong>⚠ பொதுவாக மக்கள் செய்யும் தவறுகள்</strong></h2>
+<p>❌ "கோபம் வரக்கூடாது."</p>
+<p>❌ "கோபம் வந்தால் நான் கெட்ட மனிதன்."</p>
+<p>❌ "கோபத்தை உடனே அடக்க வேண்டும்."</p>
+<p>❌ "கோபமாக இருக்கும்போதே முடிவெடுத்தால் சரியாக இருக்கும்."</p>
+<hr /></div>
+<div class="plain-section"><h2><strong>⭐ நினைவில் கொள்ளுங்கள்</strong></h2>
+<blockquote>
+<p><strong>"கோபம் ஒரு எதிரி அல்ல; அது உங்கள் மனமும் உடலும் தரும் ஒரு எச்சரிக்கை."</strong></p>
+</blockquote>
+<hr /></div>
+<div class="plain-section"><h2><strong>⏱ 2 நிமிட விரைவுப் பயிற்சி</strong></h2>
+<p>இப்போது இரண்டு நிமிடங்கள் ஒதுக்குங்கள்.</p>
+<ul>
+<li>கண்களை மூடுங்கள்.  </li>
+<li>சமீபத்தில் கோபம் வந்த ஒரு சம்பவத்தை நினைவுபடுத்துங்கள்.  </li>
+<li>உடலில் என்ன மாற்றம் ஏற்பட்டது என்பதை மட்டும் கவனியுங்கள்.  </li>
+<li>ஒரு வரியில் அதை எழுதுங்கள்.</li>
+</ul>
+<hr /></div>
+<div class="plain-section"><h2><strong>📚 பாடச் சுருக்கம்</strong></h2>
+<p>இந்தப் பாடத்தில் நாம் கற்றுக்கொண்டவை:</p>
+<ul>
+<li>கோபம் ஒரு இயற்கையான உணர்வு.  </li>
+<li>அது ஒரு எச்சரிக்கை சிக்னலாக செயல்படுகிறது.  </li>
+<li>கோபம் வரும்போது உடல் முதலில் எதிர்வினை செய்கிறது.  </li>
+<li>அந்த நேரத்தில் தெளிவாக சிந்திப்பது கடினமாக இருக்கலாம்.  </li>
+<li>கோபத்தைப் புரிந்துகொள்வதே அதை ஆரோக்கியமாக நிர்வகிக்கும் முதல் படியாகும்.</li>
+</ul>
+<hr /></div>
+
+        <div class="quiz-box" data-quiz-group="m1l1">
+          <h2>🎯 அறிவு சரிபார்ப்பு (Live Quiz)</h2>
+          
+        <div class="quiz-q" data-qid="m1l1-mcq-0">
+          <p class="quiz-qtext">1. கோபம் என்பது...</p>
+          <div class="mcq-options">
+            <button class="mcq-opt" data-letter="A" data-correct="B" data-qid="m1l1-mcq-0">
+              <strong>A.</strong> கெட்ட குணம்
+            </button>
+            <button class="mcq-opt" data-letter="B" data-correct="B" data-qid="m1l1-mcq-0">
+              <strong>B.</strong> இயற்கையான உணர்வு
+            </button>
+            <button class="mcq-opt" data-letter="C" data-correct="B" data-qid="m1l1-mcq-0">
+              <strong>C.</strong> நோய்
+            </button>
+            <button class="mcq-opt" data-letter="D" data-correct="B" data-qid="m1l1-mcq-0">
+              <strong>D.</strong> பலவீனம்
+            </button></div>
+          <p class="quiz-feedback" data-feedback="m1l1-mcq-0"></p>
+        </div>
+        <div class="quiz-q" data-qid="m1l1-mcq-1">
+          <p class="quiz-qtext">2. கோபம் வரும்போது முதலில் என்ன மாற்றம் ஏற்படுகிறது?</p>
+          <div class="mcq-options">
+            <button class="mcq-opt" data-letter="A" data-correct="B" data-qid="m1l1-mcq-1">
+              <strong>A.</strong> நினைவாற்றல் அதிகரிக்கிறது
+            </button>
+            <button class="mcq-opt" data-letter="B" data-correct="B" data-qid="m1l1-mcq-1">
+              <strong>B.</strong> உடல் Stress Hormones-ஐ வெளியிடுகிறது
+            </button>
+            <button class="mcq-opt" data-letter="C" data-correct="B" data-qid="m1l1-mcq-1">
+              <strong>C.</strong> கோபம் மறைந்து விடுகிறது
+            </button>
+            <button class="mcq-opt" data-letter="D" data-correct="B" data-qid="m1l1-mcq-1">
+              <strong>D.</strong> முடிவெடுக்கும் திறன் அதிகரிக்கிறது
+            </button></div>
+          <p class="quiz-feedback" data-feedback="m1l1-mcq-1"></p>
+        </div>
+        <div class="quiz-q" data-qid="m1l1-tf-0">
+          <p class="quiz-qtext">1. கோபம் வருவது மட்டுமே ஒரு தவறு.</p>
+          <div class="tf-options">
+            <button class="tf-opt" data-choice="True" data-correct="False" data-qid="m1l1-tf-0">சரி (True)</button>
+            <button class="tf-opt" data-choice="False" data-correct="False" data-qid="m1l1-tf-0">தவறு (False)</button>
+          </div>
+          <p class="quiz-feedback" data-feedback="m1l1-tf-0"></p>
+        </div>
+        <div class="quiz-q" data-qid="m1l1-tf-1">
+          <p class="quiz-qtext">2. கோபத்தின் போது உடலில் மாற்றங்கள் ஏற்படும்.</p>
+          <div class="tf-options">
+            <button class="tf-opt" data-choice="True" data-correct="True" data-qid="m1l1-tf-1">சரி (True)</button>
+            <button class="tf-opt" data-choice="False" data-correct="True" data-qid="m1l1-tf-1">தவறு (False)</button>
+          </div>
+          <p class="quiz-feedback" data-feedback="m1l1-tf-1"></p>
+        </div>
+    <div class="worksheet-box" data-ws-group="m1l1-reflect">
+      <h2>💭 சிந்தனைக்கான கேள்வி</h2>
+      <p>உங்களுக்கு கோபம் வரும் போது, உடல் தரும் முதல் எச்சரிக்கை என்ன?</p>
+      <textarea id="m1l1-reflect" data-ws-id="m1l1-reflect" rows="4" placeholder="உங்கள் எண்ணங்களை எழுதுங்கள்..."></textarea>
+      <button class="btn-save-ws" data-ws-save="m1l1-reflect">💾 சேமி</button>
+      <span class="ws-saved-note" data-ws-note="m1l1-reflect"></span>
+    </div>
+    
+        </div>
+        
+
+  
+
+  <div class="lesson-nav">
+    <a class="secondary" href="index.html">⬅ பாடநெறி முகப்பு</a>
+    <a href="m1l2.html">பாடம் 1.2 ➡</a>
+  </div>
+</div>
+<footer class="site">
+  N T Somasundaram &middot; Certified Master Trainer &amp; Life Skills Educator<br>
+  📞 +91 98437 02244 &nbsp;|&nbsp; ✉️ somasundaramnt.lifecoach@gmail.com
+  <div class="motto">"God is always with u."</div>
+</footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // ---- MCQ / TF live grading ----
+  document.querySelectorAll('.mcq-opt, .tf-opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var qid = btn.getAttribute('data-qid');
+      var group = document.querySelectorAll('[data-qid="' + qid + '"].mcq-opt, [data-qid="' + qid + '"].tf-opt');
+      var correctVal = btn.getAttribute('data-correct');
+      var chosen = btn.getAttribute('data-letter') || btn.getAttribute('data-choice');
+      var isCorrect = (chosen === correctVal);
+      group.forEach(function(b) { b.disabled = true; });
+      if (isCorrect) {
+        btn.classList.add('correct');
+      } else {
+        btn.classList.add('incorrect');
+        group.forEach(function(b) {
+          var bVal = b.getAttribute('data-letter') || b.getAttribute('data-choice');
+          if (bVal === correctVal) b.classList.add('correct');
+        });
+      }
+      var fb = document.querySelector('[data-feedback="' + qid + '"]');
+      if (fb) {
+        fb.textContent = isCorrect ? '✅ சரியான பதில்!' : '❌ தவறு. சரியான பதிலை பச்சை நிறத்தில் காணலாம்.';
+        fb.className = 'quiz-feedback ' + (isCorrect ? 'ok' : 'no');
+      }
+      try {
+        localStorage.setItem('anger-quiz-' + qid, chosen + '|' + (isCorrect ? '1' : '0'));
+      } catch(e) {}
+    });
+  });
+
+  // restore quiz state
+  document.querySelectorAll('[data-qid]').forEach(function(qEl) {
+    var qid = qEl.getAttribute('data-qid');
+    var saved = null;
+    try { saved = localStorage.getItem('anger-quiz-' + qid); } catch(e) {}
+    if (saved) {
+      var parts = saved.split('|');
+      var chosen = parts[0];
+      var wasCorrect = parts[1] === '1';
+      var opts = qEl.querySelectorAll('.mcq-opt, .tf-opt');
+      opts.forEach(function(b) {
+        b.disabled = true;
+        var bVal = b.getAttribute('data-letter') || b.getAttribute('data-choice');
+        var correctVal = b.getAttribute('data-correct');
+        if (bVal === correctVal) b.classList.add('correct');
+        if (bVal === chosen && !wasCorrect) b.classList.add('incorrect');
+      });
+      var fb = qEl.querySelector('.quiz-feedback');
+      if (fb) {
+        fb.textContent = wasCorrect ? '✅ சரியான பதில்!' : '❌ தவறு. சரியான பதிலை பச்சை நிறத்தில் காணலாம்.';
+        fb.className = 'quiz-feedback ' + (wasCorrect ? 'ok' : 'no');
+      }
+    }
+  });
+
+  // ---- Guidance checklist ----
+  document.querySelectorAll('.guidance-box').forEach(function(box) {
+    var group = box.getAttribute('data-guide-group');
+    var boxes = box.querySelectorAll('input[type=checkbox]');
+    function updateProgress() {
+      var checked = 0;
+      boxes.forEach(function(b) { if (b.checked) checked++; });
+      var fill = box.querySelector('.guide-progress-fill');
+      var label = box.querySelector('.guide-progress-label');
+      if (fill) fill.style.width = (boxes.length ? (checked / boxes.length * 100) : 0) + '%';
+      if (label) label.textContent = checked + ' / ' + boxes.length + ' முடிந்தது';
+    }
+    boxes.forEach(function(b) {
+      var id = b.getAttribute('data-guide-id');
+      try {
+        if (localStorage.getItem('anger-guide-' + id) === '1') b.checked = true;
+      } catch(e) {}
+      b.addEventListener('change', function() {
+        try { localStorage.setItem('anger-guide-' + id, b.checked ? '1' : '0'); } catch(e) {}
+        updateProgress();
+      });
+    });
+    updateProgress();
+  });
+
+  // ---- Worksheet save ----
+  document.querySelectorAll('.btn-save-ws').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var group = btn.getAttribute('data-ws-save');
+      var container = btn.closest('.worksheet-box');
+      var areas = container.querySelectorAll('textarea');
+      areas.forEach(function(a) {
+        try { localStorage.setItem('anger-ws-' + a.getAttribute('data-ws-id'), a.value); } catch(e) {}
+      });
+      var note = document.querySelector('[data-ws-note="' + group + '"]');
+      if (note) {
+        note.textContent = '✔ சேமிக்கப்பட்டது!';
+        setTimeout(function() { note.textContent = ''; }, 2500);
+      }
+    });
+  });
+  // restore worksheet values
+  document.querySelectorAll('textarea[data-ws-id]').forEach(function(a) {
+    try {
+      var v = localStorage.getItem('anger-ws-' + a.getAttribute('data-ws-id'));
+      if (v) a.value = v;
+    } catch(e) {}
+  });
+
+  // ---- Standalone table checkboxes (bare □ cells) ----
+  document.querySelectorAll('.tbl-checkbox').forEach(function(cb) {
+    var id = cb.getAttribute('data-guide-id');
+    try {
+      if (localStorage.getItem('anger-guide-' + id) === '1') cb.checked = true;
+    } catch(e) {}
+    cb.addEventListener('change', function() {
+      try { localStorage.setItem('anger-guide-' + id, cb.checked ? '1' : '0'); } catch(e) {}
+    });
+  });
+
+  // ---- Guidance interactive tables (fill-in + yes/no toggle) ----
+  document.querySelectorAll('.tbl-fill').forEach(function(inp) {
+    try {
+      var v = localStorage.getItem('anger-tbl-' + inp.getAttribute('data-ws-id'));
+      if (v) inp.value = v;
+    } catch(e) {}
+  });
+  document.querySelectorAll('.tbl-toggle-btn').forEach(function(btn) {
+    var tid = btn.getAttribute('data-toggle-id');
+    try {
+      var saved = localStorage.getItem('anger-toggle-' + tid);
+      if (saved === btn.getAttribute('data-choice')) btn.classList.add('selected');
+    } catch(e) {}
+    btn.addEventListener('click', function() {
+      var group = document.querySelectorAll('[data-toggle-id="' + tid + '"]');
+      group.forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      try { localStorage.setItem('anger-toggle-' + tid, btn.getAttribute('data-choice')); } catch(e) {}
+    });
+  });
+  document.querySelectorAll('table.guide-table').forEach(function(tbl) {
+    var idxKey = tbl.getAttribute('data-guide-table');
+    var saveBtn = document.querySelector('[data-ws-save="' + idxKey + '-tbl"]');
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function() {
+        tbl.querySelectorAll('.tbl-fill').forEach(function(inp) {
+          try { localStorage.setItem('anger-tbl-' + inp.getAttribute('data-ws-id'), inp.value); } catch(e) {}
+        });
+        var note = document.querySelector('[data-ws-note="' + idxKey + '-tbl"]');
+        if (note) {
+          note.textContent = '✔ சேமிக்கப்பட்டது!';
+          setTimeout(function() { note.textContent = ''; }, 2500);
+        }
+      });
+    }
+  });
+
+  // ---- Self-Assessment 1-5 scale ----
+  document.querySelectorAll('.sa-box').forEach(function(box) {
+    var totalItems = parseInt(box.getAttribute('data-sa-total-items'), 10);
+    var groups = box.querySelectorAll('.sa-scale');
+    var bandsAttr = box.getAttribute('data-sa-bands');
+    var bands = bandsAttr ? bandsAttr.split(',').map(Number) : [40, 30, 20];
+
+    function computeResult() {
+      var sum = 0, answered = 0;
+      groups.forEach(function(g) {
+        var qid = g.getAttribute('data-sa-group');
+        var sel = g.querySelector('.sa-scale-btn.selected');
+        if (sel) {
+          sum += parseInt(sel.getAttribute('data-value'), 10);
+          answered++;
+        }
+      });
+      var answeredEl = box.querySelector('.sa-answered');
+      var totalEl = box.querySelector('.sa-total-score');
+      var verdictEl = box.querySelector('.sa-verdict');
+      if (answeredEl) answeredEl.textContent = answered + ' / ' + totalItems;
+      if (answered === 0) {
+        if (totalEl) totalEl.textContent = '–';
+        if (verdictEl) verdictEl.textContent = '';
+        return;
+      }
+      if (totalEl) totalEl.textContent = sum + ' / ' + (totalItems * 5);
+      var verdict = '';
+      if (sum >= bands[0]) verdict = '🌟 சிறந்த புரிதல்!';
+      else if (sum >= bands[1]) verdict = '👍 நல்ல முன்னேற்றம்.';
+      else if (sum >= bands[2]) verdict = '📘 மேலும் பயிற்சி தேவை.';
+      else verdict = '🔁 இந்த Module-ஐ மீண்டும் படிக்க பரிந்துரைக்கப்படுகிறது.';
+      if (answered < totalItems) verdict += ' (இன்னும் ' + (totalItems - answered) + ' கேள்விகளுக்கு பதிலளிக்கவும்)';
+      if (verdictEl) verdictEl.textContent = verdict;
+    }
+
+    groups.forEach(function(g) {
+      var qid = g.getAttribute('data-sa-group');
+      var btns = g.querySelectorAll('.sa-scale-btn');
+      // restore
+      try {
+        var saved = localStorage.getItem('anger-sa-' + qid);
+        if (saved) {
+          btns.forEach(function(b) {
+            if (b.getAttribute('data-value') === saved) b.classList.add('selected');
+          });
+        }
+      } catch(e) {}
+      btns.forEach(function(b) {
+        b.addEventListener('click', function() {
+          btns.forEach(function(x) { x.classList.remove('selected'); });
+          b.classList.add('selected');
+          try { localStorage.setItem('anger-sa-' + qid, b.getAttribute('data-value')); } catch(e) {}
+          computeResult();
+        });
+      });
+    });
+    computeResult();
+  });
+
+});
+</script>
+
+
+  <script>
+    (function() {
+      var img = new Image();
+      img.src = "https://script.google.com/macros/s/REPLACE_WITH_YOUR_GAS_DEPLOYMENT_ID/exec?course=anger-management-tamil&module=m1l1&event=view&t=" + Date.now();
+    })();
+  </script>
+</body>
+</html>
