@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIFE PATH Before Career Path | Interactive Student Workbook</title>
+<style>
+:root{
+  --navy:#17324d;
+  --blue:#245f8f;
+  --light:#f3f7fb;
+  --card:#ffffff;
+  --border:#cfd9e3;
+  --text:#1d2732;
+  --muted:#627180;
+  --success:#19734c;
+  --danger:#a13535;
+  --gold:#c9901f;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#edf2f7;
+  color:var(--text);
+  line-height:1.55;
+}
+header{
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:white;
+  padding:28px 18px;
+}
+.header-inner{max-width:1050px;margin:auto}
+header h1{margin:0 0 4px;font-size:clamp(28px,5vw,46px)}
+header h2{margin:0;font-size:clamp(16px,2.5vw,23px);font-weight:500}
+.tagline{margin-top:15px;font-weight:700;letter-spacing:.04em}
+.container{max-width:1050px;margin:20px auto;padding:0 14px 60px}
+.toolbar{
+  position:sticky; top:0; z-index:10;
+  background:rgba(255,255,255,.97);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px;
+  margin-bottom:18px;
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+}
+button{
+  border:0;border-radius:8px;padding:10px 14px;cursor:pointer;
+  font-weight:700;font-size:14px;
+}
+.primary{background:var(--navy);color:white}
+.secondary{background:#e8eef4;color:var(--navy)}
+.danger{background:#f8e8e8;color:var(--danger)}
+.status{margin-left:auto;color:var(--success);font-size:13px;font-weight:700}
+.progress-wrap{margin:12px 0 22px}
+.progress-label{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+.progress{height:10px;background:#dfe7ef;border-radius:999px;overflow:hidden}
+.progress>div{height:100%;background:var(--blue);width:0;transition:width .25s ease}
+.section{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:22px;margin:16px 0;
+}
+.stage{
+  display:flex;gap:14px;align-items:flex-start;margin-bottom:12px
+}
+.letter{
+  width:52px;height:52px;min-width:52px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--navy);color:white;font-size:28px;font-weight:800;
+}
+.stage h2{margin:0;color:var(--navy)}
+.stage p{margin:2px 0;color:var(--muted)}
+.keyidea{
+  background:var(--light);border-left:5px solid var(--blue);
+  padding:12px 14px;border-radius:8px;margin:12px 0 18px;
+}
+.activity-title{font-weight:800;color:var(--blue);margin:14px 0 8px}
+label{display:block;font-weight:700;margin:12px 0 6px}
+input[type=text], input[type=date], textarea, select{
+  width:100%;border:1px solid #b9c7d4;border-radius:8px;
+  padding:11px 12px;font-size:16px;background:white;color:var(--text);
+}
+textarea{min-height:90px;resize:vertical}
+.short{min-height:58px}
+.grid2,.grid3{display:grid;gap:12px}
+.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.options{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;
+  margin:8px 0
+}
+.check{
+  display:flex;gap:9px;align-items:flex-start;border:1px solid var(--border);
+  border-radius:8px;padding:10px;background:#fbfdff;
+}
+.check input{margin-top:4px;transform:scale(1.15)}
+.note{font-size:13px;color:var(--muted)}
+.quote{
+  text-align:center;font-weight:800;color:var(--navy);
+  padding:12px;margin-top:14px;border-top:1px dashed var(--border)
+}
+.life-answers{display:grid;grid-template-columns:42px 1fr;gap:8px;align-items:center}
+.life-answers .badge{
+  background:var(--navy);color:white;border-radius:7px;text-align:center;
+  font-weight:800;padding:7px
+}
+.footer{
+  text-align:center;padding:24px 12px;color:var(--muted);font-size:13px
+}
+.saved-box{
+  display:none;background:#eaf6ef;color:var(--success);padding:10px 12px;
+  border-radius:8px;margin-bottom:12px;font-size:14px
+}
+@media(max-width:720px){
+  .grid2,.grid3,.options{grid-template-columns:1fr}
+  .status{width:100%;margin-left:0}
+  .section{padding:16px}
+}
+@media print{
+  body{background:white}
+  header{background:white;color:black;padding:10px 0;border-bottom:2px solid #333}
+  .toolbar,.progress-wrap,.no-print{display:none!important}
+  .container{max-width:none;margin:0;padding:0}
+  .section{break-inside:avoid;border:1px solid #aaa;margin:10px 0}
+  input,textarea,select{border:1px solid #999}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <h1>LIFE PATH</h1>
+    <h2>BEFORE CAREER PATH — Interactive Student Workbook</h2>
+    <div class="tagline">CONFUSION → CLARITY → CONFIDENCE → ACTION</div>
+    <div style="margin-top:6px">L • I • F • E • P • A • T • H — Eight stages. Eight activities. Eight personal answers.</div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="toolbar no-print">
+    <button class="primary" id="saveBtn" type="button">Save Now</button>
+    <button class="secondary" id="printBtn" type="button">Print / Save PDF</button>
+    <button class="danger" id="resetBtn" type="button">Reset Workbook</button>
+    <span class="status" id="saveStatus">Ready — auto-save enabled</span>
+  </div>
+
+  <div id="savedBox" class="saved-box">Saved successfully in this browser.</div>
+
+  <div class="progress-wrap no-print">
+    <div class="progress-label"><span>Workbook completion</span><span id="progressText">0%</span></div>
+    <div class="progress"><div id="progressBar"></div></div>
+  </div>
+
+  <form id="workbookForm" autocomplete="off">
+    <section class="section">
+      <div class="stage">
+        <div class="letter">★</div>
+        <div><h2>STARTING POINT</h2><p>Where are you right now regarding your future?</p></div>
+      </div>
+      <div class="grid3">
+        <div><label for="studentName">Name</label><input type="text" id="studentName" name="studentName"></div>
+        <div><label for="college">College</label><input type="text" id="college" name="college"></div>
+        <div><label for="date">Date</label><input type="date" id="date" name="date"></div>
+      </div>
+      <label>My current position</label>
+      <div class="options">
+        <label class="check"><input type="radio" name="startingPoint" value="CLEAR — I know where I’m going."><span><b>CLEAR</b> — I know where I’m going.</span></label>
+        <label class="check"><input type="radio" name="startingPoint" value="CONFUSED — I really don’t know yet."><span><b>CONFUSED</b> — I really don’t know yet.</span></label>
+        <label class="check"><input type="radio" name="startingPoint" value="STUCK — I know what to do, but I’m not doing it."><span><b>STUCK</b> — I know what to do, but I’m not doing it.</span></label>
+      </div>
+      <label for="futureFeeling">One word that describes how I feel about my future right now</label>
+      <input type="text" id="futureFeeling" name="futureFeeling">
+    </section>
+
+    <section class="section">
+      <div class="stage"><div class="letter">L</div><div><h2>LEARN YOURSELF</h2><p>Know Yourself Before You Position Yourself</p></div></div>
+      <div class="activity-title">ACTIVITY 1 — MY PERSONAL PROFILE</div>
+      <p>Identify your Top 3 Strengths, Top 3 Values and #1 Development Gap.</p>
+      <label>My Top 3 Strengths</label>
+      <div class="options">
+        <label class="check"><input type="checkbox" name="strengths" value="Communication"><span>Communication</span></label><label class="check"><input type="checkbox" name="strengths" value="Analytical Thinking"><span>Analytical Thinking</span></label><label class="check"><input type="checkbox" name="strengths" value="Creativity"><span>Creativity</span></label><label class="check"><input type="checkbox" name="strengths" value="Leadership"><span>Leadership</span></label><label class="check"><input type="checkbox" name="strengths" value="Empathy"><span>Empathy</span></label><label class="check"><input type="checkbox" name="strengths" value="Problem Solving"><span>Problem Solving</span></label><label class="check"><input type="checkbox" name="strengths" value="Teamwork"><span>Teamwork</span></label><label class="check"><input type="checkbox" name="strengths" value="Discipline"><span>Discipline</span></label>
+      </div>
+      <div class="note">Choose up to 3.</div>
+      <label for="strengthEvidence1">Strength Evidence 1 — Where have I demonstrated it?</label><textarea class="short" id="strengthEvidence1" name="strengthEvidence1"></textarea>
+      <label for="strengthEvidence2">Strength Evidence 2</label><textarea class="short" id="strengthEvidence2" name="strengthEvidence2"></textarea>
+      <label for="strengthEvidence3">Strength Evidence 3</label><textarea class="short" id="strengthEvidence3" name="strengthEvidence3"></textarea>
+      <label for="topValues">My Top 3 Values</label>
+      <div class="note">Options: Honesty • Family • Love • Respect • Discipline • Responsibility • Freedom • Happiness • Service • Learning • Creativity • Health • Friendship • Faith • Achievement</div>
+      <textarea class="short" id="topValues" name="topValues"></textarea>
+      <label>My #1 Development Gap</label>
+      <div class="options">
+        <label class="check"><input type="radio" name="developmentGapType" value="Knowledge Gap"><span><b>Knowledge Gap</b> — I don’t know it yet.</span></label>
+        <label class="check"><input type="radio" name="developmentGapType" value="Skill Gap"><span><b>Skill Gap</b> — I understand it, but cannot perform it confidently.</span></label>
+        <label class="check"><input type="radio" name="developmentGapType" value="Behaviour Gap"><span><b>Behaviour Gap</b> — I know what to do, but don’t do it consistently.</span></label>
+      </div>
+      <label for="developmentGap">Describe my #1 Development Gap</label><textarea class="short" id="developmentGap" name="developmentGap"></textarea>
+    </section>
+
+    <section class="section">
+      <div class="stage"><div class="letter">I</div><div><h2>INSPIRE BELIEF</h2><p>Believe in Yourself — Build Confidence</p></div></div>
+      <div class="keyidea"><b>KEY IDEA:</b> Confidence does not require certainty. It grows when small actions create new evidence.</div>
+      <div class="activity-title">ACTIVITY 2 — REPLACE YOUR BELIEF + 24-HOUR ACTION</div>
+      <label for="limitingBelief">1. My limiting belief — “I…”</label><textarea class="short" id="limitingBelief" name="limitingBelief"></textarea>
+      <label for="factOrLabel">2. Is this a fact, or am I turning a current difficulty into a permanent label?</label><textarea class="short" id="factOrLabel" name="factOrLabel"></textarea>
+      <label for="workingBelief">3. My better working belief — “I can…”</label><textarea class="short" id="workingBelief" name="workingBelief"></textarea>
+      <label for="beliefEvidenceAction">4. What small action could create evidence for this new belief?</label><textarea class="short" id="beliefEvidenceAction" name="beliefEvidenceAction"></textarea>
+      <label for="belief24h">5. Within the next 24 hours, I will…</label><textarea id="belief24h" name="belief24h"></textarea>
+      <div class="quote">Don’t wait to feel confident. Take one action that gives you a reason to become confident.</div>
+    </section>
+
+    <section class="section">
+      <div class="stage"><div class="letter">F</div><div><h2>FRAME YOUR MINDSET</h2><p>Change the Way You Think</p></div></div>
+      <div class="keyidea"><b>SCENARIO:</b> You applied for an internship you really wanted. You attended the interview. Two days later, you received a rejection email.</div>
+      <div class="activity-title">ACTIVITY 3 — REFRAME + CRITICAL THINKING</div>
+      <label for="eventFact">1. EVENT — What happened? State only the fact.</label><textarea class="short" id="eventFact" name="eventFact"></textarea>
+      <label for="autoInterpretation">2. AUTOMATIC INTERPRETATION — What did I immediately tell myself it meant?</label><textarea class="short" id="autoInterpretation" name="autoInterpretation"></textarea>
+      <label for="whatKnow">3. What do I know?</label><textarea class="short" id="whatKnow" name="whatKnow"></textarea>
+      <label for="evidenceSupport">4. What evidence supports my interpretation?</label><textarea class="short" id="evidenceSupport" name="evidenceSupport"></textarea>
+      <label for="otherExplanation">5. What else could explain this?</label><textarea class="short" id="otherExplanation" name="otherExplanation"></textarea>
+      <label for="reasonableConclusion">6. What is the most reasonable conclusion?</label><textarea class="short" id="reasonableConclusion" name="reasonableConclusion"></textarea>
+      <label for="myReframe">7. MY REFRAME — A more realistic and useful interpretation</label><textarea class="short" id="myReframe" name="myReframe"></textarea>
+      <label for="next48Response">8. MY NEXT RESPONSE — Within the next 48 hours, I will…</label><textarea id="next48Response" name="next48Response"></textarea>
+      <div class="quote">EVENT → INTERPRETATION → RESPONSE → RESULT</div>
+    </section>
+
+    <section class="section">
+      <div class="stage"><div class="letter">E</div><div><h2>ENDURE CHALLENGES</h2><p>Manage Pressure, Failure & Uncertainty</p></div></div>
+      <div class="keyidea"><b>KEY IDEA:</b> Resilience is not avoiding setbacks. It is processing what happened, learning from it and choosing the next action.</div>
+      <div class="activity-title">ACTIVITY 4 — FALL → FEEL → LEARN → RISE</div>
+      <label for="setback">My setback</label><textarea class="short" id="setback" name="setback"></textarea>
+      <div class="grid2">
+        <div><label for="fall">FALL — What happened?</label><textarea id="fall" name="fall"></textarea></div>
+        <div><label for="feel">FEEL — What am I feeling?</label><textarea id="feel" name="feel"></textarea></div>
+        <div><label for="learn">LEARN — What can I learn?</label><textarea id="learn" name="learn"></textarea></div>
+        <div><label for="rise">RISE — What is my next action?</label><textarea id="rise" name="rise"></textarea></div>
+      </div>
+      <label for="rise48">Within the next 48 hours, my RISE action is</label><textarea class="short" id="rise48" name="rise48"></textarea>
+      <div class="quote">Fall is an event. Staying down is not the only option.</div>
+    </section>
+
+    <section class="section">
+      <div class="stage"><div class="letter">P</div><div><h2>PEOPLE CONNECTION</h2><p>Management Happens Through People</p></div></div>
+      <div class="keyidea"><b>KEY IDEA:</b> Strong communication begins with accurate understanding. A good manager listens for meaning, not just words.</div>
+      <div class="activity-title">ACTIVITY 5 — MANAGERIAL LISTENING CHALLENGE</div>
+      <div class="options">
+        <label class="check"><input type="checkbox" name="listeningRules" value="Do not interrupt"><span>Do not interrupt.</span></label>
+        <label class="check"><input type="checkbox" name="listeningRules" value="Do not give immediate advice"><span>Do not give immediate advice.</span></label>
+        <label class="check"><input type="checkbox" name="listeningRules" value="Do not tell your own similar story"><span>Do not tell your own similar story.</span></label>
+        <label class="check"><input type="checkbox" name="listeningRules" value="Listen to understand — not to fix"><span>Listen to understand — not to fix.</span></label>
+      </div>
+      <div class="grid2">
+        <div><label for="lookNote">LOOK — Expressions & body language</label><textarea class="short" id="lookNote" name="lookNote"></textarea></div>
+        <div><label for="listenNote">LISTEN — Words, tone & emotions</label><textarea class="short" id="listenNote" name="listenNote"></textarea></div>
+        <div><label for="clarifyNote">CLARIFY — One open-ended question</label><textarea class="short" id="clarifyNote" name="clarifyNote"></textarea></div>
+        <div><label for="summariseNote">SUMMARISE — “If I understood you correctly…”</label><textarea class="short" id="summariseNote" name="summariseNote"></textarea></div>
+      </div>
+      <label for="respondNote">RESPOND — Give one respectful response</label><textarea class="short" id="respondNote" name="respondNote"></textarea>
+      <label for="listeningImprove">One listening behaviour I need to improve</label><textarea class="short" id="listeningImprove" name="listeningImprove"></textarea>
+      <div class="quote">Listen to understand — not just to reply.</div>
+    </section>
+
+    <section class="section">
+      <div class="stage"><div class="letter">A</div><div><h2>ACCEPT RESPONSIBILITY</h2><p>From Blame to Ownership</p></div></div>
+      <div class="keyidea"><b>KEY IDEA:</b> You cannot control everything that happens. Ownership begins by shifting energy toward what you can influence or control.</div>
+      <div class="activity-title">ACTIVITY 6 — ONE PROBLEM → INSIDE / OUTSIDE CONTROL → ONE OWNERSHIP ACTION</div>
+      <label for="currentProblem">My current problem — stated as a fact, not a blame statement</label><textarea id="currentProblem" name="currentProblem"></textarea>
+      <div class="grid2">
+        <div><label for="insideControl">INSIDE MY CONTROL</label><textarea id="insideControl" name="insideControl" placeholder="1.&#10;2.&#10;3.&#10;4."></textarea></div>
+        <div><label for="outsideControl">OUTSIDE MY FULL CONTROL</label><textarea id="outsideControl" name="outsideControl" placeholder="1.&#10;2.&#10;3.&#10;4."></textarea></div>
+      </div>
+      <label for="energySpend">Where am I spending most of my energy?</label><textarea class="short" id="energySpend" name="energySpend"></textarea>
+      <label for="ownership48">My ONE ownership action — Within the next 48 hours, I will…</label><textarea id="ownership48" name="ownership48"></textarea>
+      <div class="quote">Blame may explain the situation. Ownership creates options.</div>
+    </section>
+
+    <section class="section">
+      <div class="stage"><div class="letter">T</div><div><h2>TARGET YOUR GOALS</h2><p>Build Your Career Direction</p></div></div>
+      <div class="keyidea"><b>KEY IDEA:</b> Career direction is not a lifetime commitment. It is a meaningful direction to explore and test.</div>
+      <div class="activity-title">ACTIVITY 7 — MY CAREER DIRECTION + ONE EXPERIMENT</div>
+      <label for="whoAmI">1. WHO AM I? — My strengths + values</label><textarea class="short" id="whoAmI" name="whoAmI"></textarea>
+      <label for="whatInterests">2. WHAT INTERESTS ME? — Problems + industries</label><textarea class="short" id="whatInterests" name="whatInterests"></textarea>
+      <label for="becomeGood">3. WHAT CAN I BECOME GOOD AT? — Skills + capabilities</label><textarea class="short" id="becomeGood" name="becomeGood"></textarea>
+      <label for="whatTest">4. WHAT WILL I TEST? — Projects + internships + networking</label><textarea class="short" id="whatTest" name="whatTest"></textarea>
+      <label for="directionFits">5. WHAT DIRECTION FITS ME? — Career possibilities</label><textarea class="short" id="directionFits" name="directionFits"></textarea>
+      <label for="careerDirection">My current career direction</label><textarea class="short" id="careerDirection" name="careerDirection"></textarea>
+      <label for="careerExperiment">My ONE career experiment — Within the next 30 days, I will test my interest by…</label><textarea id="careerExperiment" name="careerExperiment"></textarea>
+      <label for="experimentLearn">After this experiment, I want to learn whether…</label><textarea class="short" id="experimentLearn" name="experimentLearn"></textarea>
+      <div class="quote">Career clarity is not only discovered by thinking. It is built through testing.</div>
+    </section>
+
+    <section class="section">
+      <div class="stage"><div class="letter">H</div><div><h2>HARNESS ACTION</h2><p>Execution Turns Potential Into Results</p></div></div>
+      <div class="keyidea"><b>KEY IDEA:</b> Do not build your future on motivation alone. Build a small action you can repeat consistently.</div>
+      <div class="activity-title">ACTIVITY 8 — ONE HABIT + WHEN / WHERE / WHAT + START TODAY</div>
+      <label>Choose only ONE habit for the next 30 days</label>
+      <div class="options">
+        <label class="check"><input type="radio" name="habitChoice" value="20 mins daily — Business reading"><span>20 mins daily — Business reading</span></label>
+        <label class="check"><input type="radio" name="habitChoice" value="20 mins daily — Excel / analytics practice"><span>20 mins daily — Excel / analytics practice</span></label>
+        <label class="check"><input type="radio" name="habitChoice" value="10 mins daily — Professional English"><span>10 mins daily — Professional English</span></label>
+        <label class="check"><input type="radio" name="habitChoice" value="15 mins daily — Aptitude"><span>15 mins daily — Aptitude</span></label>
+        <label class="check"><input type="radio" name="habitChoice" value="30 mins daily — Specialisation skill"><span>30 mins daily — Specialisation skill</span></label>
+        <label class="check"><input type="radio" name="habitChoice" value="Weekly — One presentation practice"><span>Weekly — One presentation practice</span></label>
+        <label class="check"><input type="radio" name="habitChoice" value="Weekly — One professional networking conversation"><span>Weekly — One professional networking conversation</span></label>
+        <label class="check"><input type="radio" name="habitChoice" value="My own"><span>My own habit</span></label>
+      </div>
+      <label for="habit30">My ONE 30-day habit</label><input type="text" id="habit30" name="habit30">
+      <div class="grid3">
+        <div><label for="habitWhen">WHEN? — Specific time or trigger</label><textarea class="short" id="habitWhen" name="habitWhen"></textarea></div>
+        <div><label for="habitWhere">WHERE? — Specific environment</label><textarea class="short" id="habitWhere" name="habitWhere"></textarea></div>
+        <div><label for="habitWhat">WHAT? — Specific small behaviour</label><textarea class="short" id="habitWhat" name="habitWhat"></textarea></div>
+      </div>
+      <label for="implementation">MY IMPLEMENTATION SENTENCE — At ___, in ___, I will ___.</label><textarea class="short" id="implementation" name="implementation"></textarea>
+      <label for="startToday">START TODAY — What can I do for 10 minutes before today ends?</label><textarea class="short" id="startToday" name="startToday"></textarea>
+    </section>
+
+    <section class="section">
+      <div class="stage"><div class="letter">✓</div><div><h2>REFLECT & COMMIT</h2><p>Final one-minute assessment</p></div></div>
+      <label for="understood">1 THING I UNDERSTOOD — About myself</label><textarea id="understood" name="understood"></textarea>
+      <label for="willStop">1 THING I WILL STOP — That is holding me back</label><textarea id="willStop" name="willStop"></textarea>
+      <label for="willStart">1 THING I WILL START — Within 24 hours</label><textarea id="willStart" name="willStart"></textarea>
+      <label for="willContinue">1 THING I WILL CONTINUE — For the next 30 days</label><textarea id="willContinue" name="willContinue"></textarea>
+
+      <div class="activity-title">MY EIGHT LIFE PATH ANSWERS</div>
+      <div class="life-answers">
+        <div class="badge">L</div><input type="text" name="answerL" placeholder="My strongest self-insight">
+        <div class="badge">I</div><input type="text" name="answerI" placeholder="My better working belief">
+        <div class="badge">F</div><input type="text" name="answerF" placeholder="My useful reframe">
+        <div class="badge">E</div><input type="text" name="answerE" placeholder="My resilience response">
+        <div class="badge">P</div><input type="text" name="answerP" placeholder="My listening improvement">
+        <div class="badge">A</div><input type="text" name="answerA" placeholder="My ownership action">
+        <div class="badge">T</div><input type="text" name="answerT" placeholder="My career direction">
+        <div class="badge">H</div><input type="text" name="answerH" placeholder="My 30-day habit">
+      </div>
+      <div class="quote">Your MBA may open the door. Your LIFE PATH determines what you do after it opens.<br>START SMALLER. START TODAY.</div>
+    </section>
+  </form>
+
+  <div class="footer">
+    Interactive offline workbook • Answers are stored only in this browser/device unless exported.
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const STORAGE_KEY = "lifePathStudentWorkbook_v1";
+  const form = document.getElementById("workbookForm");
+  const saveStatus = document.getElementById("saveStatus");
+  const savedBox = document.getElementById("savedBox");
+  const progressBar = document.getElementById("progressBar");
+  const progressText = document.getElementById("progressText");
+  let saveTimer;
+
+  function getData(){
+    const data = {};
+    const elements = Array.from(form.elements);
+    const checkboxGroups = {};
+    elements.forEach(el => {
+      if(!el.name) return;
+      if(el.type === "checkbox"){
+        if(!checkboxGroups[el.name]) checkboxGroups[el.name] = [];
+        if(el.checked) checkboxGroups[el.name].push(el.value);
+      } else if(el.type === "radio"){
+        if(el.checked) data[el.name] = el.value;
+        else if(!(el.name in data)) data[el.name] = "";
+      } else if(el.type !== "file" && el.type !== "button" && el.type !== "submit"){
+        data[el.name] = el.value;
+      }
+    });
+    Object.assign(data, checkboxGroups);
+    data._savedAt = new Date().toISOString();
+    return data;
+  }
+
+  function setData(data){
+    const elements = Array.from(form.elements);
+    elements.forEach(el => {
+      if(!el.name) return;
+      const val = data[el.name];
+      if(el.type === "checkbox"){
+        el.checked = Array.isArray(val) && val.includes(el.value);
+      } else if(el.type === "radio"){
+        el.checked = val === el.value;
+      } else if(el.type !== "file" && el.type !== "button" && el.type !== "submit"){
+        el.value = val ?? "";
+      }
+    });
+    updateProgress();
+  }
+
+  function save(showNotice){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(getData()));
+      saveStatus.textContent = "Saved locally • " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+      if(showNotice){
+        savedBox.style.display = "block";
+        setTimeout(()=>savedBox.style.display="none",1800);
+      }
+    }catch(e){
+      saveStatus.textContent = "Could not save in this browser";
+      alert("Local save failed in this browser. Please try again or print/save your completed workbook as PDF.");
+    }
+  }
+
+  function scheduleSave(){
+    saveStatus.textContent = "Saving…";
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(()=>save(false), 450);
+    updateProgress();
+  }
+
+  function load(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(raw){
+        setData(JSON.parse(raw));
+        saveStatus.textContent = "Previous answers restored";
+      }
+    }catch(e){
+      saveStatus.textContent = "Ready — auto-save enabled";
+    }
+  }
+
+  function updateProgress(){
+    const controls = Array.from(form.querySelectorAll("input[type=text], input[type=date], textarea"));
+    const answered = controls.filter(el => el.value.trim() !== "").length;
+    const radioNames = [...new Set(Array.from(form.querySelectorAll('input[type=radio]')).map(x=>x.name))];
+    const checkedRadios = radioNames.filter(name => form.querySelector('input[type=radio][name="'+CSS.escape(name)+'"]:checked')).length;
+    const checkboxNames = [...new Set(Array.from(form.querySelectorAll('input[type=checkbox]')).map(x=>x.name))];
+    const checkedBoxes = checkboxNames.filter(name => form.querySelector('input[type=checkbox][name="'+CSS.escape(name)+'"]:checked')).length;
+    const total = controls.length + radioNames.length + checkboxNames.length;
+    const done = answered + checkedRadios + checkedBoxes;
+    const pct = total ? Math.round(done / total * 100) : 0;
+    progressBar.style.width = pct + "%";
+    progressText.textContent = pct + "%";
+  }
+  document.getElementById("saveBtn").addEventListener("click",()=>save(true));
+  document.getElementById("printBtn").addEventListener("click",()=>{ save(false); window.print(); });
+
+  document.getElementById("resetBtn").addEventListener("click",()=>{
+    if(confirm("This will erase all answers saved in this browser for this workbook. Continue?")){
+      localStorage.removeItem(STORAGE_KEY);
+      form.reset();
+      updateProgress();
+      saveStatus.textContent = "Workbook reset";
+    }
+  });
+
+  form.addEventListener("input", scheduleSave);
+  form.addEventListener("change", scheduleSave);
+
+  // Enforce up to 3 strength choices.
+  const strengthBoxes = Array.from(form.querySelectorAll('input[name="strengths"]'));
+  strengthBoxes.forEach(box => box.addEventListener("change",()=>{
+    const checked = strengthBoxes.filter(b=>b.checked);
+    if(checked.length > 3){
+      box.checked = false;
+      alert("Please choose only your Top 3 Strengths.");
+    }
+  }));
+
+  // Prefill today's date only when blank.
+  if(!form.elements.date.value){
+    const d = new Date();
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth()+1).padStart(2,"0");
+    const dd = String(d.getDate()).padStart(2,"0");
+    form.elements.date.value = `${yyyy}-${mm}-${dd}`;
+  }
+
+  load();
+  updateProgress();
+})();
+</script>
+</body>
+</html>

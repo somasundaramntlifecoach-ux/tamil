@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIFE PATH Training Program - Student Feedback</title>
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:#ffffff; --text:#1f2937; --muted:#6b7280;
+      --primary:#3b2a7a; --accent:#f59e0b; --border:#e5e7eb; --success:#0f766e;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Arial,Helvetica,sans-serif;
+      background:linear-gradient(135deg,#f7f5ff,#eef4ff);color:var(--text);line-height:1.55;
+    }
+    .wrap{max-width:920px;margin:32px auto;padding:0 16px 48px}
+    .hero{
+      background:linear-gradient(135deg,var(--primary),#5235a7);color:#fff;
+      padding:32px;border-radius:20px;box-shadow:0 12px 30px rgba(45,31,98,.18);
+    }
+    .hero h1{margin:0 0 8px;font-size:clamp(28px,5vw,44px)}
+    .hero p{margin:6px 0;color:#ede9fe}
+    .tag{display:inline-block;background:rgba(255,255,255,.12);padding:6px 10px;border-radius:999px;font-size:13px;margin-bottom:10px}
+    form{margin-top:22px}
+    .card{
+      background:var(--card);border:1px solid var(--border);border-radius:18px;
+      padding:24px;margin-bottom:18px;box-shadow:0 8px 24px rgba(15,23,42,.05);
+    }
+    h2{margin:0 0 14px;color:var(--primary);font-size:22px}
+    .hint{color:var(--muted);font-size:14px;margin-top:-6px;margin-bottom:14px}
+    label{display:block;font-weight:700;margin:16px 0 7px}
+    input[type="text"],select,textarea{
+      width:100%;border:1px solid #cfd5df;border-radius:10px;padding:12px 13px;font-size:15px;background:#fff;
+    }
+    textarea{min-height:100px;resize:vertical}
+    input:focus,select:focus,textarea:focus{outline:3px solid rgba(59,42,122,.12);border-color:var(--primary)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .options{display:grid;gap:9px;margin-top:8px}
+    .option{display:flex;align-items:flex-start;gap:9px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fafafa}
+    .option input{margin-top:3px}
+    .scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+    .scale label{margin:0;padding:10px 6px;border:1px solid var(--border);border-radius:10px;text-align:center;font-weight:600;background:#fafafa;cursor:pointer}
+    .scale input{display:block;margin:0 auto 5px}
+    .life-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .life-item{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fbfbfd}
+    .life-item strong{color:var(--primary)}
+    .required{color:#b91c1c}
+    .submit-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    button{border:0;border-radius:11px;padding:13px 18px;font-size:15px;font-weight:700;cursor:pointer}
+    .primary{background:var(--primary);color:#fff}
+    .secondary{background:#eef2ff;color:var(--primary)}
+    .note{font-size:13px;color:var(--muted)}
+    #message{display:none;margin-top:16px;padding:14px;border-radius:10px;background:#ecfdf5;color:var(--success);font-weight:700}
+    footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
+    @media (max-width:700px){.grid,.life-grid{grid-template-columns:1fr}.scale{grid-template-columns:1fr}.hero{padding:24px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <span class="tag">Student Feedback Form</span>
+    <h1>LIFE PATH — Before Career Path</h1>
+    <p>Thank you for participating in the training program. Your feedback will help improve future sessions.</p>
+    <p><strong>Trainer:</strong> N T SOMASUNDARAM</p>
+    <p>Certified Master Trainer | Career Consultant | Parental Coach | Life Skills Educator</p>
+  </section>
+
+  <form id="feedbackForm">
+    <section class="card">
+      <h2>1. Student Details</h2>
+      <p class="hint">Student name may be kept optional if anonymous feedback is preferred.</p>
+      <div class="grid">
+        <div>
+          <label for="name">Student Name</label>
+          <input id="name" name="name" type="text" placeholder="Optional" />
+        </div>
+        <div>
+          <label for="college">College / Institution <span class="required">*</span></label>
+          <input id="college" name="college" type="text" required />
+        </div>
+        <div>
+          <label for="course">Course / Department <span class="required">*</span></label>
+          <input id="course" name="course" type="text" required placeholder="Example: MBA / B.Com / Engineering" />
+        </div>
+        <div>
+          <label for="year">Year of Study</label>
+          <select id="year" name="year">
+            <option value="">Select</option>
+            <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>Final Year</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. Overall Training Experience</h2>
+      <label>How would you rate the overall training program? <span class="required">*</span></label>
+      <div class="scale">
+        <label><input type="radio" name="overall_rating" value="1" required>1<br>Poor</label>
+        <label><input type="radio" name="overall_rating" value="2">2<br>Fair</label>
+        <label><input type="radio" name="overall_rating" value="3">3<br>Good</label>
+        <label><input type="radio" name="overall_rating" value="4">4<br>Very Good</label>
+        <label><input type="radio" name="overall_rating" value="5">5<br>Excellent</label>
+      </div>
+
+      <label>The session was engaging and easy to understand.</label>
+      <div class="options">
+        <label class="option"><input type="radio" name="engaging" value="Strongly Agree"> Strongly Agree</label>
+        <label class="option"><input type="radio" name="engaging" value="Agree"> Agree</label>
+        <label class="option"><input type="radio" name="engaging" value="Neutral"> Neutral</label>
+        <label class="option"><input type="radio" name="engaging" value="Disagree"> Disagree</label>
+      </div>
+
+      <label>The stories, metaphors, activities and examples helped me understand the concepts.</label>
+      <div class="options">
+        <label class="option"><input type="radio" name="methods_helpful" value="Strongly Agree"> Strongly Agree</label>
+        <label class="option"><input type="radio" name="methods_helpful" value="Agree"> Agree</label>
+        <label class="option"><input type="radio" name="methods_helpful" value="Neutral"> Neutral</label>
+        <label class="option"><input type="radio" name="methods_helpful" value="Disagree"> Disagree</label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3. LIFE PATH Learning Impact</h2>
+      <p class="hint">Rate how much each stage helped you.</p>
+      <div class="life-grid">
+        <div class="life-item"><strong>L — Learn Yourself</strong><br>Self-awareness, strengths, values and development gaps.<br><select name="learn_yourself"><option>Very Helpful</option><option>Helpful</option><option>Somewhat Helpful</option><option>Not Helpful</option></select></div>
+        <div class="life-item"><strong>I — Inspire Belief</strong><br>Confidence, self-efficacy and positive self-talk.<br><select name="inspire_belief"><option>Very Helpful</option><option>Helpful</option><option>Somewhat Helpful</option><option>Not Helpful</option></select></div>
+        <div class="life-item"><strong>F — Frame Mindset</strong><br>Growth mindset, critical thinking and reframing.<br><select name="frame_mindset"><option>Very Helpful</option><option>Helpful</option><option>Somewhat Helpful</option><option>Not Helpful</option></select></div>
+        <div class="life-item"><strong>E — Endure Challenges</strong><br>Resilience, stress management and emotional regulation.<br><select name="endure_challenges"><option>Very Helpful</option><option>Helpful</option><option>Somewhat Helpful</option><option>Not Helpful</option></select></div>
+        <div class="life-item"><strong>P — People Connection</strong><br>Communication, active listening and empathy.<br><select name="people_connection"><option>Very Helpful</option><option>Helpful</option><option>Somewhat Helpful</option><option>Not Helpful</option></select></div>
+        <div class="life-item"><strong>A — Accept Responsibility</strong><br>Decision-making, ownership and circle of control.<br><select name="accept_responsibility"><option>Very Helpful</option><option>Helpful</option><option>Somewhat Helpful</option><option>Not Helpful</option></select></div>
+        <div class="life-item"><strong>T — Target Your Goals</strong><br>Career exploration, goal setting and prioritisation.<br><select name="target_goals"><option>Very Helpful</option><option>Helpful</option><option>Somewhat Helpful</option><option>Not Helpful</option></select></div>
+        <div class="life-item"><strong>H — Harness Action</strong><br>Self-discipline, habits, consistency and execution.<br><select name="harness_action"><option>Very Helpful</option><option>Helpful</option><option>Somewhat Helpful</option><option>Not Helpful</option></select></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4. Trainer & Session Feedback</h2>
+      <label>Trainer explained the concepts clearly.</label>
+      <div class="options">
+        <label class="option"><input type="radio" name="trainer_clarity" value="Excellent"> Excellent</label>
+        <label class="option"><input type="radio" name="trainer_clarity" value="Very Good"> Very Good</label>
+        <label class="option"><input type="radio" name="trainer_clarity" value="Good"> Good</label>
+        <label class="option"><input type="radio" name="trainer_clarity" value="Needs Improvement"> Needs Improvement</label>
+      </div>
+      <label for="most_useful">Which topic / activity was most useful to you?</label>
+      <textarea id="most_useful" name="most_useful"></textarea>
+      <label for="improve">What could be improved in this training program?</label>
+      <textarea id="improve" name="improve"></textarea>
+      <label for="future_topics">What topics would you like in future training sessions?</label>
+      <textarea id="future_topics" name="future_topics"></textarea>
+    </section>
+
+    <section class="card">
+      <h2>5. Recommendation</h2>
+      <label>Would you recommend this LIFE PATH training program to other students? <span class="required">*</span></label>
+      <div class="options">
+        <label class="option"><input type="radio" name="recommend" value="Definitely Yes" required> Definitely Yes</label>
+        <label class="option"><input type="radio" name="recommend" value="Yes"> Yes</label>
+        <label class="option"><input type="radio" name="recommend" value="Maybe"> Maybe</label>
+        <label class="option"><input type="radio" name="recommend" value="No"> No</label>
+      </div>
+      <label for="testimonial">Optional: Write a short testimonial about your experience.</label>
+      <textarea id="testimonial" name="testimonial"></textarea>
+      <label class="option"><input type="checkbox" name="testimonial_permission" value="Yes"> I give permission to use my testimonial anonymously for training-program improvement or promotional purposes.</label>
+    </section>
+
+    <section class="card">
+      <div class="submit-row">
+        <button type="submit" class="primary">Submit Feedback</button>
+        <button type="reset" class="secondary">Clear Form</button>
+      </div>
+      <div id="message">Thank you! Your feedback has been submitted successfully.</div>
+    </section>
+  </form>
+
+  <footer>
+    LIFE PATH — Before Career Path<br>
+    N T SOMASUNDARAM | Certified Master Trainer | Career Consultant | Parental Coach | Life Skills Educator
+  </footer>
+</div>
+
+<script>
+const form = document.getElementById('feedbackForm');
+const message = document.getElementById('message');
+
+// STEP 1: Deploy Code.gs as a Google Apps Script Web App.
+// STEP 2: Paste the deployment URL below.
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbztUcWjEqWFzU7MuUL397Mg94T4hj9JmPP4uv3wsMzMVzCPbI6fbT5d8MPUuLsQECjqog/exec";
+
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  if(!form.checkValidity()){
+    form.reportValidity();
+    return;
+  }
+
+  if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL")) {
+    alert("Please add your Google Apps Script Web App URL in the HTML file first.");
+    return;
+  }
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting...";
+
+  const fd = new FormData(form);
+  const data = {};
+  for (const [key, value] of fd.entries()) {
+    if (Object.prototype.hasOwnProperty.call(data, key)) {
+      if (!Array.isArray(data[key])) data[key] = [data[key]];
+      data[key].push(value);
+    } else {
+      data[key] = value;
+    }
+  }
+
+  data.submitted_at = new Date().toISOString();
+
+  try {
+    // no-cors allows a static HTML file to post to Apps Script.
+    // The Apps Script writes the data to the Google Sheet.
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {"Content-Type": "text/plain;charset=utf-8"},
+      body: JSON.stringify(data)
+    });
+
+    message.style.display = 'block';
+    message.textContent = "Thank you! Your feedback has been submitted successfully.";
+    message.scrollIntoView({behavior:'smooth', block:'center'});
+    form.reset();
+  } catch (err) {
+    console.error(err);
+    alert("Unable to submit feedback. Please check the internet connection and Apps Script deployment URL.");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalText;
+  }
+});
+</script>
+</body>
+</html>
