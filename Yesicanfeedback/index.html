@@ -1,17 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>YES, I CAN! — Student Feedback</title>
-<meta name="description" content="YES, I CAN! student feedback form by Somasundaram NT Skills Academy">
 <style>
-:root{--navy:#102844;--gold:#d8ad50}*{box-sizing:border-box}body{margin:0;font-family:Arial,'Noto Sans Tamil',sans-serif;background:#f3f5fa;color:#192a41}header{text-align:center;background:linear-gradient(135deg,#0c1f38,#24466f);color:white;padding:27px 15px;border-bottom:5px solid var(--gold)}header .academy{color:#edcf89;font-weight:bold;letter-spacing:1px;font-size:13px}h1{font-size:clamp(29px,6vw,42px);margin:8px 0}header p{margin:5px}main{max-width:860px;margin:20px auto;padding:0 12px}.panel{background:white;border:1px solid #dfe5ef;border-radius:16px;overflow:hidden;box-shadow:0 6px 28px #14233b12}iframe{width:100%;height:1650px;border:0;display:block}.actions{text-align:center;padding:15px}.btn{display:inline-block;padding:13px 22px;background:var(--navy);color:white;border-radius:10px;text-decoration:none;font-weight:bold}.hint{font-size:13px;color:#667285;margin:12px 0 0}.footer{text-align:center;color:#687486;font-size:12px;padding:20px 10px}@media(max-width:600px){iframe{height:1900px}header{padding:20px 10px}}
-</style>
-</head>
-<body>
-<header><div class="academy">SOMASUNDARAM NT SKILLS ACADEMY</div><h1>YES, I CAN!</h1><p>From Exam Fear to Exam Confidence</p><p>Student Feedback / மாணவர் கருத்துப் படிவம்</p></header>
-<main><div class="panel">
-<iframe title="YES I CAN Student Feedback Form" src="https://script.google.com/macros/s/AKfycbxdn1Ua5qPMsJc0S1_1Qmm5JqOZ5TVrGozY43lsESTtYoALlAW7TEzwCaYrmQShfAdi/exec" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-<div class="actions"><a class="btn" href="https://script.google.com/macros/s/AKfycbxdn1Ua5qPMsJc0S1_1Qmm5JqOZ5TVrGozY43lsESTtYoALlAW7TEzwCaYrmQShfAdi/exec" target="_blank" rel="noopener noreferrer">Open Feedback Form / கருத்துப் படிவத்தைத் திறக்கவும்</a><p class="hint">If the form does not appear above, use the button. Feedback is submitted through the existing Google Apps Script app and saved to its connected Google Sheet.</p></div>
-</div><div class="footer">N T SOMASUNDARAM • Certified Master Trainer | Career Consultant | Parental Coach | Life Skills Educator</div></main>
-</body></html>
+:root{--navy:#112744;--gold:#d7a53a;--bg:#f4f6fb;--ink:#182b42}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,'Noto Sans Tamil',Arial,sans-serif;color:var(--ink);line-height:1.55}
+header{background:linear-gradient(125deg,#10233e,#254d74);border-bottom:5px solid var(--gold);color:white;text-align:center;padding:30px 15px}
+header small{color:#f0cf80;letter-spacing:.08em;font-weight:750}h1{font-size:clamp(30px,6vw,44px);margin:7px 0 0}header p{margin:4px 0}.wrap{max-width:770px;margin:0 auto;padding:18px 14px 48px}
+.card{background:#fff;border:1px solid #e0e6ee;border-radius:16px;padding:20px;margin:15px 0;box-shadow:0 5px 20px #0b25400a}
+.question{font-weight:750;font-size:16px;margin:0}.ta{font-size:14px;color:#53647a;margin:4px 0 14px}
+.option{display:flex;align-items:flex-start;gap:10px;border:1px solid #d7dfeb;border-radius:10px;padding:10px 12px;margin:7px 0;cursor:pointer}
+.option:has(input:checked){background:#fff9e9;border-color:var(--gold)}input[type=radio]{accent-color:#b98924;margin-top:5px}
+textarea{width:100%;border:1px solid #b9c5d6;border-radius:10px;padding:12px;font:inherit;min-height:100px;resize:vertical}
+button{width:100%;padding:15px 18px;border:0;border-radius:12px;background:var(--navy);color:white;font-size:17px;font-weight:750;cursor:pointer}button:disabled{opacity:.6;cursor:wait}
+.rating{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.rating label{border:1px solid #cdd5df;border-radius:10px;padding:10px 15px;cursor:pointer}.rating label:has(input:checked){background:#fff1c6;border-color:#ba8b2b}
+.muted{color:#607086;font-size:13px;text-align:center}.status{margin:12px 0;font-weight:700}.success{display:none;text-align:center;padding:35px 15px}.success h2{color:#176b46}
+</style></head><body>
+<header><small>SOMASUNDARAM NT SKILLS ACADEMY</small><h1>YES, I CAN!</h1><p>From Exam Fear to Exam Confidence</p><p>Student Feedback / மாணவர் கருத்துப் படிவம்</p></header>
+<main class="wrap"><p class="muted">Class 10 Students · 3–4 minutes · No name or phone number required</p>
+<form id="feedback">
+<div id="questions"></div>
+<section class="card"><p class="question">7. Rate the overall workshop / பயிற்சிக்கான உங்கள் மதிப்பீடு</p><div class="rating" role="radiogroup" aria-label="Workshop rating">
+<label><input type="radio" name="rating" value="1" required> 1 ★</label><label><input type="radio" name="rating" value="2"> 2 ★</label><label><input type="radio" name="rating" value="3"> 3 ★</label><label><input type="radio" name="rating" value="4"> 4 ★</label><label><input type="radio" name="rating" value="5"> 5 ★</label>
+</div></section>
+<section class="card"><p class="question">8. What is one action you will take in the next 24 hours?</p><p class="ta">அடுத்த 24 மணி நேரத்தில் நீங்கள் செய்யப்போகும் ஒரு செயல் என்ன?</p><textarea name="action" maxlength="1500" required placeholder="Tomorrow at 6 PM, I will practise 10 maths questions."></textarea></section>
+<section class="card"><p class="question">9. What should we improve? (Optional)</p><p class="ta">அடுத்த பயிற்சியில் எதை மேம்படுத்தலாம்?</p><textarea name="suggestion" maxlength="1500" placeholder="Your suggestion..."></textarea></section>
+<button id="send" type="submit">Submit Feedback / கருத்தைப் பதிவு செய்க</button>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+</form>
+<section id="success" class="card success"><h2>Thank you for your feedback! 💛</h2><p>உங்கள் கருத்தைப் பகிர்ந்ததற்கு நன்றி!</p><p class="muted">Submission request sent. The browser cannot verify Google Sheets storage directly; the trainer can confirm it in the response sheet.</p><button type="button" id="again">Submit another response</button></section>
+<p class="muted">SOMASUNDARAM NT SKILLS ACADEMY</p></main>
+<script>
+'use strict';
+const ENDPOINT='https://script.google.com/macros/s/AKfycbxdn1Ua5qPMsJc0S1_1Qmm5JqOZ5TVrGozY43lsESTtYoALlAW7TEzwCaYrmQShfAdi/exec';
+const questions=[
+['confidence','How confident do you feel about preparing for your board exams now?','இப்போது பொதுத்தேர்வுக்குத் தயாராகும் உங்கள் தன்னம்பிக்கை எப்படி உள்ளது?',['Very confident','Somewhat confident','Not sure','Still worried']],
+['fear','Has this program helped you understand how to manage exam fear?','தேர்வுப் பயத்தைக் கையாளும் வழிகளைப் புரிந்துகொள்ள இந்தப் பயிற்சி உதவியதா?',['Yes, a lot','Yes, somewhat','Not sure','Not yet']],
+['activity','Which activity helped you the most?','எந்தச் செயல்பாடு உங்களுக்கு மிகவும் பயனுள்ளதாக இருந்தது?',['Thought Detective – Fact vs Assumption','Memory Trap – Active Recall','Distraction Experiment','7-Day Study Mission','Future Me – Commitment']],
+['learning','What was your most valuable learning?','இந்தப் பயிற்சியில் நீங்கள் கற்றுக்கொண்ட மிக முக்கியமான விஷயம் என்ன?',['I can improve through practice','How to manage exam fear','Smart study and revision methods','How to improve focus','How to make an action plan']],
+['engagement','How engaging were the activities?','செயல்பாடுகள் உங்களுக்கு எந்த அளவுக்கு ஆர்வமாக இருந்தன?',['Very engaging','Engaging','Okay','Not engaging']],
+['recommend','Would you recommend this program to your friends?','இந்தப் பயிற்சியை உங்கள் நண்பர்களுக்குப் பரிந்துரைப்பீர்களா?',['Definitely','Maybe','Not sure','No']]
+];
+const root=document.getElementById('questions');
+questions.forEach(([name,en,ta,options],i)=>{
+ const section=document.createElement('section');section.className='card';
+ const title=document.createElement('p');title.className='question';title.textContent=(i+1)+'. '+en;section.appendChild(title);
+ const tamil=document.createElement('p');tamil.className='ta';tamil.textContent=ta;section.appendChild(tamil);
+ options.forEach((opt,j)=>{const label=document.createElement('label');label.className='option';const input=document.createElement('input');input.type='radio';input.name=name;input.value=opt;input.required=j===0;label.appendChild(input);label.appendChild(document.createTextNode(opt));section.appendChild(label);});
+ root.appendChild(section);
+});
+const form=document.getElementById('feedback');
+form.addEventListener('submit',async event=>{
+ event.preventDefault();if(!form.reportValidity())return;
+ const button=document.getElementById('send'),status=document.getElementById('status');button.disabled=true;status.textContent='Sending feedback…';
+ try{
+  // Apps Script does not expose a readable CORS response to GitHub Pages.
+  // no-cors transmits the form but cannot prove that Google Sheets accepted it.
+  const body=new URLSearchParams(new FormData(form));
+  await fetch(ENDPOINT,{method:'POST',mode:'no-cors',body});
+  form.style.display='none';document.getElementById('success').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+ }catch(err){status.textContent='Could not send feedback. Check your internet connection and try again.';button.disabled=false;}
+});
+document.getElementById('again').addEventListener('click',()=>{form.reset();form.style.display='block';document.getElementById('success').style.display='none';document.getElementById('send').disabled=false;document.getElementById('status').textContent='';});
+</script></body></html>
