@@ -32,7 +32,7 @@ document.getElementById('form').addEventListener('submit', async function(e){
    // no-cors means delivery cannot be verified in the browser; check Google Sheets.
    await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data)});
    status.className='status';
-   status.textContent='Feedback sent. Please confirm it appears in Google Sheets. / கருத்து அனுப்பப்பட்டது.';
+   status.textContent='Feedback sent.  கருத்து அனுப்பப்பட்டது.';
    btn.textContent='Sent';
  } catch(err) {
    status.className='status error';status.textContent='Network error. Please retry.';
