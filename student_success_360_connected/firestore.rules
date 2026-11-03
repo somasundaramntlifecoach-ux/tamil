@@ -1,0 +1,8 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Safe initial setting: no direct client access to student data.
+    // Implement reviewed per-user rules and guardian/coach authorization before enabling Firestore writes.
+    match /{document=**} { allow read, write: if false; }
+  }
+}
