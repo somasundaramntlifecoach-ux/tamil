@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function signedIn(){return request.auth != null;}
+  function admin(){return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));}
+  function own(uid){return signedIn() && request.auth.uid == uid;}
+  function validProfile(){return request.resource.data.keys().hasOnly(['displayName','email','createdAt','updatedAt']) && request.resource.data.displayName is string && request.resource.data.displayName.size() <= 80 && request.resource.data.email == request.auth.token.email;}
+  match /admins/{uid} { allow get: if own(uid) || admin(); allow list: if admin(); allow write: if false; }
+  match /users/{uid} {
+   allow get, list: if own(uid) || admin();
+   allow create, update: if own(uid) && validProfile();
+   allow delete: if false;
+   match /lessons/{lessonId} {
+    allow get, list: if own(uid) || admin();
+    allow create, update: if own(uid) && lessonId.matches('([1-9]|1[0-2])-[1-4]') && request.resource.data.keys().hasOnly(['module','lesson','sectionsDone','completed','updatedAt']) && request.resource.data.module is int && request.resource.data.module >= 1 && request.resource.data.module <= 12 && request.resource.data.lesson is int && request.resource.data.lesson >= 1 && request.resource.data.lesson <= 4 && request.resource.data.sectionsDone is int && request.resource.data.sectionsDone >= 0 && request.resource.data.sectionsDone <= 10 && request.resource.data.completed is bool;
+    allow delete: if false;
+   }
+   match /assessments/{assessmentId} {
+    allow get, list: if own(uid) || admin();
+    allow create, update: if own(uid) && assessmentId == 'final' && request.resource.data.keys().hasOnly(['score','total','answers','submittedAt']) && request.resource.data.total == 12 && request.resource.data.score is int && request.resource.data.score >= 0 && request.resource.data.score <= 12 && request.resource.data.answers is list && request.resource.data.answers.size() == 12;
+    allow delete: if false;
+   }
+  }
+  match /{document=**} {allow read, write: if false;}
+ }
+}

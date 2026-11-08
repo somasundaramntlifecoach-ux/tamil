@@ -1,0 +1,338 @@
+[
+  {
+    "module": 1,
+    "lesson": 1,
+    "title": "நான் எப்படிப்பட்ட பெற்றோர்?",
+    "english": "Module 01 · Lesson 01 | Understanding My Parenting Style | 60–90 நிமிடங்கள்",
+    "path": "lessons/m01l01/index.html"
+  },
+  {
+    "module": 1,
+    "lesson": 2,
+    "title": "நாம் வளர்ந்த விதம் நம் குழந்தை வளர்ப்பை எப்படி மாற்றுகிறது?",
+    "english": "Module 01 · Lesson 02 | How Our Childhood Shapes Our Parenting | 90–120 நிமிடங்கள்",
+    "path": "lessons/m01l02/index.html"
+  },
+  {
+    "module": 1,
+    "lesson": 3,
+    "title": "குழந்தையின் நடத்தைக்குப் பின்னால் இருக்கும் தேவைகளைப் புரிந்துகொள்வோம்",
+    "english": "Module 01 · Lesson 03 | Understanding the Needs Behind Children's Behaviour | 110–130 நிமிடங்கள்",
+    "path": "lessons/m01l03/index.html"
+  },
+  {
+    "module": 1,
+    "lesson": 4,
+    "title": "அன்பும் உறுதியும் சேர்ந்த குடும்ப எல்லைகளை அமைப்பது எப்படி?",
+    "english": "Setting Healthy Boundaries with Kindness and Firmness",
+    "path": "lessons/m01l04/index.html"
+  },
+  {
+    "module": 2,
+    "lesson": 1,
+    "title": "குழந்தையின் மூளை வளர்ச்சியைப் புரிந்துகொள்வோம்",
+    "english": "Understanding the Developing Brain",
+    "path": "lessons/m02l01/index.html"
+  },
+  {
+    "module": 2,
+    "lesson": 2,
+    "title": "குழந்தையின் உணர்ச்சி வளர்ச்சியைப் புரிந்துகொள்வோம்",
+    "english": "Understanding the Developing Brain",
+    "path": "lessons/m02l02/index.html"
+  },
+  {
+    "module": 2,
+    "lesson": 3,
+    "title": "குழந்தைகளின் சுயக்கட்டுப்பாடு மற்றும் பொறுமையை வளர்ப்பது எப்படி?",
+    "english": "Developing Self-Regulation and Executive Function Skills",
+    "path": "lessons/m02l03/index.html"
+  },
+  {
+    "module": 2,
+    "lesson": 4,
+    "title": "குழந்தைகளின் தன்னம்பிக்கை, சுயமரியாதை மற்றும் வளர்ச்சி மனப்பான்மையை வளர்ப்பது எப்படி?",
+    "english": "Building Self-Esteem, Confidence and Growth Mindset in Children",
+    "path": "lessons/m02l04/index.html"
+  },
+  {
+    "module": 3,
+    "lesson": 1,
+    "title": "குழந்தைகளுடன் நம்பிக்கையான உறவை உருவாக்குவது எப்படி?",
+    "english": "Building Trust and Secure Parent–Child Relationships",
+    "path": "lessons/m03l01/index.html"
+  },
+  {
+    "module": 3,
+    "lesson": 2,
+    "title": "குழந்தைகளுடன் பயனுள்ள உரையாடலை வளர்ப்பது எப்படி?",
+    "english": "Effective Parent–Child Communication",
+    "path": "lessons/m03l02/index.html"
+  },
+  {
+    "module": 3,
+    "lesson": 3,
+    "title": "குழந்தைகளுடனான கருத்து வேறுபாடுகளையும் மோதல்களையும் அமைதியாகத் தீர்ப்பது எப்படி?",
+    "english": "Managing Parent–Child Conflicts and Collaborative Problem Solving",
+    "path": "lessons/m03l03/index.html"
+  },
+  {
+    "module": 3,
+    "lesson": 4,
+    "title": "குடும்பத்தில் பரஸ்பர மரியாதை, ஒத்துழைப்பு மற்றும் உணர்வுப்பூர்வமான உறவை வளர்ப்பது எப்படி?",
+    "english": "Building Mutual Respect, Cooperation and Emotional Connection",
+    "path": "lessons/m03l04/index.html"
+  },
+  {
+    "module": 4,
+    "lesson": 1,
+    "title": "குழந்தைகளின் சவாலான நடத்தைகளைப் புரிந்துகொண்டு நேர்மறையாக வழிநடத்துவது எப்படி?",
+    "english": "Understanding and Responding to Challenging Behaviour",
+    "path": "lessons/m04l01/index.html"
+  },
+  {
+    "module": 4,
+    "lesson": 2,
+    "title": "தண்டனை இல்லாமல் குழந்தைகளுக்கு ஒழுக்கத்தையும் பொறுப்புணர்வையும் கற்றுக்கொடுப்பது எப்படி?",
+    "english": "Teaching Discipline and Responsibility Without Punishment",
+    "path": "lessons/m04l02/index.html"
+  },
+  {
+    "module": 4,
+    "lesson": 3,
+    "title": "குழந்தைகளின் பிடிவாதம், கோப வெடிப்பு மற்றும் எதிர்ப்பை அமைதியாகக் கையாள்வது எப்படி?",
+    "english": "Managing Tantrums, Defiance and Emotional Outbursts",
+    "path": "lessons/m04l03/index.html"
+  },
+  {
+    "module": 4,
+    "lesson": 4,
+    "title": "குழந்தைகளின் நல்ல பழக்கங்கள், சுயஒழுக்கம் மற்றும் பொறுப்பான நடத்தையை வளர்ப்பது எப்படி?",
+    "english": "Building Positive Habits, Self-Discipline and Responsible Behaviour",
+    "path": "lessons/m04l04/index.html"
+  },
+  {
+    "module": 5,
+    "lesson": 1,
+    "title": "குழந்தைகளின் மனஅழுத்தம், கவலை மற்றும் பயத்தைப் புரிந்துகொள்வது எப்படி?",
+    "english": "Understanding Stress, Anxiety and Fear in Children",
+    "path": "lessons/m05l01/index.html"
+  },
+  {
+    "module": 5,
+    "lesson": 2,
+    "title": "குழந்தைகளின் மனநலத்தையும் உணர்ச்சி நலனையும் பாதுகாப்பது எப்படி?",
+    "english": "Supporting Children’s Mental Health and Emotional Well-Being",
+    "path": "lessons/m05l02/index.html"
+  },
+  {
+    "module": 5,
+    "lesson": 3,
+    "title": "குழந்தைகளின் மனவலிமையையும் சவால்களை எதிர்கொள்ளும் திறனையும் வளர்ப்பது எப்படி?",
+    "english": "Building Resilience and Healthy Coping Skills in Children",
+    "path": "lessons/m05l03/index.html"
+  },
+  {
+    "module": 5,
+    "lesson": 4,
+    "title": "குழந்தைகளின் தோல்வி பயம், தன்னம்பிக்கைக் குறைவு மற்றும் எதிர்மறைச் சிந்தனைகளை மாற்ற உதவுவது எப்படி?",
+    "english": "Helping Children Overcome Fear of Failure, Self-Doubt and Negative Thinking",
+    "path": "lessons/m05l04/index.html"
+  },
+  {
+    "module": 6,
+    "lesson": 1,
+    "title": "குழந்தைகளின் கற்றல் ஆர்வத்தையும் படிக்கும் பழக்கத்தையும் வளர்ப்பது எப்படி?",
+    "english": "Developing Learning Motivation and Effective Study Habits",
+    "path": "lessons/m06l01/index.html"
+  },
+  {
+    "module": 6,
+    "lesson": 2,
+    "title": "குழந்தைகளின் கவனம், நினைவாற்றல் மற்றும் திறமையான கற்றல் முறைகளை வளர்ப்பது எப்படி?",
+    "english": "Developing Attention, Memory and Effective Learning Strategies",
+    "path": "lessons/m06l02/index.html"
+  },
+  {
+    "module": 6,
+    "lesson": 3,
+    "title": "குழந்தைகளின் தேர்வு பயம், கல்வி அழுத்தம் மற்றும் செயல்திறன் கவலையைச் சமாளிக்க உதவுவது எப்படி?",
+    "english": "Helping Children Manage Exam Stress and Academic Pressure",
+    "path": "lessons/m06l03/index.html"
+  },
+  {
+    "module": 6,
+    "lesson": 4,
+    "title": "குழந்தைகளின் கல்விப் பொறுப்பு, சுயமாகக் கற்கும் திறன் மற்றும் நேர மேலாண்மையை வளர்ப்பது எப்படி?",
+    "english": "Developing Academic Responsibility, Independent Learning and Time Management",
+    "path": "lessons/m06l04/index.html"
+  },
+  {
+    "module": 7,
+    "lesson": 1,
+    "title": "குழந்தைகளின் சமூகத் திறன்கள், நட்புறவு மற்றும் பிறருடன் பழகும் திறனை வளர்ப்பது எப்படி?",
+    "english": "Developing Social Skills, Friendship and Healthy Peer Relationships",
+    "path": "lessons/m07l01/index.html"
+  },
+  {
+    "module": 7,
+    "lesson": 2,
+    "title": "குழந்தைகளின் நண்பர் அழுத்தம், குழு செல்வாக்கு மற்றும் பாதுகாப்பான முடிவெடுக்கும் திறனை வளர்ப்பது எப்படி?",
+    "english": "Helping Children Handle Peer Pressure and Make Safe Decisions",
+    "path": "lessons/m07l02/index.html"
+  },
+  {
+    "module": 7,
+    "lesson": 3,
+    "title": "குழந்தைகளின் நட்பில் ஏற்படும் கருத்து வேறுபாடுகள், நிராகரிப்பு மற்றும் துன்புறுத்தலைச் சமாளிக்க உதவுவது எப்படி?",
+    "english": "Helping Children Manage Friendship Conflicts, Rejection and Bullying",
+    "path": "lessons/m07l03/index.html"
+  },
+  {
+    "module": 7,
+    "lesson": 4,
+    "title": "குழந்தைகளின் பச்சாதாபம், கருணை மற்றும் ஆரோக்கியமான உறவுகளை வளர்ப்பது எப்படி?",
+    "english": "Developing Empathy, Compassion and Healthy Relationships",
+    "path": "lessons/m07l04/index.html"
+  },
+  {
+    "module": 8,
+    "lesson": 1,
+    "title": "குழந்தைகளின் டிஜிட்டல் பழக்கங்கள், திரை நேரம் மற்றும் இணையப் பாதுகாப்பை எவ்வாறு வழிநடத்துவது?",
+    "english": "Guiding Children’s Digital Habits, Screen Time and Online Safety",
+    "path": "lessons/m08l01/index.html"
+  },
+  {
+    "module": 8,
+    "lesson": 2,
+    "title": "குழந்தைகளின் சமூக ஊடகப் பழக்கங்கள், ஆன்லைன் ஒப்பீடுகள் மற்றும் டிஜிட்டல் மனநலத்தைப் பாதுகாப்பது எப்படி?",
+    "english": "Social Media, Online Comparison and Digital Mental Well-Being",
+    "path": "lessons/m08l02/index.html"
+  },
+  {
+    "module": 8,
+    "lesson": 3,
+    "title": "குழந்தைகளின் இணைய விளையாட்டுப் பழக்கம், அதிகப்படியான திரைப் பயன்பாடு மற்றும் டிஜிட்டல் சுயக்கட்டுப்பாட்டை வளர்ப்பது எப்படி?",
+    "english": "Managing Online Gaming, Excessive Screen Use and Digital Self-Regulation",
+    "path": "lessons/m08l03/index.html"
+  },
+  {
+    "module": 8,
+    "lesson": 4,
+    "title": "குழந்தைகளுக்கு டிஜிட்டல் பொறுப்புணர்வு, இணைய ஒழுக்கம் மற்றும் பாதுகாப்பான தொழில்நுட்பப் பயன்பாட்டைக் கற்பிப்பது எப்படி?",
+    "english": "Teaching Digital Citizenship, Online Ethics and Responsible Technology Use",
+    "path": "lessons/m08l04/index.html"
+  },
+  {
+    "module": 9,
+    "lesson": 1,
+    "title": "குழந்தைகளின் பொறுப்புணர்வு, சுயசார்பு மற்றும் அன்றாட வாழ்க்கைத் திறன்களை வளர்ப்பது எப்படி?",
+    "english": "Developing Responsibility, Independence and Everyday Life Skills",
+    "path": "lessons/m09l01/index.html"
+  },
+  {
+    "module": 9,
+    "lesson": 2,
+    "title": "குழந்தைகளின் நேர மேலாண்மை, திட்டமிடல் மற்றும் நல்ல அன்றாடப் பழக்கங்களை வளர்ப்பது எப்படி?",
+    "english": "Developing Time Management, Planning and Healthy Daily Routines",
+    "path": "lessons/m09l02/index.html"
+  },
+  {
+    "module": 9,
+    "lesson": 3,
+    "title": "குழந்தைகளின் பிரச்சினைகளைத் தீர்க்கும் திறன், விமர்சனச் சிந்தனை மற்றும் முடிவுகளுக்குப் பொறுப்பேற்கும் பழக்கத்தை வளர்ப்பது எப்படி?",
+    "english": "Developing Problem-Solving, Critical Thinking and Accountability",
+    "path": "lessons/m09l03/index.html"
+  },
+  {
+    "module": 9,
+    "lesson": 4,
+    "title": "குழந்தைகளின் பண மேலாண்மை, சேமிப்புப் பழக்கம் மற்றும் நிதிப் பொறுப்புணர்வை வளர்ப்பது எப்படி?",
+    "english": "Developing Financial Literacy, Saving Habits and Money Responsibility",
+    "path": "lessons/m09l04/index.html"
+  },
+  {
+    "module": 10,
+    "lesson": 1,
+    "title": "குழந்தைகளின் தன்னம்பிக்கை, சுயமதிப்பு மற்றும் நேர்மறையான சுயஅடையாளத்தை வளர்ப்பது எப்படி?",
+    "english": "Building Self-Confidence, Self-Esteem and Positive Self-Identity",
+    "path": "lessons/m10l01/index.html"
+  },
+  {
+    "module": 10,
+    "lesson": 2,
+    "title": "குழந்தைகளின் தோல்வி பயம், எதிர்மறையான சுயபேச்சு மற்றும் தன்னம்பிக்கையின்மையை எவ்வாறு சமாளிப்பது?",
+    "english": "Helping Children Overcome Fear of Failure, Negative Self-Talk and Self-Doubt",
+    "path": "lessons/m10l02/index.html"
+  },
+  {
+    "module": 10,
+    "lesson": 3,
+    "title": "குழந்தைகளின் மன உறுதி, சவால்களை எதிர்கொள்ளும் திறன் மற்றும் மீண்டு எழும் ஆற்றலை வளர்ப்பது எப்படி?",
+    "english": "Building Resilience, Coping Skills and the Ability to Bounce Back",
+    "path": "lessons/m10l03/index.html"
+  },
+  {
+    "module": 10,
+    "lesson": 4,
+    "title": "குழந்தைகளின் நம்பிக்கை, நேர்மறையான எதிர்காலச் சிந்தனை மற்றும் வாழ்க்கை இலக்குகளை வளர்ப்பது எப்படி?",
+    "english": "Developing Hope, Optimism and Goal-Setting Skills",
+    "path": "lessons/m10l04/index.html"
+  },
+  {
+    "module": 11,
+    "lesson": 1,
+    "title": "குழந்தைகளின் ஆரோக்கியமான நட்புறவு, சமூகத் திறன்கள் மற்றும் பிறருடன் நல்ல உறவுகளை வளர்ப்பது எப்படி?",
+    "english": "Building Healthy Friendships, Social Skills and Positive Relationships",
+    "path": "lessons/m11l01/index.html"
+  },
+  {
+    "module": 11,
+    "lesson": 2,
+    "title": "குழந்தைகளின் நண்பர்கள் அழுத்தம், கொடுமைப்படுத்தல் மற்றும் சமூக அழுத்தங்களைச் சமாளிக்கும் திறனை வளர்ப்பது எப்படி?",
+    "english": "Helping Children Navigate Peer Pressure, Bullying and Social Challenges",
+    "path": "lessons/m11l02/index.html"
+  },
+  {
+    "module": 11,
+    "lesson": 3,
+    "title": "குழந்தைகளின் ஆரோக்கியமான எல்லைகள், தனிப்பட்ட பாதுகாப்பு மற்றும் பிறரின் எல்லைகளை மதிக்கும் பழக்கத்தை வளர்ப்பது எப்படி?",
+    "english": "Developing Healthy Boundaries, Personal Safety and Respect for Others",
+    "path": "lessons/m11l03/index.html"
+  },
+  {
+    "module": 11,
+    "lesson": 4,
+    "title": "குழந்தைகளின் கருத்து வேறுபாடுகளைத் தீர்க்கும் திறன், மன்னிக்கும் மனப்பான்மை மற்றும் உறவுகளை மீண்டும் கட்டியெழுப்பும் பழக்கத்தை வளர்ப்பது எப்படி?",
+    "english": "Developing Conflict Resolution, Forgiveness and Relationship Repair Skills",
+    "path": "lessons/m11l04/index.html"
+  },
+  {
+    "module": 12,
+    "lesson": 1,
+    "title": "குடும்பத்தின் மதிப்புகள், பெற்றோரின் முன்மாதிரி நடத்தை மற்றும் பொறுப்பான பெற்றோர் அணுகுமுறையை ஒருங்கிணைப்பது எப்படி?",
+    "english": "Integrating Family Values, Parental Role Modelling and Responsible Parenting Practices",
+    "path": "lessons/m12l01/index.html"
+  },
+  {
+    "module": 12,
+    "lesson": 2,
+    "title": "குடும்பத்திற்கான 30 நாள் பொறுப்பான பெற்றோர் செயல்திட்டத்தை உருவாக்கி நடைமுறைப்படுத்துவது எப்படி?",
+    "english": "Designing and Implementing a 30-Day Responsible Parenting Family Action Plan",
+    "path": "lessons/m12l02/index.html"
+  },
+  {
+    "module": 12,
+    "lesson": 3,
+    "title": "பெற்றோரின் வளர்ச்சியை மதிப்பிடுதல், குடும்ப முன்னேற்றத்தைக் கண்காணித்தல் மற்றும் நீண்டகால மாற்றத்தை நிலைநிறுத்துதல்",
+    "english": "Parenting Progress Evaluation, Family Growth Monitoring and Sustainable Behaviour Change",
+    "path": "lessons/m12l03/index.html"
+  },
+  {
+    "module": 12,
+    "lesson": 4,
+    "title": "இறுதி மதிப்பீடு, குடும்ப மாற்றத்தின் மீள்பார்வை மற்றும் பொறுப்பான பெற்றோர் உறுதிமொழி",
+    "english": "Final Assessment, Family Transformation Review & Personal Parenting Commitment",
+    "path": "lessons/m12l04/index.html"
+  }
+]
