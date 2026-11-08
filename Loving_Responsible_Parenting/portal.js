@@ -1,24 +1,254 @@
-import {auth,db,configured,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,sendPasswordResetEmail,doc,getDoc,setDoc,collection,getDocs,onSnapshot,serverTimestamp} from './firebase-app.js';
-const $=id=>document.getElementById(id);let current=null,progress={},unsub=null,catalog=[],questions=[];
-const levels=[['Foundation','அடிப்படை நிலை','🌱'],['Intermediate','இடைநிலை','🌼'],['Advanced','மேம்பட்ட நிலை','🚀'],['Mastery','நடைமுறை ஒருங்கிணைப்பு','💜']];
-const safeText=(el,text)=>el.textContent=String(text??'');
-async function loadData(){[catalog,questions]=await Promise.all([fetch('./catalog.json').then(r=>r.json()),fetch('./assessment.json').then(r=>r.json())]);}
-function error(e){const codes={'auth/invalid-credential':'Email அல்லது Password சரியாக இல்லை.','auth/email-already-in-use':'இந்த Email ஏற்கெனவே பதிவு செய்யப்பட்டுள்ளது.','auth/weak-password':'வலுவான Password பயன்படுத்தவும்.','auth/too-many-requests':'சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்.','permission-denied':'Firestore அனுமதி இல்லை. Rules சரிபார்க்கவும்.'};$('authError').textContent=codes[e.code]||e.message||'Something went wrong';}
-function loginFields(){return [$('email').value.trim(),$('password').value]}
-$('signin').onclick=async()=>{try{$('authError').textContent='';const [email,pw]=loginFields();await signInWithEmailAndPassword(auth,email,pw)}catch(e){error(e)}};
-$('signup').onclick=async()=>{try{$('authError').textContent='';const [email,pw]=loginFields();const name=$('displayName').value.trim();if(!name||name.length>80||pw.length<8)throw Error('பெயர் மற்றும் குறைந்தது 8 எழுத்துகள் கொண்ட Password தேவை.');const cred=await createUserWithEmailAndPassword(auth,email,pw);await setDoc(doc(db,'users',cred.user.uid),{displayName:name,email:cred.user.email,createdAt:serverTimestamp(),updatedAt:serverTimestamp()});}catch(e){error(e)}};
-$('reset').onclick=async()=>{try{const [email]=loginFields();if(!email)throw Error('Enter your email first');await sendPasswordResetEmail(auth,email);$('authError').textContent='Password reset email அனுப்பப்பட்டுள்ளது (account இருந்தால்).'}catch(e){error(e)}};
-$('logout').onclick=()=>signOut(auth);
-$('continue').onclick=()=>{const next=catalog.find(x=>!progress[x.module+'-'+x.lesson]?.completed)||catalog[0];location.href=next.path};
-$('goAssessment').onclick=()=>{$('assessmentPanel').classList.remove('hide');$('assessmentPanel').scrollIntoView({behavior:'smooth'})};
-function showProgress(){const done=catalog.filter(x=>progress[x.module+'-'+x.lesson]?.completed).length;$('completed').textContent=done;$('percent').textContent=Math.round(done/48*100)+'%';$('bar').style.width=(done/48*100)+'%';$('syncStatus').textContent='☁ Progress synced with Firestore';renderLevels();}
-function renderLevels(){const wrap=$('levels');wrap.replaceChildren();levels.forEach(([title,ta,emoji],i)=>{const card=document.createElement('article');card.className='level';const h=document.createElement('h3');h.textContent=`${emoji} Level ${i+1} — ${title}`;card.append(h);const subtitle=document.createElement('p');subtitle.className='muted';const done=catalog.filter(x=>Math.floor((x.module-1)/3)===i&&progress[x.module+'-'+x.lesson]?.completed).length;subtitle.textContent=`${ta} · Modules ${i*3+1}–${i*3+3} · ${done}/12 பாடங்கள் முடிந்தன`;card.append(subtitle);for(let m=i*3+1;m<=i*3+3;m++){const details=document.createElement('details');const summary=document.createElement('summary');summary.textContent=`Module ${m} · ${catalog.filter(x=>x.module===m&&progress[x.module+'-'+x.lesson]?.completed).length}/4`;details.append(summary);for(const x of catalog.filter(x=>x.module===m)){const line=document.createElement('div');line.className='lesson';const a=document.createElement('a');a.href=x.path;a.textContent=`Lesson ${x.lesson}: ${x.title}`;const mark=document.createElement('span');mark.className='mini';const data=progress[x.module+'-'+x.lesson];mark.textContent=data?.completed?'✓ முடிந்தது':data?.sectionsDone?`${data.sectionsDone}/10 பகுதிகள்`:'தொடங்கலாம்';line.append(a,mark);details.append(line)}card.append(details)}wrap.append(card)})}
-function renderAssessment(){const form=$('assessmentForm');form.replaceChildren();questions.forEach((item,i)=>{const field=document.createElement('fieldset');field.className='q';const legend=document.createElement('legend');legend.textContent=`${i+1}. ${item.q}`;field.append(legend);item.options.forEach((option,j)=>{const label=document.createElement('label'),radio=document.createElement('input');radio.type='radio';radio.name='q'+i;radio.value=j;label.append(radio,document.createTextNode(option));field.append(label)});form.append(field)})}
-$('submitAssessment').onclick=async()=>{if(!current)return;const answers=questions.map((_,i)=>{const v=document.querySelector(`input[name="q${i}"]:checked`);return v?Number(v.value):null});if(answers.some(x=>x===null)){alert('அனைத்து 12 கேள்விகளுக்கும் பதில் அளிக்கவும்.');return}const score=answers.filter((a,i)=>a===questions[i].answer).length;const details=questions.map((q,i)=>`${i+1}. ${answers[i]===q.answer?'✓':'✗'} ${q.why}`).join('\n');$('assessmentResult').replaceChildren();const result=document.createElement('div');result.className='result';result.textContent=`மதிப்பெண்: ${score}/12 (${Math.round(score/12*100)}%).\n\n${details}`;result.style.whiteSpace='pre-line';$('assessmentResult').append(result);try{await setDoc(doc(db,'users',current.uid,'assessments','final'),{score,total:questions.length,answers,submittedAt:serverTimestamp()});$('assessmentStatus').textContent=score+'/12';}catch(e){alert('Result not synced: '+e.message)}};
-async function refreshAdmin(){if(!current)return;const list=$('adminList');list.textContent='Loading…';try{const snap=await getDocs(collection(db,'users'));list.replaceChildren();$('totalParents').textContent=snap.size;for(const d of snap.docs){const u=d.data();const row=document.createElement('div');row.className='adminrow';const name=document.createElement('span');name.textContent=(u.displayName||'Parent')+' · '+(u.email||d.id);const btn=document.createElement('button');btn.className='btn secondary';btn.textContent='View progress';btn.onclick=()=>showAdminParent(d.id,u.displayName||'Parent');row.append(name,btn);list.append(row)}}catch(e){list.textContent='Cannot load parent accounts: '+e.message}}
-async function showAdminParent(uid,name){const details=$('adminDetails');details.classList.remove('hide');details.textContent='Loading…';try{const [lessons,assessment]=await Promise.all([getDocs(collection(db,'users',uid,'lessons')),getDoc(doc(db,'users',uid,'assessments','final'))]);const completed=lessons.docs.filter(x=>x.data().completed).length;const result=assessment.exists()?assessment.data().score+'/12':'Not attempted';details.textContent=`${name}: ${completed}/48 completed · Final assessment: ${result}`;$('totalCompleted').textContent=completed;$('totalAssessments').textContent=assessment.exists()?'1':'0';}catch(e){details.textContent='Could not load: '+e.message}}
-$('refreshAdmin').onclick=refreshAdmin;
-async function start(){try{await loadData();renderAssessment()}catch(e){$('setup').textContent='Course catalog could not be loaded. Serve from GitHub Pages or localhost, not file://';return}if(!configured){$('setup').classList.remove('hide');return}$('setup').classList.add('hide');onAuthStateChanged(auth,async user=>{if(unsub){unsub();unsub=null}current=user;progress={};$('who').textContent=user?.email||'Not signed in';$('logout').classList.toggle('hide',!user);$('authPanel').classList.toggle('hide',!!user);$('parentPanel').classList.toggle('hide',!user);$('adminPanel').classList.add('hide');if(!user)return;
-try{const profile=await getDoc(doc(db,'users',user.uid));if(!profile.exists()){await setDoc(doc(db,'users',user.uid),{displayName:user.email?.split('@')[0]||'Parent',email:user.email,createdAt:serverTimestamp()},{merge:true})}safeText($('parentName'),profile.data()?.displayName||user.email?.split('@')[0]||'Parent');const a=await getDoc(doc(db,'users',user.uid,'assessments','final'));$('assessmentStatus').textContent=a.exists()?a.data().score+'/12':'Not started';const admin=await getDoc(doc(db,'admins',user.uid));if(admin.exists()){$('adminPanel').classList.remove('hide');refreshAdmin()}
- unsub=onSnapshot(collection(db,'users',user.uid,'lessons'),snapshot=>{progress={};snapshot.forEach(d=>progress[d.id]=d.data());showProgress()},e=>{$('syncStatus').textContent='Cloud sync error: '+e.message});
-}catch(e){$('syncStatus').textContent='Firestore error: '+e.message}})}start();
+
+import {
+  auth, db, configured, onAuthStateChanged, signInWithEmailAndPassword,
+  signOut, sendPasswordResetEmail, doc, getDoc, setDoc, collection,
+  getDocs, onSnapshot, serverTimestamp
+} from './firebase-app.js';
+
+// Loving & Responsible Parenting — Admin-managed accounts, private paid lessons.
+const $ = id => document.getElementById(id);
+const setText = (id, value) => { const el = $(id); if (el) el.textContent = String(value ?? ''); };
+const toggle = (id, hidden) => { const el = $(id); if (el) el.classList.toggle('hide', hidden); };
+const bind = (id, handler) => { const el = $(id); if (el) el.addEventListener('click', handler); else console.warn(`Missing optional element: #${id}`); };
+const message = e => ({
+  'auth/invalid-credential': 'Email அல்லது Password சரியாக இல்லை.',
+  'auth/too-many-requests': 'சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்.',
+  'auth/user-disabled': 'இந்த Account முடக்கப்பட்டுள்ளது. Admin-ஐ தொடர்புகொள்ளவும்.',
+  'permission-denied': 'Firestore அனுமதி இல்லை. Admin-ஐ தொடர்புகொள்ளவும்.'
+}[e?.code] || e?.message || 'Something went wrong');
+const levels = [
+  ['Foundation','அடிப்படை நிலை','🌱'],
+  ['Intermediate','இடைநிலை','🌼'],
+  ['Advanced','மேம்பட்ட நிலை','🚀'],
+  ['Mastery','நடைமுறை ஒருங்கிணைப்பு','💜']
+];
+let current = null, progress = {}, unsubscribe = null, catalog = [], questions = [];
+let paid = false, isAdmin = false;
+
+async function loadData() {
+  const [c, q] = await Promise.all([
+    fetch('./catalog.json').then(r => { if (!r.ok) throw Error(`catalog.json: ${r.status}`); return r.json(); }),
+    fetch('./assessment.json').then(r => { if (!r.ok) throw Error(`assessment.json: ${r.status}`); return r.json(); })
+  ]);
+  catalog = c; questions = q;
+}
+function loginFields() { return [($('email')?.value || '').trim(), $('password')?.value || '']; }
+function canAccess() { return Boolean(current && (paid || isAdmin)); }
+function requestApproval() {
+  const panel = $('paymentPanel');
+  if (panel && !panel.classList.contains('hide')) panel.scrollIntoView({behavior:'smooth'});
+  else alert('₹499 கட்டணத்தை Admin சரிபார்த்து அனுமதி வழங்கிய பிறகே பாடங்களை அணுகலாம்.');
+}
+function lessonId(x) { return `${x.module}-${x.lesson}`; }
+function privateLessonUrl(x) {
+  // The lesson page must independently enforce Firebase authentication and entitlement.
+  return x.path;
+}
+function goToLesson(x) {
+  if (!canAccess()) { requestApproval(); return; }
+  if (!x?.path) { alert('Lesson link not available'); return; }
+  location.href = privateLessonUrl(x);
+}
+function showProgress() {
+  const done = catalog.filter(x => progress[lessonId(x)]?.completed).length;
+  setText('completed', done);
+  setText('percent', Math.round(done / (catalog.length || 48) * 100) + '%');
+  const bar = $('bar'); if (bar) bar.style.width = Math.round(done / (catalog.length || 48) * 100) + '%';
+  setText('syncStatus', '☁ Progress synced with Firestore');
+  renderLevels();
+}
+function renderLevels() {
+  const wrap = $('levels'); if (!wrap) return;
+  wrap.replaceChildren();
+  levels.forEach(([title, tamil, emoji], i) => {
+    const card = document.createElement('article'); card.className = 'level';
+    const h = document.createElement('h3'); h.textContent = `${emoji} Level ${i + 1} — ${title}`; card.append(h);
+    const subtitle = document.createElement('p'); subtitle.className = 'muted';
+    const done = catalog.filter(x => Math.floor((Number(x.module)-1)/3) === i && progress[lessonId(x)]?.completed).length;
+    subtitle.textContent = `${tamil} · Modules ${i*3+1}–${i*3+3} · ${done}/12 பாடங்கள் முடிந்தன`;
+    card.append(subtitle);
+    for (let m = i*3+1; m <= i*3+3; m++) {
+      const details = document.createElement('details');
+      const summary = document.createElement('summary');
+      summary.textContent = `Module ${m} · ${catalog.filter(x => Number(x.module)===m && progress[lessonId(x)]?.completed).length}/4`;
+      details.append(summary);
+      for (const x of catalog.filter(x => Number(x.module) === m)) {
+        const line = document.createElement('div'); line.className = 'lesson';
+        const a = document.createElement('a');
+        a.href = canAccess() ? (x.path || '#') : '#paymentPanel';
+        a.textContent = `Lesson ${x.lesson}: ${x.title}`;
+        a.addEventListener('click', e => { e.preventDefault(); goToLesson(x); });
+        const mark = document.createElement('span'); mark.className = 'mini';
+        const data = progress[lessonId(x)];
+        mark.textContent = !canAccess() ? '🔒 Locked' : data?.completed ? '✓ முடிந்தது' : data?.sectionsDone ? `${data.sectionsDone}/10 பகுதிகள்` : 'தொடங்கலாம்';
+        line.append(a, mark); details.append(line);
+      }
+      card.append(details);
+    }
+    wrap.append(card);
+  });
+}
+function renderAssessment() {
+  const form = $('assessmentForm'); if (!form) return;
+  form.replaceChildren();
+  questions.forEach((item, i) => {
+    const field = document.createElement('fieldset'); field.className = 'q';
+    const legend = document.createElement('legend'); legend.textContent = `${i+1}. ${item.q}`; field.append(legend);
+    (item.options || []).forEach((option,j) => {
+      const label = document.createElement('label');
+      const radio = document.createElement('input'); radio.type='radio'; radio.name='q'+i; radio.value=j;
+      label.append(radio, document.createTextNode(option)); field.append(label);
+    });
+    form.append(field);
+  });
+}
+async function submitAssessment() {
+  if (!canAccess()) { requestApproval(); return; }
+  const answers = questions.map((_,i) => {
+    const checked = document.querySelector(`input[name="q${i}"]:checked`);
+    return checked ? Number(checked.value) : null;
+  });
+  if (answers.some(x => x === null)) { alert(`அனைத்து ${questions.length} கேள்விகளுக்கும் பதில் அளிக்கவும்.`); return; }
+  const score = answers.filter((a,i) => a === questions[i].answer).length;
+  const details = questions.map((q,i) => `${i+1}. ${answers[i]===q.answer?'✓':'✗'} ${q.why || ''}`).join('\n');
+  const resultWrap = $('assessmentResult');
+  if (resultWrap) {
+    const result = document.createElement('div'); result.className='result'; result.style.whiteSpace='pre-line';
+    result.textContent = `மதிப்பெண்: ${score}/${questions.length} (${Math.round(score/questions.length*100)}%).\n\n${details}`;
+    resultWrap.replaceChildren(result);
+  }
+  try {
+    await setDoc(doc(db,'users',current.uid,'assessments','final'), {
+      score, total:questions.length, answers, submittedAt:serverTimestamp()
+    });
+    setText('assessmentStatus', `${score}/${questions.length}`);
+  } catch(e) { alert('Result not synced: '+message(e)); }
+}
+async function refreshAdmin() {
+  if (!current || !isAdmin) return;
+  const list = $('adminList'); if (!list) return;
+  list.textContent = 'Loading…';
+  try {
+    const snap = await getDocs(collection(db,'users'));
+    list.replaceChildren(); setText('totalParents',snap.size);
+    for (const userDoc of snap.docs) {
+      const u = userDoc.data();
+      const row = document.createElement('div'); row.className='adminrow';
+      const name = document.createElement('span');
+      name.textContent = `${u.displayName || 'Parent'} · ${u.email || userDoc.id}`;
+      const view = document.createElement('button'); view.className='btn secondary'; view.textContent='View progress';
+      view.onclick=()=>showAdminParent(userDoc.id,u.displayName || 'Parent');
+      const approve = document.createElement('button'); approve.className='btn secondary'; approve.textContent='Approve ₹499';
+      approve.onclick=async()=>{
+        if (!confirm(`Payment independently verified? Grant access to ${u.email || userDoc.id}?`)) return;
+        try {
+          await setDoc(doc(db,'entitlements',userDoc.id), {
+            active:true, courseKey:'loving-responsible-parenting', priceINR:499,
+            approvedBy:current.uid, approvedAt:serverTimestamp()
+          });
+          alert('Paid access activated');
+        } catch(e) { alert('Approval failed: '+message(e)); }
+      };
+      const revoke = document.createElement('button'); revoke.className='btn warn'; revoke.textContent='Revoke';
+      revoke.onclick=async()=>{
+        if (!confirm('Revoke course access?')) return;
+        try {
+          await setDoc(doc(db,'entitlements',userDoc.id), {
+            active:false, courseKey:'loving-responsible-parenting', priceINR:499,
+            approvedBy:current.uid, approvedAt:serverTimestamp()
+          });
+          alert('Paid access revoked');
+        } catch(e) { alert('Revocation failed: '+message(e)); }
+      };
+      row.append(name,view,approve,revoke); list.append(row);
+    }
+  } catch(e) { list.textContent = 'Cannot load parent accounts: '+message(e); }
+}
+async function showAdminParent(uid,name) {
+  if (!isAdmin) return;
+  const details = $('adminDetails'); if (!details) return;
+  details.classList.remove('hide'); details.textContent='Loading…';
+  try {
+    const [lessons,assessment] = await Promise.all([
+      getDocs(collection(db,'users',uid,'lessons')),
+      getDoc(doc(db,'users',uid,'assessments','final'))
+    ]);
+    const completed = lessons.docs.filter(x=>x.data().completed).length;
+    details.textContent = `${name}: ${completed}/48 completed · Final assessment: ${assessment.exists()?assessment.data().score+'/'+(assessment.data().total||12):'Not attempted'}`;
+    setText('totalCompleted',completed); setText('totalAssessments',assessment.exists()?'1':'0');
+  } catch(e) { details.textContent='Could not load: '+message(e); }
+}
+async function onUserChanged(user) {
+  if (unsubscribe) { unsubscribe(); unsubscribe=null; }
+  current=user; progress={}; paid=false; isAdmin=false;
+  setText('who',user?.email || 'Not signed in');
+  toggle('logout',!user); toggle('authPanel',!!user); toggle('parentPanel',!user);
+  toggle('adminPanel',true); toggle('paymentPanel',true);
+  if (!user) { renderLevels(); return; }
+  try {
+    // Check admin first, so admin can use course without a paid entitlement.
+    const adminDoc = await getDoc(doc(db,'admins',user.uid));
+    isAdmin = adminDoc.exists();
+  } catch(e) { console.warn('Admin lookup failed:',message(e)); }
+  try {
+    const ent = await getDoc(doc(db,'entitlements',user.uid));
+    paid = ent.exists() && ent.data().active === true && ent.data().courseKey === 'loving-responsible-parenting';
+  } catch(e) { console.warn('Entitlement lookup failed:',message(e)); }
+  toggle('paymentPanel',paid || isAdmin);
+  setText('paidStatus',canAccess()?'✓ Course access active':'🔒 Payment ₹499 + Admin Approval required');
+  toggle('adminPanel',!isAdmin);
+  renderLevels();
+  try {
+    const profile = await getDoc(doc(db,'users',user.uid));
+    if (!profile.exists()) {
+      await setDoc(doc(db,'users',user.uid), {
+        displayName:user.email?.split('@')[0] || 'Parent', email:user.email,
+        createdAt:serverTimestamp()
+      });
+    }
+    setText('parentName',profile.data()?.displayName || user.email?.split('@')[0] || 'Parent');
+    const assessment = await getDoc(doc(db,'users',user.uid,'assessments','final'));
+    setText('assessmentStatus',assessment.exists()?`${assessment.data().score}/${assessment.data().total || 12}`:'Not started');
+    if (isAdmin) refreshAdmin();
+    unsubscribe = onSnapshot(collection(db,'users',user.uid,'lessons'),snap=>{
+      progress={}; snap.forEach(d=>{progress[d.id]=d.data();}); showProgress();
+    },e=>setText('syncStatus','Cloud sync error: '+message(e)));
+  } catch(e) { setText('syncStatus','Firestore error: '+message(e)); }
+}
+async function start() {
+  bind('signin',async()=>{
+    try {
+      setText('authError',''); const [email,password]=loginFields();
+      if (!email || !password) throw Error('Email மற்றும் Password உள்ளிடவும்.');
+      if (!configured || !auth) throw Error('Firebase configuration is missing.');
+      await signInWithEmailAndPassword(auth,email,password);
+    } catch(e) { setText('authError',message(e)); }
+  });
+  bind('reset',async()=>{
+    try {
+      const [email]=loginFields(); if (!email) throw Error('முதலில் Email Address உள்ளிடவும்.');
+      await sendPasswordResetEmail(auth,email);
+      setText('authError','Account இருந்தால் Password Reset Link Email-க்கு அனுப்பப்படும். Spam Folder-ஐயும் பார்க்கவும்.');
+    } catch(e) { setText('authError',message(e)); }
+  });
+  bind('logout',()=>auth && signOut(auth));
+  bind('continue',()=>{
+    if (!canAccess()) { requestApproval(); return; }
+    const next = catalog.find(x=>!progress[lessonId(x)]?.completed) || catalog[0];
+    if (next) goToLesson(next);
+  });
+  bind('goAssessment',()=>{
+    if (!canAccess()) { requestApproval(); return; }
+    toggle('assessmentPanel',false); $('assessmentPanel')?.scrollIntoView({behavior:'smooth'});
+  });
+  bind('submitAssessment',submitAssessment);
+  bind('refreshAdmin',refreshAdmin);
+  // No public signup listener: parents are provisioned by the administrator.
+  // Remove any legacy #signup control from index.html separately.
+  try { await loadData(); renderAssessment(); }
+  catch(e) { setText('setup','Course catalog could not be loaded: '+message(e)); toggle('setup',false); return; }
+  if (!configured || !auth || !db) { setText('setup','Firebase configuration is missing.'); toggle('setup',false); return; }
+  toggle('setup',true);
+  onAuthStateChanged(auth,onUserChanged,e=>setText('authError',message(e)));
+}
+start();
