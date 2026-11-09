@@ -1,0 +1,13 @@
+YES, I CAN! — Google Sheets இணைப்பு
+
+1. Google Sheets-ல் புதிய spreadsheet உருவாக்கவும். அதன் URL-ல் /d/ மற்றும் /edit இடையில் உள்ள Sheet ID-ஐ நகலெடுக்கவும்.
+2. Extensions > Apps Script > Code.gs-ல் இந்த ZIP-ல் உள்ள Code.gs உள்ளடக்கத்தை ஒட்டவும். SHEET_ID-ஐ மாற்றவும்.
+3. Deploy > New deployment > Web app: Execute as Me; Who has access: Anyone. Deploy செய்து அனுமதி அளிக்கவும்.
+4. கிடைத்த https://script.google.com/macros/s/.../exec URL-ஐ index.html-ல் APPS_SCRIPT_URL என்ற இடத்தில் ஒட்டவும்.
+5. GitHub Pages-ல் index.html மற்றும் assets folder-ஐ பதிவேற்றவும்.
+6. ஒரு TEST பதிவு செய்து Google Sheet-ல் வரிசை உருவானதா சரிபார்க்கவும். TEST வரிசையைப் பின்னர் நீக்கவும்.
+7. Razorpay Dashboard-ல் ₹99 Payment Button சரியா என்று உறுதி செய்யவும். Payment Status-ஐ Google Sheets-ல் கைமுறையாக மாற்றவும்.
+
+கவனம்: Browser-ல் Google Apps Script no-cors response-ஐ நேரடியாக வாசிக்க முடியாது. எனவே அனுப்பப்பட்டது என்ற செய்தி வெற்றிகரமான Sheet பதிவை உறுதி செய்யாது. Google Sheets-ல் சரிபார்க்க வேண்டும்.
+
+பாதுகாப்பு: Anyone access கொண்ட Apps Script URL பொதுவில் இருக்கும். Bot spam மற்றும் தவறான பதிவுகளைத் தடுக்க CAPTCHA/verified backend பின்னர் சேர்க்க பரிந்துரை. மாணவர் விவரங்களை பாதுகாப்பாக வைத்துக்கொள்ளுங்கள்; Sheet-ஐ பொதுவில் பகிர வேண்டாம்.
