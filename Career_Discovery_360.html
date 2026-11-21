@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Career Discovery 360 | SOMASUNDARAM NT SKILLS ACADEMY</title><style>
+:root{--navy:#102c4d;--gold:#d6a34a;--ink:#203047;--muted:#617188;--bg:#f2f6fc;--line:#dce5ef}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,'Noto Sans Tamil',sans-serif;line-height:1.65}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}.shell{max-width:1040px;margin:auto;padding:18px}.hero{background:linear-gradient(125deg,#0c2746,#234e76);color:white;padding:26px;border-radius:22px;display:flex;justify-content:space-between;align-items:center;gap:20px}.hero h1{color:white;margin:8px 0;font-size:clamp(1.45rem,3vw,2.3rem)}.hero p{color:#dbe7f6;margin:0}.logo{max-width:92px;max-height:92px;object-fit:contain}.eyebrow{color:#f4c66d;font-weight:800;letter-spacing:.07em;font-size:.77rem}.panel{background:white;border:1px solid var(--line);box-shadow:0 10px 30px #1734510b;border-radius:20px;padding:clamp(18px,3vw,32px);margin:18px 0}.panel h2{color:var(--navy);margin-top:0}.muted{color:var(--muted)}.btn{background:var(--navy);color:white;border:0;border-radius:11px;padding:12px 20px;font-weight:750}.btn.gold{background:var(--gold);color:#14263b}.btn.outline{background:white;color:var(--navy);border:1px solid var(--navy)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stat{padding:16px;background:#edf4fb;border-radius:14px}.stat b{display:block;color:var(--navy)}.field{display:block;margin:12px 0;font-weight:650}.field input,.field select{display:block;width:100%;padding:12px;border:1px solid #aebed0;border-radius:10px;margin-top:6px}.question{padding:16px 0;border-bottom:1px solid var(--line)}.question h3{font-size:1rem;margin:0 0 12px}.option{display:block;padding:11px 13px;border:1px solid #cbd7e5;border-radius:11px;margin:8px 0;cursor:pointer}.option:has(input:checked){background:#e9f2ff;border-color:#356ca3}.option input{margin-right:10px;accent-color:#24527d}.progress{height:10px;background:#e4ebf4;border-radius:20px;overflow:hidden}.progress div{height:100%;background:var(--gold);transition:width .2s}.row{display:flex;justify-content:space-between;gap:14px;align-items:center}.bar{display:grid;grid-template-columns:minmax(120px,210px) 1fr 46px;gap:10px;align-items:center;margin:12px 0}.track{height:13px;border-radius:20px;background:#e7edf5;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#204b78,#58a0c7)}.chip{display:inline-block;background:#e9f1f9;border-radius:30px;padding:4px 12px;margin:3px;color:#214d74;font-size:.84rem;font-weight:700}.career{border:1px solid #d7e3ef;border-radius:14px;padding:16px;margin:10px 0}.career h3{margin:0;color:var(--navy)}.note{background:#fff8e8;border-left:4px solid var(--gold);padding:15px;border-radius:8px}.hidden{display:none!important}.footer{text-align:center;color:var(--muted);font-size:.85rem;margin:30px 0}.small{font-size:.87rem}.print-only{display:none} @media(max-width:640px){.grid{grid-template-columns:1fr}.hero{align-items:flex-start}.logo{max-width:65px}.bar{grid-template-columns:110px 1fr 38px;font-size:.8rem}.actions button{flex:1}.shell{padding:10px}}@media print{body{background:white}.no-print{display:none!important}.print-only{display:block}.shell{max-width:none}.panel{box-shadow:none;break-inside:avoid;margin:10px 0;padding:15px}.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}.career{break-inside:avoid}}
+</style></head><body><div class="shell"><header class="hero"><div><div class="eyebrow">SOMASUNDARAM NT SKILLS ACADEMY</div><h1 id="appTitle">Career Discovery 360</h1><p id="subtitle">Explore your interests, strengths and future options</p></div><div class="no-print"><button class="btn gold" onclick="toggleLang()" id="langBtn">தமிழ்</button></div></header>
+<section id="intro" class="panel"><h2 data-i="intro">Discover possibilities, not a fixed destiny</h2><p data-i="introText">A guided exploration for students in Classes 9–12. This questionnaire includes 69 prompts about interests, reasoning, preferences and career planning. It is not a clinical test or a validated prediction of career success.</p><div class="grid"><div class="stat"><b>69</b><span data-i="questions">Questions</span></div><div class="stat"><b>20–30 min</b><span data-i="time">Estimated time</span></div></div><p class="note" data-i="privacy">Your responses remain in this browser. Nothing is automatically sent to Google Sheets or another server. You can download a local JSON backup. Avoid shared devices for personal information.</p><div class="actions"><button class="btn gold" onclick="show('intake')" data-i="start">Start assessment</button></div></section>
+<section id="intake" class="panel hidden"><h2 data-i="details">Student details</h2><label class="field"><span data-i="name">Student name or nickname (optional)</span><input id="studentName" maxlength="80" autocomplete="off"></label><label class="field"><span data-i="grade">Class</span><select id="grade"><option value="">Select / தேர்வு</option><option>9</option><option>10</option><option>11</option><option>12</option><option>Other</option></select></label><label class="option"><input type="checkbox" id="ack"><span data-i="ack">I understand this is an exploratory tool, not a diagnosis or a final career decision. If I am under 18, I will review my results with a parent/guardian or trusted educator.</span></label><p id="startError" role="alert" style="color:#a32c2c;font-weight:600" aria-live="polite"></p><p class="note" id="startHint">To begin, tick the acknowledgement box above and select Begin questions. Name and class are optional.</p><div class="actions"><button class="btn outline" onclick="show('intro')" data-i="back">Back</button><button class="btn gold" onclick="begin()" data-i="begin">Begin questions →</button></div></section>
+<section id="quiz" class="panel hidden"><div class="row"><strong id="sectionTitle"></strong><span id="pageCount" class="muted"></span></div><div class="progress"><div id="progressFill"></div></div><p class="muted small" id="sectionHelp"></p><div id="questions"></div><p id="validation" role="alert" style="color:#a32c2c"></p><div class="actions"><button class="btn outline" onclick="previous()" data-i="back">Back</button><button class="btn gold" onclick="next()" id="nextButton">Next</button><button class="btn outline" onclick="saveBackup()" data-i="backup">Save backup</button><label class="btn outline" style="cursor:pointer"><span data-i="restore">Restore backup</span><input type="file" accept="application/json" onchange="restoreBackup(event)" style="display:none"></label></div></section>
+<section id="report" class="hidden"><div class="panel no-print"><div class="actions"><button class="btn gold" onclick="window.print()" data-i="pdf">Print / Save PDF</button><button class="btn outline" onclick="show('intro')" data-i="home">Home</button><button class="btn outline" onclick="eraseAll()" data-i="clear">Clear this session</button></div></div><div id="reportBody"></div><div class="panel no-print" id="aiGuidancePanel"><h2 id="aiTitle">AI Career Guidance · ChatGPT</h2><p id="aiIntro">Copy a personalized prompt containing your assessment results (without your name or contact details). Paste it into ChatGPT for a more detailed exploratory career guidance report.</p><div class="actions"><button class="btn gold" type="button" onclick="copyCareerPrompt()" id="copyAiBtn">Copy My Career Guidance Prompt</button><button class="btn outline" type="button" onclick="openCareerChatGPT()">Open ChatGPT ↗</button><button class="btn outline" type="button" onclick="downloadCareerPrompt()">Download Prompt (.txt)</button></div><p id="aiCopyStatus" role="status" aria-live="polite"></p><details><summary id="aiPreviewLabel">Preview the personalized prompt</summary><textarea id="careerPromptPreview" readonly style="width:100%;min-height:230px;margin-top:12px;padding:12px;border:1px solid #ccd5df;border-radius:10px;font:13px/1.5 sans-serif"></textarea></details><p class="note" id="aiPrivacy">Privacy: Your name, mobile number and school are not included. Do not share identifying information about minors. AI guidance is exploratory, not a verified prediction or a substitute for a qualified counsellor.</p></div></section><footer class="footer">SOMASUNDARAM NT SKILLS ACADEMY · Life Skills for Life. Guidance for Careers.<br><span data-i="disclaimer">Educational self-exploration only · Discuss major decisions with a qualified counsellor</span></footer></div><script>
+const LIK_EN=['Strongly Disagree','Disagree','Neutral','Agree','Strongly Agree'];
+const LIK_TA=['மிகவும் மறுக்கிறேன்','மறுக்கிறேன்','நடுநிலை','ஒப்புக்கொள்கிறேன்','மிகவும் ஒப்புக்கொள்கிறேன்'];
+
+const APTITUDE=[
+ {id:1,sub:'logical',en:'If all Roses are Flowers, and some Flowers fade quickly, which statement is definitely true?',ta:'எல்லா ரோஜாக்களும் பூக்கள், சில பூக்கள் விரைவில் வாடும் எனில், எது நிச்சயமாக உண்மை?',
+  opt:['All roses are flowers','All flowers are roses','No roses are flowers','All roses fade quickly'],
+  optTa:['எல்லா ரோஜாக்களும் பூக்கள்','எல்லா பூக்களும் ரோஜாக்கள்','எந்த ரோஜாவும் பூ அல்ல','எல்லா ரோஜாக்களும் விரைவில் வாடும்'],ans:1},
+ {id:2,sub:'logical',en:'Find the odd one out: Triangle, Square, Circle, Red',ta:'பொருந்தாததைக் கண்டறியவும்: முக்கோணம், சதுரம், வட்டம், சிவப்பு',
+  opt:['Triangle','Square','Circle','Red'],optTa:['முக்கோணம்','சதுரம்','வட்டம்','சிவப்பு'],ans:3},
+ {id:3,sub:'numerical',en:'A shop gives 20% discount on ₹500. What is the final price?',ta:'ஒரு கடை ₹500-க்கு 20% தள்ளுபடி தருகிறது. இறுதி விலை என்ன?',
+  opt:['₹380','₹400','₹420','₹450'],optTa:['₹380','₹400','₹420','₹450'],ans:1},
+ {id:4,sub:'numerical',en:'What is the next number in the series: 2, 6, 12, 20, 30, ?',ta:'தொடரில் அடுத்த எண்: 2, 6, 12, 20, 30, ?',
+  opt:['36','40','42','44'],optTa:['36','40','42','44'],ans:2},
+ {id:5,sub:'verbal',en:'Choose the word that is most similar in meaning to "Diligent"',ta:'"Diligent" எனும் சொல்லுக்கு நெருங்கிய பொருள் கொண்ட சொல்லைத் தேர்ந்தெடுக்கவும்',
+  opt:['Lazy','Hardworking','Careless','Angry'],optTa:['சோம்பேறி','கடின உழைப்பாளி','கவனக்குறைவான','கோபமான'],ans:1},
+ {id:6,sub:'verbal',en:'Choose the correctly punctuated sentence:',ta:'சரியான நிறுத்தற்குறியுடன் கூடிய வாக்கியத்தைத் தேர்ந்தெடுக்கவும்:',
+  opt:["Its a beautiful day isnt it","It's a beautiful day, isn't it?","Its a beautiful day isn't it.","It's a beautiful day isnt it?"],
+  optTa:["Its a beautiful day isnt it","It's a beautiful day, isn't it?","Its a beautiful day isn't it.","It's a beautiful day isnt it?"],ans:1},
+ {id:7,sub:'spatial',en:'If a cube is painted on all faces and cut into 27 equal smaller cubes, how many small cubes have exactly 2 painted faces?',ta:'ஒரு கனசதுரத்தின் அனைத்து பக்கங்களும் வண்ணம் தீட்டப்பட்டு 27 சிறு கனசதுரங்களாக வெட்டப்பட்டால், சரியாக 2 பக்கங்கள் வண்ணம் பூசப்பட்ட சிறு கனசதுரங்கள் எத்தனை?',
+  opt:['8','12','6','20'],optTa:['8','12','6','20'],ans:1},
+ {id:8,sub:'spatial',en:'A square is rotated 90 degrees clockwise. Which statement is true?',ta:'ஒரு சதுரத்தை 90 டிகிரி சுழற்றினால் அதன் வெளிப்புற வடிவம் எப்படி இருக்கும்?',opt:['It still looks like a square','It becomes a triangle','It becomes a circle','It becomes a pentagon'],optTa:['சதுரமாகவே தோன்றும்','முக்கோணமாக மாறும்','வட்டமாக மாறும்','ஐங்கோணமாக மாறும்'],ans:0},
+ {id:9,sub:'analytical',en:'A train travels 60km in 1.5 hours. At the same speed, how long will it take to travel 100km?',ta:'ஒரு ரயில் 1.5 மணி நேரத்தில் 60கி.மீ செல்கிறது. அதே வேகத்தில் 100கி.மீ செல்ல எவ்வளவு நேரம் ஆகும்?',
+  opt:['2 hours','2.5 hours','3 hours','1.8 hours'],optTa:['2 மணி','2.5 மணி','3 மணி','1.8 மணி'],ans:1},
+ {id:10,sub:'analytical',en:'Three friends A, B, C have different heights. A is taller than B. C is shorter than B. Who is the shortest?',ta:'A, B, C ஆகிய மூவரும் வெவ்வேறு உயரம் கொண்டவர்கள். A, B ஐ விட உயரமானவர். C, B ஐ விட குட்டையானவர். குட்டையானவர் யார்?',
+  opt:['A','B','C','Cannot determine'],optTa:['A','B','C','தீர்மானிக்க முடியாது'],ans:2}
+];
+
+const BIGFIVE=[
+ {id:11,trait:'O',rev:false,en:'I enjoy exploring new ideas and creative activities.',ta:'புதிய யோசனைகள் மற்றும் படைப்பாற்றல் செயல்பாடுகளை ஆராய விரும்புகிறேன்.'},
+ {id:12,trait:'O',rev:false,en:'I like trying new things rather than sticking to routine.',ta:'வழக்கமான வழிமுறையை விட புதிய விஷயங்களை முயற்சிக்க விரும்புகிறேன்.'},
+ {id:13,trait:'C',rev:false,en:'I plan my tasks in advance and follow through.',ta:'எனது பணிகளை முன்கூட்டியே திட்டமிட்டு முடிக்கிறேன்.'},
+ {id:14,trait:'C',rev:false,en:'I keep my study materials and schedule well organised.',ta:'எனது படிப்பு பொருட்கள் மற்றும் அட்டவணையை நன்கு ஒழுங்குபடுத்துகிறேன்.'},
+ {id:15,trait:'E',rev:false,en:'I feel energised when I am around people.',ta:'மக்களுடன் இருக்கும்போது எனக்கு ஆற்றல் கிடைக்கிறது.'},
+ {id:16,trait:'E',rev:false,en:'I enjoy speaking up in group discussions.',ta:'குழு விவாதங்களில் பேச விரும்புகிறேன்.'},
+ {id:17,trait:'A',rev:false,en:'I try to be kind and cooperative even when I disagree with someone.',ta:'யாருடனாவது கருத்து வேறுபாடு இருந்தாலும் கருணையுடனும் ஒத்துழைப்புடனும் இருக்க முயற்சிக்கிறேன்.'},
+ {id:18,trait:'A',rev:false,en:'I find it easy to trust and help others.',ta:'மற்றவர்களை நம்பவும் உதவவும் எனக்கு எளிதாக உள்ளது.'},
+ {id:19,trait:'N',rev:true,en:'I stay calm even under stress or pressure.',ta:'மன அழுத்தத்திலும் நான் அமைதியாக இருக்கிறேன்.'},
+ {id:20,trait:'N',rev:true,en:'I do not get anxious easily before exams or events.',ta:'தேர்வுகள் அல்லது நிகழ்வுகளுக்கு முன் நான் எளிதில் பதற்றமடைவதில்லை.'}
+];
+
+const RIASEC=[
+ {id:21,type:'R',en:'I enjoy working with tools, machines or building things with my hands.',ta:'கருவிகள், இயந்திரங்கள் அல்லது கை வேலைப்பாடுகளுடன் பணிபுரிய விரும்புகிறேன்.'},
+ {id:22,type:'R',en:'I prefer outdoor or physical activities over sitting and reading.',ta:'உட்கார்ந்து படிப்பதை விட வெளிப்புற செயல்பாடுகளை விரும்புகிறேன்.'},
+ {id:23,type:'I',en:'I like analysing problems and understanding how things work.',ta:'சிக்கல்களை பகுப்பாய்வு செய்வதையும் விஷயங்கள் எவ்வாறு செயல்படுகின்றன என்பதை புரிந்துகொள்வதையும் விரும்புகிறேன்.'},
+ {id:24,type:'I',en:'I am curious about science, research and how the world works.',ta:'அறிவியல், ஆராய்ச்சி மற்றும் உலகம் எவ்வாறு செயல்படுகிறது என்பதில் எனக்கு ஆர்வம் உள்ளது.'},
+ {id:25,type:'A',en:'I enjoy creative expression through art, music, writing or design.',ta:'கலை, இசை, எழுத்து அல்லது வடிவமைப்பு மூலம் படைப்பாற்றலை வெளிப்படுத்த விரும்புகிறேன்.'},
+ {id:26,type:'A',en:'I like thinking outside the box rather than following fixed rules.',ta:'நிலையான விதிகளைப் பின்பற்றுவதை விட புதுமையாக சிந்திக்க விரும்புகிறேன்.'},
+ {id:27,type:'S',en:'I feel fulfilled when I help, teach or support others.',ta:'மற்றவர்களுக்கு உதவும் அல்லது கற்பிக்கும்போது எனக்கு திருப்தி கிடைக்கிறது.'},
+ {id:28,type:'S',en:'I enjoy working in teams that focus on people\'s wellbeing.',ta:'மக்களின் நலனில் கவனம் செலுத்தும் குழுக்களில் பணிபுரிய விரும்புகிறேன்.'},
+ {id:29,type:'E',en:'I like leading projects, persuading people, or starting new ventures.',ta:'திட்டங்களை வழிநடத்தவும், மக்களை வற்புறுத்தவும், புதிய முயற்சிகளைத் தொடங்கவும் விரும்புகிறேன்.'},
+ {id:30,type:'C',en:'I prefer clear structure, rules and organised systems in my work.',ta:'எனது பணியில் தெளிவான அமைப்பு, விதிகள் மற்றும் ஒழுங்கமைக்கப்பட்ட முறைகளை விரும்புகிறேன்.'}
+];
+
+const SJT=[
+ {id:31,en:'Your close friend is copying answers during an exam. What do you do?',ta:'உங்கள் நெருங்கிய நண்பர் தேர்வில் நகல் அடிக்கிறார். நீங்கள் என்ன செய்வீர்கள்?',
+  opt:[{en:'Ignore it, it\'s not my problem',ta:'கவனிக்காமல் விடுவேன்',s:1},{en:'Quietly advise them to stop after the exam',ta:'தேர்வுக்குப் பிறகு நிறுத்தும்படி அமைதியாக அறிவுறுத்துவேன்',s:2},{en:'Report immediately to the invigilator',ta:'உடனடியாக மேற்பார்வையாளரிடம் தெரிவிப்பேன்',s:3}]},
+ {id:32,en:'You have a group project and one member is not contributing. What is your approach?',ta:'குழு திட்டப்பணியில் ஒருவர் பங்களிக்கவில்லை. உங்கள் அணுகுமுறை என்ன?',
+  opt:[{en:'Complain about them to the teacher immediately',ta:'உடனே ஆசிரியரிடம் புகார் செய்வேன்',s:1},{en:'Do their part myself to avoid conflict',ta:'மோதலைத் தவிர்க்க அவர்களின் பணியை நானே செய்வேன்',s:2},{en:'Talk to them directly to understand and find a solution',ta:'நேரடியாகப் பேசி காரணத்தைப் புரிந்து தீர்வு காண்பேன்',s:3}]},
+ {id:33,en:'You made a mistake that affected your team\'s result. What do you do?',ta:'உங்கள் தவறினால் குழுவின் முடிவு பாதிக்கப்பட்டது. நீங்கள் என்ன செய்வீர்கள்?',
+  opt:[{en:'Blame the circumstances or others',ta:'சூழ்நிலை அல்லது மற்றவர்களை குற்றம் சாட்டுவேன்',s:1},{en:'Stay quiet and hope no one notices',ta:'அமைதியாக இருந்து யாரும் கவனிக்காமல் இருக்க நினைப்பேன்',s:2},{en:'Admit the mistake and work to fix it',ta:'தவறை ஒப்புக்கொண்டு சரிசெய்ய முயற்சிப்பேன்',s:3}]},
+ {id:34,en:'You disagree strongly with a teacher\'s decision. What is the best response?',ta:'ஆசிரியரின் முடிவுடன் நீங்கள் கடுமையாக மாறுபடுகிறீர்கள். சிறந்த பதில் என்ன?',
+  opt:[{en:'Argue loudly in class',ta:'வகுப்பில் சத்தமாக வாதிடுவேன்',s:1},{en:'Say nothing and stay upset',ta:'எதுவும் சொல்லாமல் வருத்தமாக இருப்பேன்',s:2},{en:'Respectfully discuss it with the teacher after class',ta:'வகுப்புக்குப் பிறகு மரியாதையுடன் ஆசிரியருடன் விவாதிப்பேன்',s:3}]},
+ {id:35,en:'You find a wallet with cash on the school ground. What do you do?',ta:'பள்ளி மைதானத்தில் பணத்துடன் கூடிய பணப்பையை கண்டெடுக்கிறீர்கள். என்ன செய்வீர்கள்?',
+  opt:[{en:'Keep it since no one saw',ta:'யாரும் பார்க்கவில்லை என்பதால் வைத்துக் கொள்வேன்',s:1},{en:'Ask friends first before deciding',ta:'முடிவெடுக்கும் முன் நண்பர்களிடம் கேட்பேன்',s:2},{en:'Hand it to a teacher immediately',ta:'உடனே ஆசிரியரிடம் ஒப்படைப்பேன்',s:3}]},
+ {id:36,en:'You have two important deadlines on the same day. How do you handle it?',ta:'ஒரே நாளில் இரண்டு முக்கிய கடைசி தேதிகள். எப்படி கையாள்வீர்கள்?',
+  opt:[{en:'Panic and do neither well',ta:'பதற்றமடைந்து இரண்டையும் சரியாக செய்யாமல் விடுவேன்',s:1},{en:'Do only the easier one',ta:'எளிதானதை மட்டும் செய்வேன்',s:2},{en:'Prioritise, plan time and complete both as best as possible',ta:'முன்னுரிமை கொடுத்து நேரம் திட்டமிட்டு இரண்டையும் முடிவேன்',s:3}]},
+ {id:37,en:'A classmate is being bullied by others. What would you do?',ta:'ஒரு வகுப்பு தோழரை மற்றவர்கள் கொடுமைப்படுத்துகிறார்கள். நீங்கள் என்ன செய்வீர்கள்?',
+  opt:[{en:'Stay out of it to avoid trouble',ta:'சிக்கலைத் தவிர்க்க தலையிடமாட்டேன்',s:1},{en:'Talk about it privately with friends only',ta:'நண்பர்களிடம் மட்டும் தனிப்பட்ட முறையில் பேசுவேன்',s:2},{en:'Support the classmate and inform a teacher',ta:'அந்த தோழருக்கு ஆதரவளித்து ஆசிரியரிடம் தெரிவிப்பேன்',s:3}]},
+ {id:38,en:'You receive critical feedback on your work. How do you react?',ta:'உங்கள் பணிக்கு விமர்சன கருத்து கிடைக்கிறது. எப்படி எதிர்வினையாற்றுவீர்கள்?',
+  opt:[{en:'Get defensive and reject it',ta:'எதிர்ப்பு தெரிவித்து ஏற்க மறுப்பேன்',s:1},{en:'Feel discouraged and give up',ta:'மனம் தளர்ந்து விட்டுவிடுவேன்',s:2},{en:'Reflect on it and use it to improve',ta:'சிந்தித்து மேம்படுத்த பயன்படுத்துவேன்',s:3}]}
+];
+
+const SELFAREAS=[
+ {id:39,area:'Mathematics',areaTa:'கணிதம்',en:'I am confident in solving Mathematics problems.',ta:'கணிதப் பிரச்சினைகளை தீர்ப்பதில் எனக்கு நம்பிக்கை உண்டு.'},
+ {id:40,area:'Science',areaTa:'அறிவியல்',en:'I enjoy and understand Science subjects well.',ta:'அறிவியல் பாடங்களை நான் விரும்பி நன்கு புரிந்துகொள்கிறேன்.'},
+ {id:41,area:'Language & Literature',areaTa:'மொழி இலக்கியம்',en:'I am strong in reading, writing and language subjects.',ta:'படித்தல், எழுதுதல் மற்றும் மொழிப் பாடங்களில் நான் திறமையானவன்.'},
+ {id:42,area:'Social Studies',areaTa:'சமூக அறிவியல்',en:'I find History, Geography and Civics interesting.',ta:'வரலாறு, புவியியல், குடிமையியல் ஆகியவை எனக்கு சுவாரஸ்யமானவை.'},
+ {id:43,area:'Arts & Creativity',areaTa:'கலை படைப்பாற்றல்',en:'I am good at drawing, music, craft or other creative work.',ta:'ஓவியம், இசை, கைவினை அல்லது பிற படைப்பாற்றல் பணிகளில் நான் திறமையானவன்.'},
+ {id:44,area:'Computer & Technology',areaTa:'கணினி தொழில்நுட்பம்',en:'I am comfortable and interested in computers and technology.',ta:'கணினி மற்றும் தொழில்நுட்பத்தில் எனக்கு வசதியும் ஆர்வமும் உண்டு.'},
+ {id:45,area:'Sports & Physical Education',areaTa:'விளையாட்டு',en:'I perform well in sports and physical activities.',ta:'விளையாட்டு மற்றும் உடல் செயல்பாடுகளில் நான் சிறப்பாக செயல்படுகிறேன்.'},
+ {id:46,area:'Communication Skills',areaTa:'தொடர்பாடல் திறன்',en:'I express my thoughts clearly when speaking to others.',ta:'மற்றவர்களுடன் பேசும்போது எனது எண்ணங்களை தெளிவாக வெளிப்படுத்துகிறேன்.'},
+ {id:47,area:'Leadership',areaTa:'தலைமைத்துவம்',en:'Others often look to me to take charge or lead.',ta:'மற்றவர்கள் பெரும்பாலும் என்னை பொறுப்பேற்க அல்லது வழிநடத்த எதிர்பார்க்கிறார்கள்.'},
+ {id:48,area:'Organization & Planning',areaTa:'ஒழுங்கமைப்பு திட்டமிடல்',en:'I am good at planning, scheduling and staying organised.',ta:'திட்டமிடல், அட்டவணைப்படுத்துதல் மற்றும் ஒழுங்காக இருப்பதில் நான் திறமையானவன்.'}
+];
+
+const SELFANALYSIS_LIKERT=[
+ {id:49,key:'motivation',en:'I feel motivated to work hard toward my goals.',ta:'எனது இலக்குகளை நோக்கி கடினமாக உழைக்க ஆர்வமாக உள்ளேன்.'},
+ {id:50,key:'motivation',en:'I complete tasks even without someone pushing me.',ta:'யாரும் தூண்டாமலேயே பணிகளை முடிக்கிறேன்.'},
+ {id:53,key:'clarity',en:'I have a fairly clear idea of the career I want to pursue.',ta:'நான் தொடர விரும்பும் தொழிலை பற்றி தெளிவான எண்ணம் உள்ளது.'},
+ {id:54,key:'clarity',en:'I know which subjects I enjoy the most.',ta:'நான் மிகவும் விரும்பும் பாடங்கள் எவை என்று எனக்குத் தெரியும்.'},
+ {id:55,key:'clarity',en:'I actively research career options, courses or colleges.',ta:'தொழில் வாய்ப்புகள், படிப்புகள் அல்லது கல்லூரிகள் பற்றி நான் தீவிரமாக ஆராய்கிறேன்.'}
+];
+const LEARNSTYLE=[
+ {id:51,en:'When learning something new, I prefer to:',ta:'புதிதாக ஒன்றைக் கற்கும்போது நான் விரும்புவது:',
+  opt:[{en:'See diagrams, charts or videos',ta:'படங்கள், விளக்கப்படங்கள் அல்லது வீடியோக்களைப் பார்ப்பது',k:'Visual'},
+       {en:'Listen to explanations or discussions',ta:'விளக்கங்கள் அல்லது விவாதங்களைக் கேட்பது',k:'Auditory'},
+       {en:'Read books or written notes',ta:'புத்தகங்கள் அல்லது குறிப்புகளைப் படிப்பது',k:'Reading/Writing'},
+       {en:'Try it hands-on myself',ta:'நானே நேரடியாக செய்து பார்ப்பது',k:'Kinesthetic'}]},
+ {id:52,en:'I remember things best when I:',ta:'நான் விஷயங்களை சிறப்பாக நினைவில் வைப்பது:',
+  opt:[{en:'Picture it in my mind',ta:'மனதில் கற்பனை செய்யும்போது',k:'Visual'},
+       {en:'Repeat it out loud or discuss it',ta:'சத்தமாக சொல்லும்போது அல்லது விவாதிக்கும்போது',k:'Auditory'},
+       {en:'Write it down',ta:'எழுதி வைக்கும்போது',k:'Reading/Writing'},
+       {en:'Practice or act it out',ta:'செய்து பயிற்சி செய்யும்போது',k:'Kinesthetic'}]}
+];
+
+const THINKSTYLE=[
+ {id:56,en:'When solving a problem, I usually:',ta:'ஒரு பிரச்சினையை தீர்க்கும்போது நான் பொதுவாக:',
+  opt:[{en:'Break it into logical steps and analyse data',ta:'தர்க்கரீதியான படிகளாகப் பிரித்து தரவை பகுப்பாய்வு செய்கிறேன்',k:'Analytical'},
+       {en:'Go with my gut feeling',ta:'என் உள்ளுணர்வைப் பின்பற்றுகிறேன்',k:'Intuitive'},
+       {en:'Use a mix of logic and instinct',ta:'தர்க்கமும் உள்ளுணர்வும் கலந்து பயன்படுத்துகிறேன்',k:'Balanced'}]},
+ {id:57,en:'I make decisions mainly based on:',ta:'நான் முடிவுகளை முதன்மையாக எடுப்பது:',
+  opt:[{en:'Facts, evidence and careful analysis',ta:'உண்மைகள், சான்றுகள் மற்றும் கவனமான பகுப்பாய்வு',k:'Analytical'},
+       {en:'What feels right at the moment',ta:'அந்த நேரத்தில் சரியாகத் தோன்றுவது',k:'Intuitive'},
+       {en:'A balance of both feeling and facts',ta:'உணர்வும் உண்மையும் சமநிலையில்',k:'Balanced'}]},
+ {id:58,en:'In a new situation I first tend to:',ta:'புதிய சூழ்நிலையில் நான் முதலில் செய்வது:',
+  opt:[{en:'Study all details before acting',ta:'செயல்படும் முன் அனைத்து விவரங்களையும் ஆராய்வேன்',k:'Analytical'},
+       {en:'Trust my first impression',ta:'என் முதல் எண்ணத்தை நம்புவேன்',k:'Intuitive'},
+       {en:'Observe briefly then decide',ta:'சுருக்கமாக கவனித்து பின் முடிவெடுப்பேன்',k:'Balanced'}]}
+];
+
+const VALUES=[
+ {id:59,key:'Independence',en:'Having freedom and independence in my work is important to me.',ta:'எனது பணியில் சுதந்திரம் இருப்பது எனக்கு முக்கியம்.'},
+ {id:60,key:'Stability',en:'Job security and financial stability are very important to me.',ta:'வேலை பாதுகாப்பும் நிதி நிலைத்தன்மையும் எனக்கு மிக முக்கியம்.'},
+ {id:61,key:'Creativity',en:'Being able to innovate and express creativity matters to me.',ta:'புதுமை செய்யவும் படைப்பாற்றலை வெளிப்படுத்தவும் முடிவது எனக்கு முக்கியம்.'},
+ {id:62,key:'Service',en:'Making a positive difference in society is important to me.',ta:'சமூகத்தில் நேர்மறையான மாற்றத்தை ஏற்படுத்துவது எனக்கு முக்கியம்.'}
+];
+const SOCIALPREF=[
+ {id:63,en:'I prefer working in teams over working alone.',ta:'தனியாக வேலை செய்வதை விட குழுவாக வேலை செய்ய விரும்புகிறேன்.'},
+ {id:64,en:'I enjoy meeting new people and networking.',ta:'புதிய நபர்களை சந்திப்பதையும் தொடர்பு கொள்வதையும் விரும்புகிறேன்.'},
+ {id:65,en:'I feel energised, not drained, after social interactions.',ta:'சமூக தொடர்புகளுக்குப் பிறகு நான் சோர்வடையாமல் ஆற்றல் பெறுகிறேன்.'}
+];
+
+
+RIASEC.push({id:66,type:'E',en:'I enjoy organising an event and encouraging others to participate.',ta:'ஒரு நிகழ்ச்சியை ஏற்பாடு செய்து மற்றவர்களையும் பங்கேற்க ஊக்குவிப்பது எனக்குப் பிடிக்கும்.'},{id:67,type:'C',en:'I enjoy keeping records accurate and following a clear process.',ta:'விவரங்களைத் துல்லியமாகப் பதிவு செய்து ஒரு தெளிவான முறையைப் பின்பற்றுவது எனக்குப் பிடிக்கும்.'},{id:68,type:'E',en:'I like presenting an idea and convincing a group to support it.',ta:'ஒரு யோசனையை விளக்கி அதற்கு மற்றவர்களின் ஆதரவைப் பெற முயல்வது எனக்குப் பிடிக்கும்.'},{id:69,type:'C',en:'I enjoy sorting information and checking details carefully.',ta:'தகவல்களை ஒழுங்குபடுத்தி விவரங்களை கவனமாகச் சரிபார்ப்பது எனக்குப் பிடிக்கும்.'});
+
+const CAREERS=[
+ {name:{en:'Software / Computer Science Engineering',ta:'மென்பொருள் / கணினி பொறியியல்'}, riasec:['I','R','C'], apt:['logical','analytical','numerical'], trait:'C', area:'Computer & Technology'},
+ {name:{en:'Data Science & Artificial Intelligence',ta:'தரவு அறிவியல் & செயற்கை நுண்ணறிவு'}, riasec:['I','C','R'], apt:['analytical','numerical','logical'], trait:'O', area:'Mathematics'},
+ {name:{en:'Medicine (MBBS) / Healthcare',ta:'மருத்துவம் (MBBS) / சுகாதாரம்'}, riasec:['I','S','R'], apt:['analytical','verbal'], trait:'A', area:'Science'},
+ {name:{en:'Design (UX/UI, Graphic, Product)',ta:'வடிவமைப்பு (UX/UI, கிராஃபிக்)'}, riasec:['A','I','R'], apt:['spatial','analytical'], trait:'O', area:'Arts & Creativity'},
+ {name:{en:'Architecture',ta:'கட்டிடக்கலை'}, riasec:['A','R','I'], apt:['spatial','logical'], trait:'O', area:'Arts & Creativity'},
+ {name:{en:'Law / Legal Studies',ta:'சட்டம்'}, riasec:['E','I','S'], apt:['verbal','analytical'], trait:'C', area:'Language & Literature'},
+ {name:{en:'Business Management / Entrepreneurship',ta:'வணிக மேலாண்மை / தொழில்முனைவு'}, riasec:['E','C','S'], apt:['numerical','analytical'], trait:'E', area:'Leadership'},
+ {name:{en:'Teaching / Education',ta:'கல்வி / ஆசிரியர் தொழில்'}, riasec:['S','A','I'], apt:['verbal'], trait:'A', area:'Communication Skills'},
+ {name:{en:'Psychology / Counselling',ta:'உளவியல் / ஆலோசனை'}, riasec:['S','I','A'], apt:['verbal','analytical'], trait:'A', area:'Communication Skills'},
+ {name:{en:'Civil Services / Public Administration',ta:'அரசுப் பணி / பொது நிர்வாகம்'}, riasec:['S','E','C'], apt:['verbal','analytical'], trait:'C', area:'Social Studies'},
+ {name:{en:'Finance / Chartered Accountancy',ta:'நிதி / பட்டயக் கணக்கு'}, riasec:['C','E','I'], apt:['numerical','analytical'], trait:'C', area:'Mathematics'},
+ {name:{en:'Journalism / Mass Communication',ta:'ஊடகவியல் / வெகுஜன தொடர்பு'}, riasec:['A','E','S'], apt:['verbal'], trait:'O', area:'Communication Skills'},
+ {name:{en:'Performing / Visual Arts',ta:'நிகழ்த்து / காட்சி கலை'}, riasec:['A','S'], apt:['spatial'], trait:'O', area:'Arts & Creativity'},
+ {name:{en:'Social Work / NGO Leadership',ta:'சமூக சேவை / தன்னார்வ தலைமை'}, riasec:['S','A','E'], apt:['verbal'], trait:'A', area:'Leadership'},
+ {name:{en:'Defence / Armed Forces',ta:'ராணுவப் பணி'}, riasec:['R','S','E'], apt:['logical','analytical'], trait:'C', area:'Sports & Physical Education'},
+ {name:{en:'Sports Science / Physical Education',ta:'விளையாட்டு அறிவியல் / உடற்கல்வி'}, riasec:['R','S'], apt:['analytical'], trait:'E', area:'Sports & Physical Education'}
+];
+
+
+const STR={en:{intro:'Discover possibilities, not a fixed destiny',introText:'A guided exploration for students in Classes 9–12. This questionnaire includes 69 prompts about interests, reasoning, preferences and career planning. It is not a clinical test or a validated prediction of career success.',questions:'Questions',time:'Estimated time',privacy:'Your responses remain in this browser. Nothing is automatically sent to Google Sheets or another server. You can download a local JSON backup. Avoid shared devices for personal information.',start:'Start assessment',details:'Student details',name:'Student name or nickname (optional)',grade:'Class',ack:'I understand this is an exploratory tool, not a diagnosis or a final career decision. If I am under 18, I will review my results with a parent/guardian or trusted educator.',back:'Back',begin:'Begin questions',backup:'Save backup',restore:'Restore backup',pdf:'Print / Save PDF',home:'Home',clear:'Clear this session',disclaimer:'Educational self-exploration only · Discuss major decisions with a qualified counsellor'},ta:{intro:'உங்கள் எதிர்கால வாய்ப்புகளை ஆராயுங்கள்',introText:'9–12ஆம் வகுப்பு மாணவர்களுக்கான Career Exploration பயிற்சி. ஆர்வம், சிந்தனைத் திறன், விருப்பங்கள், தொழில் திட்டமிடல் தொடர்பான 69 கேள்விகள் உள்ளன. இது மருத்துவ மதிப்பீடோ, எதிர்கால வெற்றியைக் கணிக்கும் உறுதியான தேர்வோ அல்ல.',questions:'கேள்விகள்',time:'தோராயமான நேரம்',privacy:'உங்கள் பதில்கள் இந்த browser-இலேயே இருக்கும். Google Sheets அல்லது வேறு server-க்கு தானாக அனுப்பப்படாது. JSON backup சேமிக்கலாம். பொதுக் கணினியில் தனிப்பட்ட தகவல்களை உள்ளிடுவதைத் தவிர்க்கவும்.',start:'மதிப்பீட்டைத் தொடங்கு',details:'மாணவர் விவரங்கள்',name:'மாணவர் பெயர் அல்லது அழைப்புப் பெயர் (விருப்பம்)',grade:'வகுப்பு',ack:'இது என்னை அறிந்துகொள்ள உதவும் பயிற்சி மட்டுமே; இறுதியான தொழில் தீர்ப்பு அல்ல என்பதைப் புரிந்துகொண்டேன். 18 வயதுக்குக் குறைவானவராக இருந்தால் பெற்றோர்/பாதுகாவலர் அல்லது நம்பகமான ஆசிரியருடன் முடிவுகளைப் பகிர்ந்து ஆலோசிப்பேன்.',back:'பின்னால்',begin:'கேள்விகளைத் தொடங்கு',backup:'Backup சேமி',restore:'Backup திற',pdf:'PDF ஆக சேமி / அச்சிடு',home:'முகப்பு',clear:'இந்த அமர்வை அழி',disclaimer:'கல்விசார் சுயஆராய்ச்சி மட்டுமே · முக்கிய முடிவுகளுக்கு Career Counsellor-ஐ அணுகவும்'}};
+let lang='ta',page=0,answers={},student={name:'',grade:''};
+const groups=[{key:'apt',en:'Reasoning practice',ta:'சிந்தனைத் திறன் பயிற்சி',items:APTITUDE,type:'mcq'},{key:'interest',en:'Career interests (RIASEC)',ta:'தொழில் ஆர்வங்கள் (RIASEC)',items:RIASEC,type:'likert'},{key:'self',en:'Your interests and confidence',ta:'உங்கள் ஆர்வமும் நம்பிக்கையும்',items:SELFAREAS,type:'likert'},{key:'personality',en:'Work and personality preferences',ta:'பழக்கங்கள் மற்றும் தனிப்பட்ட விருப்பங்கள்',items:BIGFIVE,type:'likert'},{key:'situations',en:'Situations and decisions',ta:'சூழ்நிலைகளும் முடிவுகளும்',items:SJT,type:'sjt'},{key:'planning',en:'Motivation and career clarity',ta:'ஊக்கமும் தொழில் தெளிவும்',items:SELFANALYSIS_LIKERT,type:'likert'},{key:'learning',en:'Learning preferences',ta:'கற்க விரும்பும் முறைகள்',items:LEARNSTYLE,type:'choice'},{key:'thinking',en:'Thinking preferences',ta:'சிந்தனை விருப்பங்கள்',items:THINKSTYLE,type:'choice'},{key:'values',en:'Work values',ta:'வேலை தொடர்பான மதிப்புகள்',items:VALUES,type:'likert'},{key:'social',en:'Social preferences',ta:'குழுவுடன் செயல்படும் விருப்பங்கள்',items:SOCIALPREF,type:'likert'}];
+const pages=groups.flatMap(g=>{let r=[];for(let i=0;i<g.items.length;i+=5)r.push({...g,items:g.items.slice(i,i+5)});return r});
+const el=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const tr=(en,ta)=>lang==='ta'?ta:en;
+function show(id){['intro','intake','quiz','report'].forEach(x=>el(x).classList.toggle('hidden',x!==id));window.scrollTo(0,0)}
+function toggleLang(){lang=lang==='ta'?'en':'ta';el('langBtn').textContent=lang==='ta'?'English':'தமிழ்';document.documentElement.lang=lang;document.querySelectorAll('[data-i]').forEach(n=>n.textContent=STR[lang][n.dataset.i]);el('subtitle').textContent=tr('Explore your interests, strengths and future options','உங்கள் ஆர்வம், திறன், எதிர்கால வாய்ப்புகளை அறிந்துகொள்ளுங்கள்');if(!el('quiz').classList.contains('hidden'))renderPage();if(!el('report').classList.contains('hidden'))renderReport();el('startHint').textContent=tr('To begin, tick the acknowledgement box above and select Begin questions. Name and class are optional.','தொடங்க, மேலே உள்ள ஒப்புதல் பெட்டியைத் தேர்ந்தெடுத்து ‘கேள்விகளைத் தொடங்கு’ என்பதை அழுத்தவும். பெயரும் வகுப்பும் கட்டாயமில்லை.')}
+function begin(){if(!el('ack').checked){el('startError').textContent=tr('Please tick the acknowledgement checkbox above to continue.','தொடர மேலே உள்ள ஒப்புதல் பெட்டியைத் தேர்வு செய்யவும்.');el('ack').focus();return}el('startError').textContent='';student={name:el('studentName').value.trim(),grade:el('grade').value};page=0;answers={};show('quiz');renderPage()}
+function renderPage(){let p=pages[page];el('sectionTitle').textContent=tr(p.en,p.ta);el('pageCount').textContent=`${page+1} / ${pages.length}`;el('progressFill').style.width=((page+1)/pages.length*100)+'%';el('sectionHelp').textContent=tr('Choose the answer that fits you best. Reasoning items have correct answers; preference items do not.','உங்களுக்குப் பொருத்தமான பதிலைத் தேர்ந்தெடுங்கள். சிந்தனைத் திறன் கேள்விகளுக்கு சரியான பதில் உண்டு; விருப்பக் கேள்விகளுக்குச் சரி/தவறு இல்லை.');el('validation').textContent='';el('questions').innerHTML=p.items.map(it=>{let opts=p.type==='likert'?(lang==='ta'?LIK_TA:LIK_EN).map((s,i)=>({text:s,value:String(i+1)})):p.type==='mcq'?(lang==='ta'?it.optTa:it.opt).map((s,i)=>({text:s,value:String(i)})):it.opt.map((o,i)=>({text:tr(o.en,o.ta),value:String(p.type==='sjt'?o.s:o.k)}));return `<div class="question"><h3>Q${it.id}. ${esc(tr(it.en,it.ta))}</h3>${opts.map(o=>`<label class="option"><input type="radio" name="q${it.id}" value="${esc(o.value)}" ${String(answers[it.id])===o.value?'checked':''} onchange="answer(${it.id},this.value)">${esc(o.text)}</label>`).join('')}</div>`}).join('');el('nextButton').textContent=page===pages.length-1?tr('Generate exploration report','ஆய்வு அறிக்கையை உருவாக்கு'):tr('Next','அடுத்து')}
+function answer(id,v){answers[id]=/^\d+$/.test(v)?Number(v):v;el('validation').textContent=''}
+function previous(){if(page>0){page--;renderPage();window.scrollTo(0,0)}else show('intake')}
+function next(){if(!pages[page].items.every(it=>answers[it.id]!==undefined)){el('validation').textContent=tr('Please answer all questions on this page.','இந்தப் பக்கத்தின் எல்லா கேள்விகளுக்கும் பதிலளிக்கவும்.');return}if(page<pages.length-1){page++;renderPage();window.scrollTo(0,0)}else{show('report');renderReport()}}
+function saveBackup(){let blob=new Blob([JSON.stringify({version:2,page,answers,student},null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='career-discovery-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+async function restoreBackup(e){let f=e.target.files?.[0];if(!f)return;try{let d=JSON.parse(await f.text());if(d.version!==2||!d.answers||typeof d.answers!=='object'||Array.isArray(d.answers))throw Error();let valid=new Set(groups.flatMap(g=>g.items.map(x=>String(x.id))));answers=Object.fromEntries(Object.entries(d.answers).filter(([k,v])=>valid.has(k)&&(['string','number'].includes(typeof v))));student={name:String(d.student?.name||'').slice(0,80),grade:String(d.student?.grade||'')};page=Math.max(0,Math.min(pages.length-1,Number(d.page)||0));el('studentName').value=student.name;el('grade').value=student.grade;show('quiz');renderPage()}catch{alert(tr('Invalid backup file.','Backup கோப்பு சரியாக இல்லை.'))}e.target.value=''}
+function eraseAll(){if(!confirm(tr('Clear the current answers and report?','தற்போதைய பதில்களையும் அறிக்கையையும் அழிக்கவா?')))return;answers={};student={name:'',grade:''};page=0;el('studentName').value='';el('grade').value='';el('ack').checked=false;show('intro')}
+const avg=ids=>ids.reduce((s,id)=>s+Number(answers[id]||0),0)/ids.length;const percent=v=>Math.round(Math.max(0,Math.min(100,(v-1)*25)));const rankTop=(obj,n=3)=>Object.entries(obj).sort((a,b)=>b[1]-a[1]).slice(0,n);
+function scores(){let aptitude={};for(let k of ['logical','numerical','verbal','spatial','analytical']){let items=APTITUDE.filter(x=>x.sub===k);aptitude[k]=Math.round(100*items.filter(x=>answers[x.id]===x.ans).length/items.length)}let riasec={};for(let k of 'RIASEC'){let items=RIASEC.filter(x=>x.type===k);riasec[k]=percent(avg(items.map(x=>x.id)))}let areas=Object.fromEntries(SELFAREAS.map(x=>[x.area,percent(answers[x.id])]));let bigfive={O:percent(avg([11,12])),C:percent(avg([13,14])),E:percent(avg([15,16])),A:percent(avg([17,18])),N:100-percent(avg([19,20]))};let values=Object.fromEntries(VALUES.map(x=>[x.key,percent(answers[x.id])]));return{aptitude,riasec,areas,bigfive,values,motivation:percent(avg([49,50])),clarity:percent(avg([53,54,55])),sjt:Math.round(100*SJT.reduce((s,x)=>s+(answers[x.id]-1),0)/(SJT.length*2))}}
+function bars(o,labels){return Object.entries(o).map(([k,v])=>`<div class="bar"><span>${esc(labels?.[k]||k)}</span><div class="track"><div class="fill" style="width:${v}%"></div></div><b>${v}</b></div>`).join('')}
+function section(title,body){return `<article class="panel"><h2>${title}</h2>${body}</article>`}
+function buildCareerPrompt(){
+ const s=scores();
+ const topR=rankTop(s.riasec,3).map(([k,v])=>`${k}: ${v}/100`);
+ const careers=CAREERS.map(c=>({name:c.name.en,interest:c.riasec.reduce((sum,k)=>sum+s.riasec[k],0)/c.riasec.length, self:s.areas[c.area]??50})).map(c=>({...c,exploration:Math.round(.8*c.interest+.2*c.self)})).sort((a,b)=>b.exploration-a.exploration).slice(0,5).map(c=>c.name);
+ const promptLanguage=lang==='ta'?'natural Tamil with essential English terms':'clear English';
+ const lines=[
+ 'CAREER DISCOVERY 360 — PERSONALIZED CAREER GUIDANCE REPORT',
+ 'SOMASUNDARAM NT SKILLS ACADEMY',
+ 'Life Skills for Life. Guidance for Careers.',
+ '',
+ 'Act as a qualified-career-counselling-informed educational guide and Indian education pathways specialist. Interpret the student-provided exploratory assessment carefully. Write in '+promptLanguage+'.',
+ '',
+ 'STUDENT PROFILE (non-identifying):',
+ 'Class / Grade: '+(student.grade||'Not provided'),
+ 'Location / education board / favourite subjects / constraints: Ask me if necessary; do not assume.',
+ '',
+ 'ASSESSMENT DATA (raw descriptive scores; not normed percentiles or success probabilities):',
+ 'RIASEC interests: '+JSON.stringify(s.riasec),
+ 'Top RIASEC: '+topR.join(', '),
+ 'Aptitude mini-quiz (only 2 questions per domain): '+JSON.stringify(s.aptitude),
+ 'Self-reported subject/skill areas: '+JSON.stringify(s.areas),
+ 'Big Five brief self-report indicators (NOT validated personality diagnosis): '+JSON.stringify(s.bigfive),
+ 'Work values: '+JSON.stringify(s.values),
+ 'Motivation indicator: '+s.motivation+'/100',
+ 'Career clarity indicator: '+s.clarity+'/100',
+ 'Situational judgment exercise indicator: '+s.sjt+'/100',
+ 'Initial career areas to explore (heuristic, not probabilities): '+careers.join('; '),
+ '',
+ 'REPORT REQUEST:',
+ '1. Executive student profile: strengths, interests, uncertainties, evidence behind each observation.',
+ '2. Explain RIASEC themes and how they connect to practical activities and career environments.',
+ '3. Explain aptitude mini-quiz results cautiously; suggest exercises to check and develop skills.',
+ '4. Interpret self-reported strengths, personality preferences, values, motivation and career clarity without fixed labels.',
+ '5. Recommend 5–8 career areas to EXPLORE, with rationale, limitations, typical work, required subjects/skills and beginner projects.',
+ '6. Give Indian educational pathways appropriate to the class: post-Class-10 streams/vocational routes or post-Class-12 degrees/diplomas and relevant entrance exams; verify current eligibility with official sources if available.',
+ '7. Create a comparison table for 3 career options using interests, preparation, values, practical constraints and unanswered questions.',
+ '8. Provide a realistic 30-day weekly plan and a 90-day skills-and-exploration roadmap.',
+ '9. Give questions to discuss with parents, teachers and a career counsellor.',
+ '10. End with three evidence-supported observations, three development priorities and actions for the next seven days.',
+ '',
+ 'PROFESSIONAL SAFEGUARDS:',
+ 'Do not invent missing facts, assessment norms, salary figures, college requirements or career-match probabilities. Do not infer aptitude or eligibility from 2-item subscales. Do not treat learning preferences as fixed learning styles. Do not diagnose. A low score must not exclude a career. Distinguish student self-report from demonstrated performance. Ask up to five important clarifying questions before the final report if needed. State that this is exploratory AI assistance, not a validated psychometric conclusion or a replacement for professional counselling.',
+ 'Please start by reviewing these results and asking any essential clarifying questions.'
+ ];
+ return lines.join('\n');
+}
+function updateCareerPrompt(){const ta=lang==='ta'; const t=(id,a,b)=>{const e=el(id);if(e)e.textContent=ta?b:a};t('aiTitle','AI Career Guidance · ChatGPT','AI தொழில் வழிகாட்டுதல் · ChatGPT');t('aiIntro','Copy a personalized prompt containing your assessment results (without your name or contact details). Paste it into ChatGPT for a detailed career exploration report.','உங்கள் மதிப்பீட்டு முடிவுகளுடன் உருவான Prompt-ஐ Copy செய்து ChatGPT-இல் Paste செய்யுங்கள். பெயர், தொடர்பு விவரங்கள் சேர்க்கப்படாது.');t('copyAiBtn','Copy My Career Guidance Prompt','எனது Career Guidance Prompt-ஐ Copy செய்');t('aiPreviewLabel','Preview the personalized prompt','தனிப்பயன் Prompt-ஐப் பார்க்க');t('aiPrivacy','Privacy: Your name, mobile number and school are not included. Do not share identifying information about minors. AI guidance is exploratory, not a verified prediction or a substitute for a qualified counsellor.','தனியுரிமை: பெயர், கைபேசி எண், பள்ளி சேர்க்கப்படாது. சிறார்களின் தனிப்பட்ட தகவல்களைப் பகிர வேண்டாம். AI வழிகாட்டுதல் தொழில் வெற்றிக்கான உறுதியான கணிப்போ, நிபுணர் ஆலோசனைக்கு மாற்றோ அல்ல.');el('careerPromptPreview').value=buildCareerPrompt();}
+async function copyCareerPrompt(){
+ const promptText=buildCareerPrompt();
+ const preview=el('careerPromptPreview');
+ const status=el('aiCopyStatus');
+ preview.value=promptText;
+ let copied=false;
+ try{
+   if(navigator.clipboard && typeof navigator.clipboard.writeText==='function'){
+     await navigator.clipboard.writeText(promptText);
+     copied=true;
+   }
+ }catch(err){ /* Clipboard permissions can be denied on local files or embedded browsers. */ }
+ if(!copied){
+   try{
+     const temp=document.createElement('textarea');
+     temp.value=promptText;
+     temp.setAttribute('readonly','');
+     temp.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';
+     document.body.appendChild(temp);
+     temp.focus();temp.select();temp.setSelectionRange(0,temp.value.length);
+     copied=!!document.execCommand('copy');
+     temp.remove();
+   }catch(err){copied=false;}
+ }
+ if(copied){
+   status.textContent=lang==='ta'?'Prompt வெற்றிகரமாக Copy செய்யப்பட்டது. ChatGPT-இல் Paste செய்யுங்கள்.':'Prompt copied successfully. Paste it into ChatGPT.';
+ }else{
+   const details=preview.closest('details');if(details)details.open=true;
+   preview.focus();preview.select();preview.setSelectionRange(0,preview.value.length);
+   status.textContent=lang==='ta'?'Browser Copy அனுமதிக்கவில்லை. கீழே Prompt தேர்ந்தெடுக்கப்பட்டுள்ளது. Ctrl+C (மொபைலில் Copy) பயன்படுத்துங்கள் அல்லது Download Prompt அழுத்துங்கள்.':'Browser blocked automatic copying. The prompt is selected below: press Ctrl+C (or Copy on mobile), or use Download Prompt.';
+ }
+}
+function openCareerChatGPT(){window.open('https://chatgpt.com/','_blank','noopener,noreferrer')}
+function downloadCareerPrompt(){const blob=new Blob([buildCareerPrompt()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Career_Discovery_360_AI_Guidance_Prompt.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function renderReport(){let s=scores();let topR=rankTop(s.riasec),topA=rankTop(s.areas),topV=rankTop(s.values);let candidates=CAREERS.map(c=>{let interest=c.riasec.reduce((sum,k)=>sum+s.riasec[k],0)/c.riasec.length;let self=s.areas[c.area]??50;return {...c,exploration:Math.round(.8*interest+.2*self)}}).sort((a,b)=>b.exploration-a.exploration).slice(0,5);let R={R:tr('Practical','நடைமுறை'),I:tr('Investigative','ஆராய்ச்சி'),A:tr('Creative','படைப்பாற்றல்'),S:tr('Helping people','மக்களுக்கு உதவுதல்'),E:tr('Leadership','தலைமைத்துவம்'),C:tr('Organising','ஒழுங்கமைத்தல்')};let aptL={logical:tr('Logical','தர்க்கம்'),numerical:tr('Numerical','எண் திறன்'),verbal:tr('Verbal','மொழித் திறன்'),spatial:tr('Spatial','இடவியல்'),analytical:tr('Analytical','பகுப்பாய்வு')};let areaL=Object.fromEntries(SELFAREAS.map(x=>[x.area,tr(x.area,x.areaTa)]));let h=section(tr('Career Discovery Report','தொழில் ஆர்வ ஆய்வு அறிக்கை'),`<p><b>${esc(student.name||tr('Student','மாணவர்'))}</b> · ${tr('Class','வகுப்பு')}: ${esc(student.grade||'—')} · ${new Date().toLocaleDateString()}</p><p class="note">${tr('This is a descriptive exploration of your answers, not a psychometric diagnosis, a percentile ranking or a probability of career success. A low score does not rule out a career.','இது உங்கள் பதில்களின் அடிப்படையிலான சுயஆராய்ச்சி அறிக்கை. இது மருத்துவ/உளவியல் நோயறிதலோ, பிற மாணவர்களுடன் ஒப்பிடும் தரவரிசையோ, தொழில் வெற்றிக்கான சதவீத வாய்ப்போ அல்ல. குறைந்த மதிப்பெண் ஒரு தொழிலைத் தேர்ந்தெடுக்க முடியாது என்று பொருளல்ல.')}</p><p>${tr('Your strongest reported interests','உங்கள் பதில்களில் முன்னிலை பெற்ற ஆர்வங்கள்')}: ${topR.map(x=>R[x[0]]).join(' · ')}</p>`);
+h+=section(tr('1. Career interests','1. தொழில் ஆர்வங்கள்'),bars(s.riasec,R)+`<p class="muted small">${tr('Scores represent the share of the available response scale, not an externally validated norm.','இவை பதில் அளவுகோலில் கிடைத்த மதிப்புகள்; அறிவியல் தரநிலை ஒப்பீட்டு மதிப்பெண்கள் அல்ல.')}</p>`);
+h+=section(tr('2. Reasoning practice','2. சிந்தனைத் திறன் பயிற்சி'),bars(s.aptitude,aptL)+`<p class="note">${tr('Only two items per domain: results are too brief to determine ability or eligibility. Use them to choose what to practise next.','ஒவ்வொரு திறன் பிரிவிலும் இரண்டு கேள்விகள் மட்டுமே உள்ளன. இதைக் கொண்டு முழுத் திறனையோ தகுதியையோ தீர்மானிக்க முடியாது. அடுத்து எதைப் பயிற்சி செய்யலாம் என்பதற்கான குறிப்பு மட்டுமே.')}</p>`);
+h+=section(tr('3. Self-reported strengths and interests','3. மாணவர் கூறிய ஆர்வங்களும் திறன்களும்'),bars(s.areas,areaL)+`<p>${tr('Areas you may wish to explore','மேலும் ஆராயக்கூடிய பகுதிகள்')}: ${topA.map(x=>areaL[x[0]]).join(', ')}</p>`);
+h+=section(tr('4. Work values and planning','4. வேலை மதிப்புகளும் திட்டமிடலும்'),bars(s.values,{Independence:tr('Independence','சுதந்திரம்'),Stability:tr('Stability','நிலைத்தன்மை'),Creativity:tr('Creativity','படைப்பாற்றல்'),Service:tr('Service','சேவை')})+bars({motivation:s.motivation,clarity:s.clarity},{motivation:tr('Motivation','ஊக்கம்'),clarity:tr('Career clarity','தொழில் தெளிவு')})+`<p>${tr('Most valued','முக்கியமாகக் கருதுவது')}: ${topV.map(x=>x[0]).join(', ')}</p>`);
+h+=section(tr('5. Career areas to investigate','5. ஆராய்ந்து பார்க்கக்கூடிய தொழில் துறைகள்'),`<p class="note">${tr('These are discussion prompts based mainly on your stated interests. The order is not a prediction, a match probability, or a recommendation to exclude other fields.','இவை உங்கள் ஆர்வங்களின் அடிப்படையில் மேலும் ஆராய்வதற்கான தொடக்கப் பரிந்துரைகள். வரிசை என்பது வெற்றி வாய்ப்போ இறுதித் தீர்ப்போ அல்ல.')}</p>`+candidates.map((c,i)=>`<div class="career"><h3>${i+1}. ${esc(tr(c.name.en,c.name.ta))}</h3><p>${tr('Explore this because your responses overlap with these interest themes','உங்கள் ஆர்வங்களுடன் தொடர்புடைய பகுதிகள்')}: ${c.riasec.map(k=>R[k]).join(', ')}</p><p class="small muted">${tr('Try: watch a day-in-the-life video, talk to a professional and attempt one beginner project.','செய்து பாருங்கள்: இந்தத் துறையில் பணிபுரிபவரின் அனுபவத்தை அறியுங்கள்; ஒருவரிடம் பேசுங்கள்; ஒரு சிறிய செயல்முறைத் திட்டத்தை முயற்சியுங்கள்.')}</p></div>`).join(''));
+h+=section(tr('6. 30-day exploration plan','6. அடுத்த 30 நாட்களுக்கான திட்டம்'),`<ol><li>${tr('Week 1: Write why your top two interest themes appeal to you.','வாரம் 1: உங்களுக்கு முதன்மையான இரண்டு ஆர்வங்கள் ஏன் பிடிக்கின்றன என்று எழுதுங்கள்.')}</li><li>${tr('Week 2: Compare three careers: daily work, subjects, training and costs.','வாரம் 2: மூன்று தொழில்களின் வேலை, படிப்பு, பயிற்சி, செலவு ஆகியவற்றை ஒப்பிடுங்கள்.')}</li><li>${tr('Week 3: Complete a small project or shadow a professional.','வாரம் 3: ஒரு சிறிய திட்டம் செய்து பாருங்கள் அல்லது ஒரு தொழில் நிபுணரின் பணியை அறியுங்கள்.')}</li><li>${tr('Week 4: Discuss your findings with a parent, teacher or career counsellor.','வாரம் 4: அறிந்தவற்றைப் பெற்றோர், ஆசிரியர் அல்லது Career Counsellor உடன் விவாதியுங்கள்.')}</li></ol><p class="note">${tr('For courses, entrance exams and eligibility, verify current requirements on official institution and examination websites.','படிப்புகள், நுழைவுத் தேர்வுகள், தகுதி விதிகள் போன்றவற்றை சம்பந்தப்பட்ட கல்வி நிறுவனம் மற்றும் தேர்வு அமைப்பின் அதிகாரப்பூர்வ இணையதளத்தில் சரிபார்க்கவும்.')}</p>`);
+h+=section(tr('7. Reflection worksheet','7. சுயஆராய்ச்சி Worksheet'),`<p>1. ${tr('Which suggested career surprised me, and why?','எந்தத் தொழில் பரிந்துரை எனக்கு ஆச்சரியமாக இருந்தது? ஏன்?')}</p><p>2. ${tr('Which two activities would I willingly practise?','எந்த இரண்டு செயல்களை நான் விரும்பிச் செய்து பழகுவேன்?')}</p><p>3. ${tr('What information do I still need before choosing subjects or a course?','பாடப்பிரிவு அல்லது படிப்பைத் தேர்ந்தெடுக்க இன்னும் என்ன தகவல் தேவை?')}</p><p>4. ${tr('Who can help me explore my options?','எனது வாய்ப்புகளை ஆராய யாரிடம் உதவி கேட்கலாம்?')}</p>`);
+el('reportBody').innerHTML=h;updateCareerPrompt()}
+toggleLang();toggleLang();
+</script></body></html>
