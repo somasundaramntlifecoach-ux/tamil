@@ -26,3 +26,15 @@ onAuthStateChanged(auth,user=>{
  if(!user){$('status').textContent='Sign in with your existing parent account. / உங்கள் பெற்றோர் கணக்கில் உள்நுழையுங்கள்.';return;}
  check(user);unsub=onSnapshot(doc(db,'entitlements',user.uid),()=>check(user),()=>check(user));
 });
+// Make course cards open the course instead of repeating the login page.
+document.querySelectorAll('#courses a').forEach(link => {
+  const url = new URL(link.getAttribute('href'), location.href);
+
+  if (url.pathname.endsWith('/bundle-login.html')) {
+    url.pathname = url.pathname.replace(
+      /bundle-login\.html$/,
+      'index.html'
+    );
+    link.href = url.href;
+  }
+});
