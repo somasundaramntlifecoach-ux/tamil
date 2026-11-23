@@ -1,0 +1,2 @@
+import {start} from '../Parent_Course_Access/worker-core.js';
+start({"data.js":{"ids":["a4afb0363184684a7af0bb58cb24af25f6c21f6f63d3ffd19ebe744c018164c2"],"mime":"text/javascript"},"style.css":{"ids":["7157bdd2637d4dcf93367429c9589f825f476c05e5e6d1229555ddd3fb05e8ae"],"mime":"text/css"},"app.js":{"ids":["a96668374a01b7adf44fd484bf678fc9c2eecec36ddfce8f7130b2a90cbeacf0"],"mime":"text/javascript"},"index.html":{"ids":["6fc986c4c5393669822978915be81d78f677d6fff8c76e442a3734b0f2159b57"],"mime":"text/html"}});
