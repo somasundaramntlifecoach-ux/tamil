@@ -10,5 +10,5 @@ onAuthStateChanged(auth,async user=>{
  }catch{lock();}
 });
 const bar=document.createElement('div');bar.style.cssText='position:relative;background:#102b40;color:#fff;padding:12px 18px;display:flex;gap:16px;flex-wrap:wrap;font:14px/1.5 system-ui;z-index:9999';
-for(const [title,path] of [['All Parent Courses','index.html'],['Admin Import','import.html']]){const a=document.createElement('a');a.textContent=title;a.href=new URL(path,root);a.style.color='#ffe19b';bar.append(a);}
+for(const [title,path] of [['All Parent Courses','index.html']]){const a=document.createElement('a');a.textContent=title;a.href=new URL(path,root);a.style.color='#ffe19b';bar.append(a);}
 const b=document.createElement('button');b.textContent='Sign out';b.onclick=()=>signOut(auth);bar.append(b);document.body.prepend(bar);
